@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_assets.dart';
 import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
+import 'package:sehty/features/profile/presentation/widgets/language_switcher_widget.dart';
 import 'package:sehty/features/profile/presentation/widgets/patient_code_card.dart';
 import 'package:sehty/features/profile/presentation/widgets/privacy_note_widget.dart';
 import 'package:sehty/features/profile/presentation/widgets/profile_header.dart';
@@ -23,6 +25,7 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 const ProfileHeader(),
                 const PatientCodeCard(),
+                const LanguageSwitcherWidget(),
                 ProfileInfoSection(
                   title: AppStrings.basicInfo,
                   icon: AppAssets.iconsProfilePersonIcon,
@@ -65,7 +68,7 @@ class ProfileScreen extends StatelessWidget {
                   icon: AppAssets.iconsProfileHeartIcon,
                   child: Container(
                     width: double.infinity,
-                    alignment: Alignment.centerRight,
+                    alignment: AlignmentDirectional.centerStart,
                     child: Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 16,

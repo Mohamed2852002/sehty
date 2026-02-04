@@ -17,7 +17,7 @@ class MainShellScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsetsGeometry.all(16),
+          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
           child: IndexedStack(
             index: context.watch<MainShellCubit>().currentIndex,
             children: const [

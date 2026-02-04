@@ -75,20 +75,14 @@ class DailySummaryWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: .spaceBetween,
                   children: [
-                    Text(
-                      '3', // Hardcoded for now
-                      style: AppStyles.styleBold24(context),
-                    ),
+                    Text('3', style: AppStyles.styleBold24(context)),
                     Text(
                       '/',
                       style: AppStyles.styleRegular24(
                         context,
                       ).copyWith(color: Colors.grey),
                     ),
-                    Text(
-                      '2', // Hardcoded
-                      style: AppStyles.styleBold24(context),
-                    ),
+                    Text('2', style: AppStyles.styleBold24(context)),
                   ],
                 ),
                 Text(

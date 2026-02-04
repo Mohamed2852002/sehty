@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sehty/core/themes/app_colors.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sehty/core/utils/app_assets.dart';
 import 'package:sehty/core/utils/app_strings.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
+import 'package:sehty/features/auth/presentation/widgets/check_box_item.dart';
 
 class ChronicDiseasesSection extends StatefulWidget {
   const ChronicDiseasesSection({super.key});
@@ -12,59 +14,45 @@ class ChronicDiseasesSection extends StatefulWidget {
 }
 
 class _ChronicDiseasesSectionState extends State<ChronicDiseasesSection> {
-  // Using map for simple local state management of checkboxes
-  final Map<String, bool> _diseases = {
-    'diabetes': false,
-    'blood_pressure': false,
-    'heart': false,
-    'kidney': false,
-    'liver': false,
-    'asthma': false,
-    'arthritis': false,
-    'thyroid': false,
-  };
-
   @override
   Widget build(BuildContext context) {
     return CustomContainer(
       child: Column(
+        spacing: 16,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            spacing: 8,
             children: [
+              SvgPicture.asset(AppAssets.iconsRegisterHeartIcon),
               Text(
-                AppStrings.chronicDiseases, // "Chronic Diseases"
+                AppStrings.chronicDiseases,
                 style: AppStyles.styleBold16(context),
-              ),
-              const SizedBox(width: 8),
-              const Icon(
-                Icons.favorite_border,
-                color: AppColors.primary,
-                size: 20,
               ),
             ],
           ),
-          const SizedBox(height: 16),
-
           Row(
             children: [
               Expanded(
                 child: Column(
                   children: [
-                    _buildCheckboxItem(
-                      context,
-                      AppStrings.bloodPressure,
-                      'blood_pressure',
+                    CheckBoxItem(
+                      label: AppStrings.bloodPressure,
+                      diseaseKey: 'blood_pressure',
                     ),
                     const SizedBox(height: 12),
-                    _buildCheckboxItem(context, AppStrings.kidney, 'kidney'),
+                    CheckBoxItem(
+                      label: AppStrings.kidney,
+                      diseaseKey: 'kidney',
+                    ),
                     const SizedBox(height: 12),
-                    _buildCheckboxItem(context, AppStrings.asthma, 'asthma'),
+                    CheckBoxItem(
+                      label: AppStrings.asthma,
+                      diseaseKey: 'asthma',
+                    ),
                     const SizedBox(height: 12),
-                    _buildCheckboxItem(
-                      context,
-                      AppStrings.thyroid,
-                      'thyroid',
+                    CheckBoxItem(
+                      label: AppStrings.thyroid,
+                      diseaseKey: 'thyroid',
                     ), // Using Thyroid or similar
                   ],
                 ),
@@ -73,20 +61,18 @@ class _ChronicDiseasesSectionState extends State<ChronicDiseasesSection> {
               Expanded(
                 child: Column(
                   children: [
-                    _buildCheckboxItem(
-                      context,
-                      AppStrings.diabetes,
-                      'diabetes',
+                    CheckBoxItem(
+                      label: AppStrings.diabetes,
+                      diseaseKey: 'diabetes',
                     ),
                     const SizedBox(height: 12),
-                    _buildCheckboxItem(context, AppStrings.heart, 'heart'),
+                    CheckBoxItem(label: AppStrings.heart, diseaseKey: 'heart'),
                     const SizedBox(height: 12),
-                    _buildCheckboxItem(context, AppStrings.liver, 'liver'),
+                    CheckBoxItem(label: AppStrings.liver, diseaseKey: 'liver'),
                     const SizedBox(height: 12),
-                    _buildCheckboxItem(
-                      context,
-                      AppStrings.arthritis,
-                      'arthritis',
+                    CheckBoxItem(
+                      label: AppStrings.arthritis,
+                      diseaseKey: 'arthritis',
                     ), // Using Arthritis or similar
                   ],
                 ),
@@ -95,38 +81,6 @@ class _ChronicDiseasesSectionState extends State<ChronicDiseasesSection> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildCheckboxItem(BuildContext context, String label, String key) {
-    // Determine the label based on key if AppStrings doesn't have it directly mapped in the example,
-    // but assuming AppStrings passed are correct.
-
-    // Hardcoding some fallbacks if AppStrings are generic, but relying on passed label.
-
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Text(label, style: AppStyles.styleMedium14(context)),
-        const SizedBox(width: 8),
-        SizedBox(
-          width: 24,
-          height: 24,
-          child: Checkbox(
-            value: _diseases[key] ?? false,
-            onChanged: (val) {
-              setState(() {
-                _diseases[key] = val!;
-              });
-            },
-            activeColor: AppColors.primary,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4),
-            ),
-            side: const BorderSide(color: AppColors.primary),
-          ),
-        ),
-      ],
     );
   }
 }

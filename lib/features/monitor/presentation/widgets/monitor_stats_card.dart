@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_strings.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/core/utils/widgets/custom_container.dart';
 
 class MonitorStatsCard extends StatelessWidget {
   const MonitorStatsCard({super.key});
@@ -9,6 +10,7 @@ class MonitorStatsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      spacing: 16,
       children: [
         Expanded(
           child: _buildStatCard(
@@ -20,7 +22,6 @@ class MonitorStatsCard extends StatelessWidget {
             icon: Icons.person_add_alt_1_outlined,
           ),
         ),
-        const SizedBox(width: 16),
         Expanded(
           child: _buildStatCard(
             context,
@@ -43,32 +44,13 @@ class MonitorStatsCard extends StatelessWidget {
     required Color iconColor,
     required IconData icon,
   }) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.1)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
+    return CustomContainer(
       child: Column(
+        spacing: 8,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            spacing: 8,
             children: [
-              Text(
-                title,
-                style: AppStyles.styleRegular14(
-                  context,
-                ).copyWith(color: Colors.grey),
-              ),
-              const SizedBox(width: 8),
               Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
@@ -77,9 +59,14 @@ class MonitorStatsCard extends StatelessWidget {
                 ),
                 child: Icon(icon, color: iconColor, size: 18),
               ),
+              Text(
+                title,
+                style: AppStyles.styleRegular14(
+                  context,
+                ).copyWith(color: Colors.grey),
+              ),
             ],
           ),
-          const SizedBox(height: 8),
           Text(
             count,
             style: AppStyles.styleBold24(context).copyWith(color: iconColor),

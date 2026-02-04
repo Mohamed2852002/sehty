@@ -14,13 +14,14 @@ class HomeScreen extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: Column(
-              spacing: 24,
+              spacing: 22,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HomeTopBar(),
                 FamilyFollowUpWidget(),
                 DailySummaryWidget(),
                 HomeActionButtons(),
+                SizedBox(),
               ],
             ),
           ),

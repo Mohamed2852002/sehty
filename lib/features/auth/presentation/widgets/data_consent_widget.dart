@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehty/core/themes/app_colors.dart';
+import 'package:sehty/core/utils/app_assets.dart';
+import 'package:sehty/core/utils/app_strings.dart';
 
 import 'package:sehty/core/utils/app_styles.dart';
 
@@ -18,35 +21,18 @@ class _DataConsentWidgetState extends State<DataConsentWidget> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: const Color(0xffEFFBF1), // Light Green bg
+        gradient: LinearGradient(
+          colors: [
+            AppColors.primary.withValues(alpha: 0.1),
+            AppColors.primaryDark.withValues(alpha: 0.1),
+          ],
+        ),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
+        spacing: 8,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Text(
-                  'الموافقة على مشاركة البيانات', // "Consent to share data"
-                  style: AppStyles.styleBold14(
-                    context,
-                  ).copyWith(color: AppColors.darkColor),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  'أوافق على مشاركة بياناتي الطبية مع مقدمي الرعاية الصحية المعتمدين لتحسين جودة الخدمة والرعاية الصحية المقدمة لي', // "I agree to share..."
-                  textAlign: TextAlign.right,
-                  style: AppStyles.styleRegular12(
-                    context,
-                  ).copyWith(color: Colors.grey[700], height: 1.5),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 8),
           Padding(
             padding: const EdgeInsets.only(top: 2.0),
             child: SizedBox(
@@ -59,12 +45,38 @@ class _DataConsentWidgetState extends State<DataConsentWidget> {
                     _isChecked = val!;
                   });
                 },
-                activeColor: AppColors.greenColor,
+                activeColor: AppColors.primary,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4),
                 ),
-                side: const BorderSide(color: AppColors.greenColor),
+                side: const BorderSide(color: AppColors.primary),
               ),
+            ),
+          ),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  spacing: 4,
+                  children: [
+                    SvgPicture.asset(AppAssets.iconsRegisterDoneIcon),
+                    Text(
+                      AppStrings.dataConsentTitle,
+                      style: AppStyles.styleBold14(
+                        context,
+                      ).copyWith(color: AppColors.darkColor),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  AppStrings.dataConsentDescription,
+                  style: AppStyles.styleRegular12(
+                    context,
+                  ).copyWith(color: Colors.grey[700], height: 1.5),
+                ),
+              ],
             ),
           ),
         ],

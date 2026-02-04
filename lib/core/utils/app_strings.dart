@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sehty/generated/l10n.dart';
 
 class AppStrings {
-  static late S _localizations;
+  static S get _localizations => S.current;
 
   static void load(BuildContext context) {
-    _localizations = S.of(context);
+    
   }
+
   // Notes
   static String get note => _localizations.note;
   static String get prescriptionDoctorNote =>
@@ -168,13 +169,15 @@ class AppStrings {
   // Upload Files
   static String get uploadMedicalFile => _localizations.uploadMedicalFile;
   static String get fileName => _localizations.fileName;
+  static String get fileNameExample => _localizations.fileNameExample;
   static String get category => _localizations.category;
   static String get analysis => _localizations.analysis;
   static String get labName => _localizations.labName;
+  static String get labNameExample => _localizations.labNameExample;
   static String get file => _localizations.file;
   static String get clickToSelectFile => _localizations.clickToSelectFile;
-  static String get pdfOrImage => _localizations.pdfOrImage;
-  static String get fileEncryptionNote => _localizations.fileEncryptionNote;
+  static String get orImagePdfNote => _localizations.orImagePdfNote;
+  static String get fileSecurityNote => _localizations.fileSecurityNote;
   static String get uploadFile => _localizations.uploadFile;
   static String get fastingSugarAnalysis => _localizations.fastingSugarAnalysis;
 
@@ -235,4 +238,13 @@ class AppStrings {
       _localizations.acceptedFamilyInvitation;
   static String get twoDaysAgo => _localizations.twoDaysAgo;
   static String get markAllAsRead => _localizations.markAllAsRead;
+  static String get language => _localizations.language;
+  static String get arabic => _localizations.arabic;
+  static String get english => _localizations.english;
+  static String get login => _localizations.login;
+  static String get register => _localizations.register;
+  static String get phoneInput => _localizations.phoneInput;
+  static String get passwordInput => _localizations.passwordInput;
+  static String get noAccount => _localizations.noAccount;
+  static String get createAccount => _localizations.createAccount;
 }

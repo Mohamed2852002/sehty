@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sehty/core/router/routes.dart';
+import 'package:sehty/core/utils/app_strings.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/features/auth/presentation/widgets/chronic_diseases_section.dart';
 import 'package:sehty/features/auth/presentation/widgets/data_consent_widget.dart';
 import 'package:sehty/features/auth/presentation/widgets/personal_info_form.dart';
-import 'package:sehty/features/auth/presentation/widgets/phone_verification_section.dart';
 import 'package:sehty/features/auth/presentation/widgets/register_header.dart';
 
 class RegisterScreen extends StatelessWidget {
@@ -23,14 +25,14 @@ class RegisterScreen extends StatelessWidget {
                 const SizedBox(height: 24),
                 const PersonalInfoForm(),
                 const SizedBox(height: 24),
-                const PhoneVerificationSection(),
-                const SizedBox(height: 24),
                 const ChronicDiseasesSection(),
                 const SizedBox(height: 24),
                 const DataConsentWidget(),
                 const SizedBox(height: 24),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    context.push(Routes.mainShell);
+                  },
                   borderRadius: BorderRadius.circular(12),
                   child: Container(
                     width: double.infinity,
@@ -50,7 +52,7 @@ class RegisterScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'التالي - تأكيد رقم الهاتف', // "Next - Confirm Phone Number"
+                          AppStrings.createAccount,
                           style: AppStyles.styleBold16(
                             context,
                           ).copyWith(color: Colors.white),

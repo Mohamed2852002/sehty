@@ -13,13 +13,8 @@ class PendingRequestsSection extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            spacing: 8,
             children: [
-              Text(
-                'طلبات معلقة (1)', // "Pending Requests (1)"
-                style: AppStyles.styleBold16(context),
-              ),
-              const SizedBox(width: 8),
               Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
@@ -31,6 +26,10 @@ class PendingRequestsSection extends StatelessWidget {
                   color: Color(0xffF9A825),
                   size: 18,
                 ),
+              ),
+              Text(
+                AppStrings.pendingRequests,
+                style: AppStyles.styleBold16(context),
               ),
             ],
           ),
@@ -47,6 +46,24 @@ class PendingRequestsSection extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'أخي - عبدالله', // "My Brother - Abdullah"
+                        style: AppStyles.styleBold14(context),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        '0509876543',
+                        style: AppStyles.styleRegular12(
+                          context,
+                        ).copyWith(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 12,
@@ -62,22 +79,6 @@ class PendingRequestsSection extends StatelessWidget {
                       context,
                     ).copyWith(color: AppColors.darkColor),
                   ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text(
-                      'أخي - عبدالله', // "My Brother - Abdullah"
-                      style: AppStyles.styleBold14(context),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      '0509876543',
-                      style: AppStyles.styleRegular12(
-                        context,
-                      ).copyWith(color: Colors.grey),
-                    ),
-                  ],
                 ),
               ],
             ),

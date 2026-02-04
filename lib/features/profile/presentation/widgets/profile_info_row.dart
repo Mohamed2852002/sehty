@@ -24,16 +24,16 @@ class ProfileInfoRow extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                value,
-                style: AppStyles.styleMedium14(
-                  context,
-                ).copyWith(color: AppColors.darkColor),
-              ),
-              Text(
                 label,
                 style: AppStyles.styleRegular14(
                   context,
                 ).copyWith(color: Colors.grey),
+              ),
+              Text(
+                value,
+                style: AppStyles.styleMedium14(
+                  context,
+                ).copyWith(color: AppColors.darkColor),
               ),
             ],
           ),

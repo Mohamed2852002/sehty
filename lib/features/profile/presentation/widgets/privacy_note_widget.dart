@@ -17,24 +17,22 @@ class PrivacyNoteWidget extends StatelessWidget {
         border: Border.all(color: AppColors.greenColor.withValues(alpha: 0.3)),
       ),
       child: Column(
+        spacing: 8,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            spacing: 8,
             children: [
+              const Icon(Icons.lock, color: AppColors.greenColor, size: 18),
               Text(
                 AppStrings.privacyImportant, // "Your privacy is important:"
                 style: AppStyles.styleBold14(
                   context,
                 ).copyWith(color: AppColors.greenColor),
               ),
-              const SizedBox(width: 8),
-              const Icon(Icons.lock, color: AppColors.greenColor, size: 18),
             ],
           ),
-          const SizedBox(height: 8),
           Text(
-            AppStrings.privacyNote, // "All your information is secured..."
-            textAlign: TextAlign.center,
+            AppStrings.privacyNote,
             style: AppStyles.styleRegular12(
               context,
             ).copyWith(color: AppColors.greenColor, height: 1.5),

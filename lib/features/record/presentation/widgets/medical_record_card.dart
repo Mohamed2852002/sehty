@@ -24,25 +24,12 @@ class MedicalRecordCard extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: const Color(0xffE0F7FA),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Icon(icon, color: AppColors.primary, size: 24),
-              ),
               Expanded(
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      textAlign: TextAlign.right,
-                      style: AppStyles.styleBold16(context),
-                    ),
+                    Text(title, style: AppStyles.styleBold16(context)),
                     const SizedBox(height: 4),
                     Container(
                       padding: const EdgeInsets.symmetric(
@@ -63,13 +50,17 @@ class MedicalRecordCard extends StatelessWidget {
                   ],
                 ),
               ),
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: const Color(0xffE0F7FA),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(icon, color: AppColors.primary, size: 24),
+              ),
             ],
           ),
-          const SizedBox(height: 8),
-
-          // Date
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
                 date,
@@ -86,38 +77,8 @@ class MedicalRecordCard extends StatelessWidget {
 
           // Actions
           Row(
+            spacing: 12,
             children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(8),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    decoration: BoxDecoration(
-                      color: const Color(0xffF2F4F7), // Light grey
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.download,
-                          size: 18,
-                          color: AppColors.darkColor,
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          AppStrings.download, // "Download"
-                          style: AppStyles.styleMedium14(
-                            context,
-                          ).copyWith(color: AppColors.darkColor),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(width: 12),
               Expanded(
                 child: InkWell(
                   onTap: () {},
@@ -142,6 +103,36 @@ class MedicalRecordCard extends StatelessWidget {
                           style: AppStyles.styleMedium14(
                             context,
                           ).copyWith(color: AppColors.primary),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(8),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    decoration: BoxDecoration(
+                      color: const Color(0xffF2F4F7), // Light grey
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.download,
+                          size: 18,
+                          color: AppColors.darkColor,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          AppStrings.download, // "Download"
+                          style: AppStyles.styleMedium14(
+                            context,
+                          ).copyWith(color: AppColors.darkColor),
                         ),
                       ],
                     ),

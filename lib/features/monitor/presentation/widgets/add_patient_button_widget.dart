@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_strings.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/features/monitor/presentation/widgets/add_patient_dialog.dart';
 
 class AddPatientButtonWidget extends StatelessWidget {
   const AddPatientButtonWidget({super.key});
@@ -9,14 +10,19 @@ class AddPatientButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showDialog(
+          context: context,
+          builder: (context) => const AddPatientDialog(),
+        );
+      },
       borderRadius: BorderRadius.circular(12),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 16),
         decoration: BoxDecoration(
-          color: const Color(0xff29B6F6), // Light Blue
-          borderRadius: BorderRadius.circular(12),
+          gradient: const LinearGradient(colors: AppColors.gradientBtnColors),
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
               color: const Color(0xff29B6F6).withValues(alpha: 0.3),

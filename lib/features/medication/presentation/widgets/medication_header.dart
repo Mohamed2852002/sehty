@@ -3,16 +3,41 @@ import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_strings.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
+import 'package:sehty/features/medication/presentation/widgets/add_medication_dialog.dart';
+
 class MedicationHeader extends StatelessWidget {
   const MedicationHeader({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 4,
+            children: [
+              Text(
+                AppStrings.medications, // "Medications"
+                style: AppStyles.styleBold24(context),
+              ),
+              Text(
+                AppStrings
+                    .manageMedications, // "Manage your medications and schedules"
+                style: AppStyles.styleRegular14(
+                  context,
+                ).copyWith(color: Colors.grey),
+              ),
+            ],
+          ),
+        ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (context) => const AddMedicationDialog(),
+            );
+          },
           borderRadius: BorderRadius.circular(12),
           child: Container(
             padding: const EdgeInsets.all(12),
@@ -29,23 +54,6 @@ class MedicationHeader extends StatelessWidget {
             ),
             child: const Icon(Icons.add, color: Colors.white, size: 24),
           ),
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              AppStrings.medications, // "Medications"
-              style: AppStyles.styleBold24(context),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              AppStrings
-                  .manageMedications, // "Manage your medications and schedules"
-              style: AppStyles.styleRegular14(
-                context,
-              ).copyWith(color: Colors.grey),
-            ),
-          ],
         ),
       ],
     );

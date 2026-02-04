@@ -17,25 +17,21 @@ class FamilyTipCard extends StatelessWidget {
         border: Border.all(color: const Color(0xffBBDEFB)), // Blue 100
       ),
       child: Column(
+        spacing: 8,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
-                'نصيحة:', // "Tip:"
+                AppStrings.familyTip, // "Tip:"
                 style: AppStyles.styleBold14(
                   context,
                 ).copyWith(color: AppColors.primary),
               ),
-              const SizedBox(width: 4),
-              const Icon(Icons.favorite, color: AppColors.primary, size: 16),
             ],
           ),
-          const SizedBox(height: 8),
           Text(
             AppStrings
                 .familyTipNote, // "Connect with your loved ones regularly..."
-            textAlign: TextAlign.center,
             style: AppStyles.styleRegular14(
               context,
             ).copyWith(color: AppColors.primary, height: 1.5),

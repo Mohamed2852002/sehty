@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
+import 'package:sehty/core/utils/app_strings.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class MedicationProgressIndicator extends StatelessWidget {
@@ -16,8 +17,14 @@ class MedicationProgressIndicator extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'تم الالتزام بنسبة ${(progress * 100).toInt()}% من المواعيد',
-              style: AppStyles.styleRegular12(
+              AppStrings.complianceRate,
+              style: AppStyles.styleRegular14(
+                context,
+              ).copyWith(color: const Color(0xff6A7282)),
+            ),
+            Text(
+              '${(progress * 100).toInt()}%',
+              style: AppStyles.styleRegular14(
                 context,
               ).copyWith(color: const Color(0xff6A7282)),
             ),
@@ -30,7 +37,7 @@ class MedicationProgressIndicator extends StatelessWidget {
             value: progress,
             backgroundColor: const Color(0xffE9EEF0),
             color: AppColors.primary,
-            minHeight: 8,
+            minHeight: 10,
           ),
         ),
       ],

@@ -38,6 +38,10 @@ class AppAssets {
   /// assets/icons/home_warning_icon.svg
   static const String iconsHomeWarningIcon = "assets/icons/home_warning_icon.svg";
 
+  /// Assets for iconsMedicationMedicineIcon
+  /// assets/icons/medication_medicine_icon.svg
+  static const String iconsMedicationMedicineIcon = "assets/icons/medication_medicine_icon.svg";
+
   /// Assets for iconsMedicationNavBar
   /// assets/icons/medication_nav_bar.svg
   static const String iconsMedicationNavBar = "assets/icons/medication_nav_bar.svg";
@@ -117,6 +121,26 @@ class AppAssets {
   /// Assets for iconsRecorsFileIcon
   /// assets/icons/recors_file_icon.svg
   static const String iconsRecorsFileIcon = "assets/icons/recors_file_icon.svg";
+
+  /// Assets for iconsRegisterDoneIcon
+  /// assets/icons/register_done_icon.svg
+  static const String iconsRegisterDoneIcon = "assets/icons/register_done_icon.svg";
+
+  /// Assets for iconsRegisterHeartIcon
+  /// assets/icons/register_heart_icon.svg
+  static const String iconsRegisterHeartIcon = "assets/icons/register_heart_icon.svg";
+
+  /// Assets for iconsRegisterProfileIcon
+  /// assets/icons/register_profile_icon.svg
+  static const String iconsRegisterProfileIcon = "assets/icons/register_profile_icon.svg";
+
+  /// Assets for iconsRegisterSendIcon
+  /// assets/icons/register_send_icon.svg
+  static const String iconsRegisterSendIcon = "assets/icons/register_send_icon.svg";
+
+  /// Assets for iconsRegisterSmallProfileIcon
+  /// assets/icons/register_small_profile_icon.svg
+  static const String iconsRegisterSmallProfileIcon = "assets/icons/register_small_profile_icon.svg";
 
   /// Assets for imagesLogo
   /// assets/images/logo.png

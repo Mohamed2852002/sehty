@@ -22,12 +22,10 @@ class ProfileInfoSection extends StatelessWidget {
       child: Column(
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            spacing: 8,
             children: [
-              Text(title, style: AppStyles.styleBold16(context)),
-              const SizedBox(width: 8),
               IconContainer(child: SvgPicture.asset(icon)),
-            
+              Text(title, style: AppStyles.styleBold16(context)),
             ],
           ),
           const SizedBox(height: 16),
