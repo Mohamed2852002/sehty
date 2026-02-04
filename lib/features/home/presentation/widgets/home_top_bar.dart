@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sehty/core/utils/app_assets.dart';
+import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/core/utils/widgets/header_container.dart';
+
+class HomeTopBar extends StatelessWidget {
+  const HomeTopBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return HeaderContainer(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${AppStrings.hello}, علي عبدالعزيز', // Hardcoded name for now as per image
+                  style: AppStyles.styleBold24(
+                    context,
+                  ).copyWith(color: Colors.white),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  AppStrings.wishYouHealth,
+                  style: AppStyles.styleRegular18(
+                    context,
+                  ).copyWith(color: Colors.white),
+                ),
+              ],
+            ),
+          ),
+          Stack(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: SvgPicture.asset(AppAssets.iconsHomeNotificationBell),
+              ),
+              Container(
+                width: 12,
+                height: 12,
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.circle,
+                  border: Border.fromBorderSide(
+                    BorderSide(color: Colors.white, width: 2),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

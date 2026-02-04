@@ -9,7 +9,7 @@ class AppTheme {
       primary: AppColors.primary,
       secondary: AppColors.secondary,
     ),
-    scaffoldBackgroundColor: const Color(0xffF9FAFB),
+    scaffoldBackgroundColor: AppColors.scaffoldBackgroundColor,
     fontFamily: AppConstants.kAlmaraiFamily,
   );
 }

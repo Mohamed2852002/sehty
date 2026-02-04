@@ -6,6 +6,7 @@ class AppColors {
   static const Color secondary = Color(0xffE32329);
   static const Color darkColor = Color(0xff6A7282);
   static const Color greenColor = Color(0xff00C950);
+  static const Color scaffoldBackgroundColor = Color(0xffF9FAFB);
 
   static const List<Color> gradientBtnColors = [
     primary,
