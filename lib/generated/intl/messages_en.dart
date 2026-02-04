@@ -59,6 +59,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "analysisLabNote": MessageLookupByLibrary.simpleMessage(
       "When selecting analysis category, a field to enter the lab name will open",
     ),
+    "arabic": MessageLookupByLibrary.simpleMessage("Arabic"),
     "arthritis": MessageLookupByLibrary.simpleMessage("Arthritis"),
     "aspirin": MessageLookupByLibrary.simpleMessage("Aspirin"),
     "asthma": MessageLookupByLibrary.simpleMessage("Asthma"),
@@ -78,16 +79,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "chestXray": MessageLookupByLibrary.simpleMessage("Chest X-ray"),
     "chronicDiseases": MessageLookupByLibrary.simpleMessage("Chronic Diseases"),
     "clickToSelectFile": MessageLookupByLibrary.simpleMessage(
-      "Click to select file",
+      "Click to select a file",
     ),
     "complianceRate": MessageLookupByLibrary.simpleMessage(
-      "60% compliance with schedules achieved",
+      "compliance with schedules rate",
     ),
     "complianceStatus": MessageLookupByLibrary.simpleMessage(
       "Compliance Status",
     ),
     "confirmTaking": MessageLookupByLibrary.simpleMessage("Confirm Taking"),
     "connected": MessageLookupByLibrary.simpleMessage("Connected"),
+    "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "dataConsentDescription": MessageLookupByLibrary.simpleMessage(
       "I agree to share my medical data with certified healthcare providers to improve the quality of service and healthcare provided to me",
     ),
@@ -106,10 +108,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "download": MessageLookupByLibrary.simpleMessage("Download"),
     "duration": MessageLookupByLibrary.simpleMessage("Duration:"),
     "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+    "english": MessageLookupByLibrary.simpleMessage("English"),
     "enterVerificationCode": MessageLookupByLibrary.simpleMessage(
       "Enter the verification code sent to",
     ),
-    "familyTip": MessageLookupByLibrary.simpleMessage("Tip:"),
+    "familyTip": MessageLookupByLibrary.simpleMessage("💙Tip:"),
     "familyTipNote": MessageLookupByLibrary.simpleMessage(
       "Communicate with your loved ones regularly and ask about their health. Emotional and psychological support is as important as medication adherence",
     ),
@@ -128,10 +131,13 @@ class MessageLookup extends MessageLookupByLibrary {
       "My Father - Mohamed",
     ),
     "file": MessageLookupByLibrary.simpleMessage("File"),
-    "fileEncryptionNote": MessageLookupByLibrary.simpleMessage(
-      "🔒 The file will be encrypted and stored securely. You can share it with your doctor when needed",
-    ),
     "fileName": MessageLookupByLibrary.simpleMessage("File Name"),
+    "fileNameExample": MessageLookupByLibrary.simpleMessage(
+      "Example: Fasting Sugar Analysis",
+    ),
+    "fileSecurityNote": MessageLookupByLibrary.simpleMessage(
+      "The file will be encrypted and saved securely. You can share it with your doctor when needed",
+    ),
     "filesSecurityNote": MessageLookupByLibrary.simpleMessage(
       "All your medical files are encrypted and stored with the highest security standards. You can share them securely with your doctor",
     ),
@@ -155,11 +161,16 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "kg": MessageLookupByLibrary.simpleMessage("kg"),
     "kidney": MessageLookupByLibrary.simpleMessage("Kidney"),
-    "labName": MessageLookupByLibrary.simpleMessage("Lab Name"),
+    "labName": MessageLookupByLibrary.simpleMessage("Laboratory Name"),
+    "labNameExample": MessageLookupByLibrary.simpleMessage(
+      "Example: Al Borg Lab",
+    ),
+    "language": MessageLookupByLibrary.simpleMessage("Language"),
     "linkValid24Hours": MessageLookupByLibrary.simpleMessage(
       "The link is valid for 24 hours only",
     ),
     "liver": MessageLookupByLibrary.simpleMessage("Liver"),
+    "login": MessageLookupByLibrary.simpleMessage("Login"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "manageMedications": MessageLookupByLibrary.simpleMessage(
       "Manage your medications and schedules",
@@ -217,13 +228,20 @@ class MessageLookup extends MessageLookupByLibrary {
     "nextConfirmPhone": MessageLookupByLibrary.simpleMessage(
       "Next - Confirm Phone Number",
     ),
+    "noAccount": MessageLookupByLibrary.simpleMessage(
+      "Don\'t Have an Account?",
+    ),
     "noFamilyFollower": MessageLookupByLibrary.simpleMessage(
       "You haven\'t added any family follower yet",
     ),
     "note": MessageLookupByLibrary.simpleMessage("Note"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "ofMedications": MessageLookupByLibrary.simpleMessage("of 3 medications"),
+    "orImagePdfNote": MessageLookupByLibrary.simpleMessage(
+      "or image (up to 10 MB) PDF",
+    ),
     "panadol": MessageLookupByLibrary.simpleMessage("Panadol"),
+    "passwordInput": MessageLookupByLibrary.simpleMessage("Password Input"),
     "patientCode": MessageLookupByLibrary.simpleMessage("Patient Code"),
     "patientNameLabel": MessageLookupByLibrary.simpleMessage(
       "Patient Name (as you want it to appear)",
@@ -233,9 +251,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "patientsUnderCare": MessageLookupByLibrary.simpleMessage(
       "Patients Under Care",
-    ),
-    "pdfOrImage": MessageLookupByLibrary.simpleMessage(
-      "PDF or image (up to 10 MB)",
     ),
     "pending": MessageLookupByLibrary.simpleMessage("Pending"),
     "pendingRequests": MessageLookupByLibrary.simpleMessage("Pending Requests"),
@@ -248,6 +263,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "personalUseNote": MessageLookupByLibrary.simpleMessage(
       "This name is for personal use only",
     ),
+    "phoneInput": MessageLookupByLibrary.simpleMessage("Phone Input"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
     "phoneVerifyNote": MessageLookupByLibrary.simpleMessage(
       "⚠️ Make sure the phone number is correct - the tracking request will be sent immediately",
@@ -269,6 +285,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "reassureLovedOnes": MessageLookupByLibrary.simpleMessage(
       "Check on your loved ones and track their medication adherence",
     ),
+    "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerSubtitle": MessageLookupByLibrary.simpleMessage(
       "Register with us to start your health care journey",
     ),
@@ -280,7 +297,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Relationship (optional)",
     ),
     "relationType": MessageLookupByLibrary.simpleMessage("Relationship Type"),
-    "rememberNote": MessageLookupByLibrary.simpleMessage("Remember:"),
+    "rememberNote": MessageLookupByLibrary.simpleMessage("💙 Remember:"),
     "reports": MessageLookupByLibrary.simpleMessage("Reports"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "scheduledAt": MessageLookupByLibrary.simpleMessage("Scheduled:"),

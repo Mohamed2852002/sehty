@@ -1039,6 +1039,16 @@ class S {
     return Intl.message('File Name', name: 'fileName', desc: '', args: []);
   }
 
+  /// `Example: Fasting Sugar Analysis`
+  String get fileNameExample {
+    return Intl.message(
+      'Example: Fasting Sugar Analysis',
+      name: 'fileNameExample',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Category`
   String get category {
     return Intl.message('Category', name: 'category', desc: '', args: []);
@@ -1049,9 +1059,19 @@ class S {
     return Intl.message('Analysis', name: 'analysis', desc: '', args: []);
   }
 
-  /// `Lab Name`
+  /// `Laboratory Name`
   String get labName {
-    return Intl.message('Lab Name', name: 'labName', desc: '', args: []);
+    return Intl.message('Laboratory Name', name: 'labName', desc: '', args: []);
+  }
+
+  /// `Example: Al Borg Lab`
+  String get labNameExample {
+    return Intl.message(
+      'Example: Al Borg Lab',
+      name: 'labNameExample',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `File`
@@ -1059,31 +1079,31 @@ class S {
     return Intl.message('File', name: 'file', desc: '', args: []);
   }
 
-  /// `Click to select file`
+  /// `Click to select a file`
   String get clickToSelectFile {
     return Intl.message(
-      'Click to select file',
+      'Click to select a file',
       name: 'clickToSelectFile',
       desc: '',
       args: [],
     );
   }
 
-  /// `PDF or image (up to 10 MB)`
-  String get pdfOrImage {
+  /// `or image (up to 10 MB) PDF`
+  String get orImagePdfNote {
     return Intl.message(
-      'PDF or image (up to 10 MB)',
-      name: 'pdfOrImage',
+      'or image (up to 10 MB) PDF',
+      name: 'orImagePdfNote',
       desc: '',
       args: [],
     );
   }
 
-  /// `🔒 The file will be encrypted and stored securely. You can share it with your doctor when needed`
-  String get fileEncryptionNote {
+  /// `The file will be encrypted and saved securely. You can share it with your doctor when needed`
+  String get fileSecurityNote {
     return Intl.message(
-      '🔒 The file will be encrypted and stored securely. You can share it with your doctor when needed',
-      name: 'fileEncryptionNote',
+      'The file will be encrypted and saved securely. You can share it with your doctor when needed',
+      name: 'fileSecurityNote',
       desc: '',
       args: [],
     );
@@ -1104,9 +1124,14 @@ class S {
     );
   }
 
-  /// `Remember:`
+  /// `💙 Remember:`
   String get rememberNote {
-    return Intl.message('Remember:', name: 'rememberNote', desc: '', args: []);
+    return Intl.message(
+      '💙 Remember:',
+      name: 'rememberNote',
+      desc: '',
+      args: [],
+    );
   }
 
   /// `Sticking to medication schedules helps you feel better faster. Take your time and don't worry if you forget once, just continue calmly`
@@ -1174,10 +1199,10 @@ class S {
     );
   }
 
-  /// `60% compliance with schedules achieved`
+  /// `compliance with schedules rate`
   String get complianceRate {
     return Intl.message(
-      '60% compliance with schedules achieved',
+      'compliance with schedules rate',
       name: 'complianceRate',
       desc: '',
       args: [],
@@ -1264,9 +1289,9 @@ class S {
     );
   }
 
-  /// `Tip:`
+  /// `💙Tip:`
   String get familyTip {
-    return Intl.message('Tip:', name: 'familyTip', desc: '', args: []);
+    return Intl.message('💙Tip:', name: 'familyTip', desc: '', args: []);
   }
 
   /// `Communicate with your loved ones regularly and ask about their health. Emotional and psychological support is as important as medication adherence`
@@ -1512,6 +1537,66 @@ class S {
   /// `Panadol`
   String get panadol {
     return Intl.message('Panadol', name: 'panadol', desc: '', args: []);
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message('Language', name: 'language', desc: '', args: []);
+  }
+
+  /// `Arabic`
+  String get arabic {
+    return Intl.message('Arabic', name: 'arabic', desc: '', args: []);
+  }
+
+  /// `English`
+  String get english {
+    return Intl.message('English', name: 'english', desc: '', args: []);
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message('Login', name: 'login', desc: '', args: []);
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message('Register', name: 'register', desc: '', args: []);
+  }
+
+  /// `Phone Input`
+  String get phoneInput {
+    return Intl.message('Phone Input', name: 'phoneInput', desc: '', args: []);
+  }
+
+  /// `Password Input`
+  String get passwordInput {
+    return Intl.message(
+      'Password Input',
+      name: 'passwordInput',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't Have an Account?`
+  String get noAccount {
+    return Intl.message(
+      'Don\'t Have an Account?',
+      name: 'noAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Account`
+  String get createAccount {
+    return Intl.message(
+      'Create Account',
+      name: 'createAccount',
+      desc: '',
+      args: [],
+    );
   }
 }
 

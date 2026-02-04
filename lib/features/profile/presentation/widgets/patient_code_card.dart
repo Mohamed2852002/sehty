@@ -12,17 +12,11 @@ class PatientCodeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return HeaderContainer(
       child: Column(
+        spacing: 16,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            spacing: 8,
             children: [
-              Text(
-                AppStrings.patientCode, // "Patient Code"
-                style: AppStyles.styleBold16(
-                  context,
-                ).copyWith(color: Colors.white),
-              ),
-              const SizedBox(width: 8),
               Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
@@ -31,9 +25,14 @@ class PatientCodeCard extends StatelessWidget {
                 ),
                 child: SvgPicture.asset(AppAssets.iconsProfileGuardIcon),
               ),
+              Text(
+                AppStrings.patientCode, // "Patient Code"
+                style: AppStyles.styleBold16(
+                  context,
+                ).copyWith(color: Colors.white),
+              ),
             ],
           ),
-          const SizedBox(height: 16),
           Container(
             width: double.infinity,
             padding: const EdgeInsets.symmetric(vertical: 16),
@@ -49,7 +48,6 @@ class PatientCodeCard extends StatelessWidget {
               ).copyWith(color: Colors.white, letterSpacing: 2),
             ),
           ),
-          const SizedBox(height: 16),
           Text(
             AppStrings.useCodeNote, // "Use this code when visiting doctor..."
             textAlign: TextAlign.center,

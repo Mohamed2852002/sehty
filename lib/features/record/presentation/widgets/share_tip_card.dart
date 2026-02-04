@@ -11,21 +11,11 @@ class ShareTipCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomContainer(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text(
-                AppStrings.shareSecurely, // "How to share your files securely?"
-                style: AppStyles.styleBold16(context),
-              ),
-              const SizedBox(width: 8),
-              const Icon(
-                Icons.lightbulb_outline,
-                color: Colors.amber,
-                size: 20,
-              ),
-            ],
+          Text(
+            AppStrings.shareSecurely, // "How to share your files securely?"
+            style: AppStyles.styleBold16(context),
           ),
           const SizedBox(height: 12),
           _buildTipItem(
@@ -49,19 +39,9 @@ class ShareTipCard extends StatelessWidget {
 
   Widget _buildTipItem(BuildContext context, String text) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      spacing: 8,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          child: Text(
-            text,
-            textAlign: TextAlign.right,
-            style: AppStyles.styleRegular14(
-              context,
-            ).copyWith(color: AppColors.darkColor, height: 1.4),
-          ),
-        ),
-        const SizedBox(width: 8),
         Padding(
           padding: const EdgeInsets.only(top: 6.0),
           child: Container(
@@ -71,6 +51,14 @@ class ShareTipCard extends StatelessWidget {
               color: AppColors.primary,
               shape: BoxShape.circle,
             ),
+          ),
+        ),
+        Expanded(
+          child: Text(
+            text,
+            style: AppStyles.styleRegular14(
+              context,
+            ).copyWith(color: AppColors.darkColor, height: 1.4),
           ),
         ),
       ],
