@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sehty/core/router/routes.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/core/utils/extensions.dart';
 
 class OtpVerficationScreen extends StatelessWidget {
   const OtpVerficationScreen({super.key});
@@ -20,13 +21,13 @@ class OtpVerficationScreen extends StatelessWidget {
               children: [
                 const SizedBox(height: 20),
                 Text(
-                  AppStrings.enterVerificationCode,
+                  context.l10n.enterVerificationCode,
                   style: AppStyles.styleBold16(context),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  '${AppStrings.enterVerificationCode} 01xxxxxxxxx',
+                  '${context.l10n.enterVerificationCode} 01xxxxxxxxx',
                   style: AppStyles.styleRegular14(
                     context,
                   ).copyWith(color: Colors.grey),

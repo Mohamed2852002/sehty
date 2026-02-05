@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class FamilyTipCard extends StatelessWidget {
@@ -22,7 +22,7 @@ class FamilyTipCard extends StatelessWidget {
           Row(
             children: [
               Text(
-                AppStrings.familyTip, // "Tip:"
+                context.l10n.familyTip, // "Tip:"
                 style: AppStyles.styleBold14(
                   context,
                 ).copyWith(color: AppColors.primary),
@@ -30,7 +30,7 @@ class FamilyTipCard extends StatelessWidget {
             ],
           ),
           Text(
-            AppStrings
+            context.l10n
                 .familyTipNote, // "Connect with your loved ones regularly..."
             style: AppStyles.styleRegular14(
               context,

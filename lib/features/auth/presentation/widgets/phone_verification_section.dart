@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class PhoneVerificationSection extends StatelessWidget {
@@ -14,7 +14,7 @@ class PhoneVerificationSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
           child: Text(
-            AppStrings.mobileNumber, // "Mobile Number"
+            context.l10n.mobileNumber, // "Mobile Number"
             style: AppStyles.styleRegular14(
               context,
             ).copyWith(color: Colors.grey),
@@ -78,7 +78,7 @@ class PhoneVerificationSection extends StatelessWidget {
         const SizedBox(height: 8),
         Center(
           child: Text(
-            AppStrings
+            context.l10n
                 .sendVerificationCode, // "We will send verification code via SMS"
             style: AppStyles.styleRegular12(
               context,
@@ -111,7 +111,9 @@ class PhoneVerificationSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    AppStrings.verificationCodeNote, // "Usually takes a minute"
+                    context
+                        .l10n
+                        .verificationCodeNote, // "Usually takes a minute"
                     style: AppStyles.styleRegular12(
                       context,
                     ).copyWith(color: AppColors.primary),

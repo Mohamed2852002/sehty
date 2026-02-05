@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 
@@ -15,7 +15,7 @@ class MonitorStatsCard extends StatelessWidget {
         Expanded(
           child: _buildStatCard(
             context,
-            title: AppStrings.pending,
+            title: context.l10n.pending,
             count: '1',
             color: const Color(0xffFFF8E1), // Light Yellow
             iconColor: const Color(0xffF9A825),
@@ -25,7 +25,7 @@ class MonitorStatsCard extends StatelessWidget {
         Expanded(
           child: _buildStatCard(
             context,
-            title: AppStrings.connected,
+            title: context.l10n.connected,
             count: '2',
             color: const Color(0xffE6F9EA), // Light Green
             iconColor: AppColors.greenColor,

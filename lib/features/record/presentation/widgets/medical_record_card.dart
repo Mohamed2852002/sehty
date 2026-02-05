@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 
@@ -99,7 +99,7 @@ class MedicalRecordCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          AppStrings.share, // "Share"
+                          context.l10n.share, // "Share"
                           style: AppStyles.styleMedium14(
                             context,
                           ).copyWith(color: AppColors.primary),
@@ -129,7 +129,7 @@ class MedicalRecordCard extends StatelessWidget {
                         ),
                         const SizedBox(width: 8),
                         Text(
-                          AppStrings.download, // "Download"
+                          context.l10n.download, // "Download"
                           style: AppStyles.styleMedium14(
                             context,
                           ).copyWith(color: AppColors.darkColor),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/core/utils/widgets/icon_container.dart';
@@ -31,11 +31,11 @@ class MonitorHeader extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    AppStrings.familyTracking, // "Family Tracking"
+                    context.l10n.familyTracking, // "Family Tracking"
                     style: AppStyles.styleBold20(context),
                   ),
                   Text(
-                    AppStrings
+                    context.l10n
                         .reassureLovedOnes, // "Reassure on your loved ones..."
                     style: AppStyles.styleRegular12(
                       context,
@@ -68,7 +68,7 @@ class MonitorHeader extends StatelessWidget {
         CustomContainer(
           child: TextField(
             decoration: InputDecoration(
-              hintText: AppStrings.searchPatient, // "Search for a patient..."
+              hintText: context.l10n.searchPatient, // "Search for a patient..."
               hintStyle: AppStyles.styleRegular14(
                 context,
               ).copyWith(color: Colors.grey),

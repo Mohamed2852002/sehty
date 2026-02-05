@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/core/utils/widgets/icon_container.dart';
@@ -60,7 +60,7 @@ class MedicationInfoCard extends StatelessWidget {
             spacing: 12,
             children: [
               MedicationInfoRow(
-                label: AppStrings.takingSchedules, // "Schedules:"
+                label: context.l10n.takingSchedules, // "Schedules:"
                 icon: AppAssets.iconsMedicationsTimeIcon,
                 child: Wrap(
                   spacing: 8,
@@ -70,12 +70,12 @@ class MedicationInfoCard extends StatelessWidget {
                 ),
               ),
               MedicationInfoRow(
-                label: AppStrings.duration,
+                label: context.l10n.duration,
                 icon: AppAssets.iconsMedicationsCalenderIcon,
                 value: duration,
               ),
               MedicationInfoRow(
-                label: AppStrings.treatmentStart,
+                label: context.l10n.treatmentStart,
                 icon: AppAssets.iconsMedicationsCalenderIcon,
                 value: startDate,
               ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sehty/core/router/routes.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/features/auth/presentation/widgets/chronic_diseases_section.dart';
 import 'package:sehty/features/auth/presentation/widgets/data_consent_widget.dart';
@@ -52,7 +52,7 @@ class RegisterScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          AppStrings.createAccount,
+                          context.l10n.createAccount,
                           style: AppStyles.styleBold16(
                             context,
                           ).copyWith(color: Colors.white),

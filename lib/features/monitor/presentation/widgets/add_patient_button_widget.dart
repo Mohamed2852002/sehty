@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/features/monitor/presentation/widgets/add_patient_dialog.dart';
 
@@ -35,7 +35,7 @@ class AddPatientButtonWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              AppStrings.addPatientForTracking, // "Add Patient for Tracking"
+              context.l10n.addPatientForTracking, // "Add Patient for Tracking"
               style: AppStyles.styleBold16(
                 context,
               ).copyWith(color: Colors.white),

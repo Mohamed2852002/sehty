@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/features/monitor/presentation/widgets/add_patient_button_widget.dart';
@@ -38,14 +38,14 @@ class MonitorScreen extends StatelessWidget {
                         children: [
                           SvgPicture.asset(AppAssets.iconsMonitorHeartIcon),
                           Text(
-                            AppStrings.patientsUnderCare,
+                            context.l10n.patientsUnderCare,
                             style: AppStyles.styleBold16(context),
                           ),
                         ],
                       ),
                       PatientMonitorCard(
                         name: 'محمد',
-                        relation: AppStrings.father, // "My Father"
+                        relation: context.l10n.father, // "My Father"
                         phone: '0501234567',
                         progress: '100%',
                         progressValue: 1.0,
@@ -56,7 +56,8 @@ class MonitorScreen extends StatelessWidget {
                       ),
                       PatientMonitorCard(
                         name: 'فاطمة', // "Fatima"
-                        relation: AppStrings
+                        relation: context
+                            .l10n
                             .motherFatima, // Using "My Mother - Fatima" string roughly, or hardcoded for now
                         phone: '0507654321',
                         progress: '66%',

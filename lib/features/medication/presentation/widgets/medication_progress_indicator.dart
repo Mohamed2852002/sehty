@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class MedicationProgressIndicator extends StatelessWidget {
@@ -17,7 +17,7 @@ class MedicationProgressIndicator extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppStrings.complianceRate,
+              context.l10n.complianceRate,
               style: AppStyles.styleRegular14(
                 context,
               ).copyWith(color: const Color(0xff6A7282)),

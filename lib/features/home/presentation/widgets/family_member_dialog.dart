@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class FamilyMemberDialog extends StatelessWidget {
@@ -26,7 +26,7 @@ class FamilyMemberDialog extends StatelessWidget {
                   constraints: const BoxConstraints(),
                 ),
                 Text(
-                  AppStrings.addFamilyFollower,
+                  context.l10n.addFamilyFollower,
                   style: AppStyles.styleBold18(context),
                 ),
               ],
@@ -42,7 +42,7 @@ class FamilyMemberDialog extends StatelessWidget {
                 ),
               ),
               child: Text(
-                AppStrings.addFamilyFollowerNote,
+                context.l10n.addFamilyFollowerNote,
                 textAlign: TextAlign.center,
                 style: AppStyles.styleRegular12(
                   context,
@@ -51,7 +51,7 @@ class FamilyMemberDialog extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              AppStrings.relationType,
+              context.l10n.relationType,
               style: AppStyles.styleRegular14(
                 context,
               ).copyWith(color: Colors.grey[700]),
@@ -71,7 +71,7 @@ class FamilyMemberDialog extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              AppStrings.phoneNumber,
+              context.l10n.phoneNumber,
               style: AppStyles.styleRegular14(
                 context,
               ).copyWith(color: Colors.grey[700]),
@@ -104,7 +104,7 @@ class FamilyMemberDialog extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                AppStrings.invitationNote,
+                context.l10n.invitationNote,
                 textAlign: TextAlign.center,
                 style: AppStyles.styleRegular12(
                   context,
@@ -129,7 +129,7 @@ class FamilyMemberDialog extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      AppStrings.sendInvitation,
+                      context.l10n.sendInvitation,
                       style: AppStyles.styleBold14(
                         context,
                       ).copyWith(color: Colors.white),
@@ -148,7 +148,7 @@ class FamilyMemberDialog extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      AppStrings.cancel,
+                      context.l10n.cancel,
                       style: AppStyles.styleBold14(
                         context,
                       ).copyWith(color: Colors.grey[700]),

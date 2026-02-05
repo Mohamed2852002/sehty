@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class PatientMonitorCard extends StatelessWidget {
@@ -67,7 +67,7 @@ class PatientMonitorCard extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '$takenMedications ${AppStrings.addMedicine} $totalMedications ${AppStrings.medicineForToday}', // "X of Y medications today"
+                            '$takenMedications ${context.l10n.addMedicine} $totalMedications ${context.l10n.medicineForToday}', // "X of Y medications today"
                             style: AppStyles.styleMedium14(
                               context,
                             ).copyWith(color: const Color(0xff6A7282)),
@@ -77,7 +77,7 @@ class PatientMonitorCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${AppStrings.weeklyCommitment} ${progressValue * 100}%',
+                      '${context.l10n.weeklyCommitment} ${progressValue * 100}%',
                       style: AppStyles.styleMedium14(
                         context,
                       ).copyWith(color: progressColor),
@@ -95,7 +95,7 @@ class PatientMonitorCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    AppStrings.today, // "Today"
+                    context.l10n.today, // "Today"
                     style: AppStyles.styleRegular12(
                       context,
                     ).copyWith(color: Colors.grey),
@@ -130,7 +130,7 @@ class PatientMonitorCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    AppStrings
+                    context.l10n
                         .viewMedicationDetails, // "View Medication Details"
                     style: AppStyles.styleMedium14(
                       context,

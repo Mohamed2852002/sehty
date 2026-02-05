@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/header_container.dart';
 
@@ -19,14 +19,14 @@ class HomeTopBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${AppStrings.hello}, علي عبدالعزيز', // Hardcoded name for now as per image
+                  '${context.l10n.hello}, علي عبدالعزيز', // Hardcoded name for now as per image
                   style: AppStyles.styleBold24(
                     context,
                   ).copyWith(color: Colors.white),
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  AppStrings.wishYouHealth,
+                  context.l10n.wishYouHealth,
                   style: AppStyles.styleRegular18(
                     context,
                   ).copyWith(color: Colors.white),

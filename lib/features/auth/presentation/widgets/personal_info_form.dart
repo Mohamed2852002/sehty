@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/features/auth/presentation/widgets/custom_title_and_drop_down_menu.dart';
@@ -22,25 +22,25 @@ class PersonalInfoForm extends StatelessWidget {
             children: [
               SvgPicture.asset(AppAssets.iconsRegisterSmallProfileIcon),
               Text(
-                AppStrings.personalInfo, // "Personal Information"
+                context.l10n.personalInfo, // "Personal Information"
                 style: AppStyles.styleBold18(context),
               ),
             ],
           ),
-          CustomTitleAndTextFormField(label: AppStrings.fullName),
+          CustomTitleAndTextFormField(label: context.l10n.fullName),
           Row(
             spacing: 12,
             children: [
               Expanded(
-                child: CustomTitleAndDropDownMenu(label: AppStrings.age),
+                child: CustomTitleAndDropDownMenu(label: context.l10n.age),
               ),
               Expanded(
                 child: CustomTitleAndDropDownMenu(
-                  label: '${AppStrings.weight} (${AppStrings.kg})',
+                  label: '${context.l10n.weight} (${context.l10n.kg})',
                 ),
               ),
               Expanded(
-                child: CustomTitleAndDropDownMenu(label: AppStrings.gender),
+                child: CustomTitleAndDropDownMenu(label: context.l10n.gender),
               ),
             ],
           ),
@@ -48,11 +48,11 @@ class PersonalInfoForm extends StatelessWidget {
             spacing: 12,
             children: [
               Expanded(
-                child: CustomTitleAndDropDownMenu(label: AppStrings.address),
+                child: CustomTitleAndDropDownMenu(label: context.l10n.address),
               ),
               Expanded(
                 child: CustomTitleAndDropDownMenu(
-                  label: AppStrings.governorate,
+                  label: context.l10n.governorate,
                 ),
               ),
             ],

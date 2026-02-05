@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 
 import 'package:sehty/core/utils/app_styles.dart';
 
@@ -62,7 +62,7 @@ class _DataConsentWidgetState extends State<DataConsentWidget> {
                   children: [
                     SvgPicture.asset(AppAssets.iconsRegisterDoneIcon),
                     Text(
-                      AppStrings.dataConsentTitle,
+                      context.l10n.dataConsentTitle,
                       style: AppStyles.styleBold14(
                         context,
                       ).copyWith(color: AppColors.darkColor),
@@ -71,7 +71,7 @@ class _DataConsentWidgetState extends State<DataConsentWidget> {
                 ),
                 const SizedBox(height: 4),
                 Text(
-                  AppStrings.dataConsentDescription,
+                  context.l10n.dataConsentDescription,
                   style: AppStyles.styleRegular12(
                     context,
                   ).copyWith(color: Colors.grey[700], height: 1.5),

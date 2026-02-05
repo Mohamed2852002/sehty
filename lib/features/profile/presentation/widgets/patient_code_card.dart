@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/header_container.dart';
 
@@ -26,7 +26,7 @@ class PatientCodeCard extends StatelessWidget {
                 child: SvgPicture.asset(AppAssets.iconsProfileGuardIcon),
               ),
               Text(
-                AppStrings.patientCode, // "Patient Code"
+                context.l10n.patientCode, // "Patient Code"
                 style: AppStyles.styleBold16(
                   context,
                 ).copyWith(color: Colors.white),
@@ -49,7 +49,7 @@ class PatientCodeCard extends StatelessWidget {
             ),
           ),
           Text(
-            AppStrings.useCodeNote, // "Use this code when visiting doctor..."
+            context.l10n.useCodeNote, // "Use this code when visiting doctor..."
             textAlign: TextAlign.center,
             style: AppStyles.styleRegular12(
               context,

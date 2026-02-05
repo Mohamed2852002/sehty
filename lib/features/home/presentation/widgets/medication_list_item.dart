@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 enum MedicationStatus { taken, missed, pending }
@@ -97,7 +97,7 @@ class MedicationListItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Text(
-                  AppStrings.confirmTaking,
+                  context.l10n.confirmTaking,
                   style: AppStyles.styleRegular14(
                     context,
                   ).copyWith(color: Colors.white),

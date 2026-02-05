@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class SecurityNoteCard extends StatelessWidget {
@@ -24,7 +24,7 @@ class SecurityNoteCard extends StatelessWidget {
             children: [
               const Icon(Icons.lock, color: AppColors.greenColor, size: 18),
               Text(
-                AppStrings.filesSecurityTitle, // "Your files security:"
+                context.l10n.filesSecurityTitle, // "Your files security:"
                 style: AppStyles.styleBold16(
                   context,
                 ).copyWith(color: AppColors.greenColor),
@@ -33,7 +33,7 @@ class SecurityNoteCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            AppStrings
+            context.l10n
                 .filesSecurityNote, // "All your medical files are encrypted..."
             style: AppStyles.styleRegular14(
               context,

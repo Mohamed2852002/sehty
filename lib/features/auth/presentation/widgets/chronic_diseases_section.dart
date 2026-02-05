@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/features/auth/presentation/widgets/check_box_item.dart';
@@ -25,7 +25,7 @@ class _ChronicDiseasesSectionState extends State<ChronicDiseasesSection> {
             children: [
               SvgPicture.asset(AppAssets.iconsRegisterHeartIcon),
               Text(
-                AppStrings.chronicDiseases,
+                context.l10n.chronicDiseases,
                 style: AppStyles.styleBold16(context),
               ),
             ],
@@ -36,22 +36,22 @@ class _ChronicDiseasesSectionState extends State<ChronicDiseasesSection> {
                 child: Column(
                   children: [
                     CheckBoxItem(
-                      label: AppStrings.bloodPressure,
+                      label: context.l10n.bloodPressure,
                       diseaseKey: 'blood_pressure',
                     ),
                     const SizedBox(height: 12),
                     CheckBoxItem(
-                      label: AppStrings.kidney,
+                      label: context.l10n.kidney,
                       diseaseKey: 'kidney',
                     ),
                     const SizedBox(height: 12),
                     CheckBoxItem(
-                      label: AppStrings.asthma,
+                      label: context.l10n.asthma,
                       diseaseKey: 'asthma',
                     ),
                     const SizedBox(height: 12),
                     CheckBoxItem(
-                      label: AppStrings.thyroid,
+                      label: context.l10n.thyroid,
                       diseaseKey: 'thyroid',
                     ), // Using Thyroid or similar
                   ],
@@ -62,16 +62,22 @@ class _ChronicDiseasesSectionState extends State<ChronicDiseasesSection> {
                 child: Column(
                   children: [
                     CheckBoxItem(
-                      label: AppStrings.diabetes,
+                      label: context.l10n.diabetes,
                       diseaseKey: 'diabetes',
                     ),
                     const SizedBox(height: 12),
-                    CheckBoxItem(label: AppStrings.heart, diseaseKey: 'heart'),
-                    const SizedBox(height: 12),
-                    CheckBoxItem(label: AppStrings.liver, diseaseKey: 'liver'),
+                    CheckBoxItem(
+                      label: context.l10n.heart,
+                      diseaseKey: 'heart',
+                    ),
                     const SizedBox(height: 12),
                     CheckBoxItem(
-                      label: AppStrings.arthritis,
+                      label: context.l10n.liver,
+                      diseaseKey: 'liver',
+                    ),
+                    const SizedBox(height: 12),
+                    CheckBoxItem(
+                      label: context.l10n.arthritis,
                       diseaseKey: 'arthritis',
                     ), // Using Arthritis or similar
                   ],
