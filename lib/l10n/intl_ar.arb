@@ -191,5 +191,7 @@
     "phoneInput": "رقم الهاتف",
     "passwordInput": "كلمة السر",
     "noAccount": "لا تمتلك حسابا؟",
-    "createAccount": "إنشاء حساب"
+    "createAccount": "إنشاء حساب",
+    "from": "من",
+    "to": "إلى"
 }

@@ -66,9 +66,17 @@ class AppAssets {
   /// assets/icons/monitor_connected_people_icon.svg
   static const String iconsMonitorConnectedPeopleIcon = "assets/icons/monitor_connected_people_icon.svg";
 
+  /// Assets for iconsMonitorGreyMedicationIcon
+  /// assets/icons/monitor_grey_medication_icon.svg
+  static const String iconsMonitorGreyMedicationIcon = "assets/icons/monitor_grey_medication_icon.svg";
+
   /// Assets for iconsMonitorHeartIcon
   /// assets/icons/monitor_heart_icon.svg
   static const String iconsMonitorHeartIcon = "assets/icons/monitor_heart_icon.svg";
+
+  /// Assets for iconsMonitorMedicationIcon
+  /// assets/icons/monitor_medication_icon.svg
+  static const String iconsMonitorMedicationIcon = "assets/icons/monitor_medication_icon.svg";
 
   /// Assets for iconsMonitorPendingIcon
   /// assets/icons/monitor_pending_icon.svg
@@ -81,6 +89,10 @@ class AppAssets {
   /// Assets for iconsMonitorSearchIcon
   /// assets/icons/monitor_search_icon.svg
   static const String iconsMonitorSearchIcon = "assets/icons/monitor_search_icon.svg";
+
+  /// Assets for iconsNotificationMedicineIcon
+  /// assets/icons/notification_medicine_icon.svg
+  static const String iconsNotificationMedicineIcon = "assets/icons/notification_medicine_icon.svg";
 
   /// Assets for iconsProfileAddressIcon
   /// assets/icons/profile_address_icon.svg

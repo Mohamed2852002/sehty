@@ -15,24 +15,24 @@ class MedicalRecordTabBar extends StatelessWidget {
       child: TabBar(
         isScrollable: true,
         dividerColor: Colors.transparent,
-        indicatorSize: TabBarIndicatorSize.tab,
+        indicatorSize: TabBarIndicatorSize.label,
         indicator: BoxDecoration(
           color: AppColors.primary,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(16),
         ),
+        labelPadding: const EdgeInsets.symmetric(horizontal: 8),
         labelColor: Colors.white,
         unselectedLabelColor: AppColors.darkColor,
-        labelStyle: AppStyles.styleMedium14(context),
-        unselectedLabelStyle: AppStyles.styleMedium14(context),
+        labelStyle: AppStyles.styleBold16(context),
+        unselectedLabelStyle: AppStyles.styleMedium16(context),
         tabAlignment: TabAlignment.start,
-        padding: const EdgeInsets.symmetric(horizontal: 12),
         tabs: categories
             .map(
               (category) => Tab(
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(16),
                     border: Border.all(
                       color: Colors.grey.withValues(alpha: 0.2),
                     ),

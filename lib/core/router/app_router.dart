@@ -7,6 +7,7 @@ import 'package:sehty/features/auth/presentation/pages/login_screen.dart';
 import 'package:sehty/features/auth/presentation/pages/register_screen.dart';
 import 'package:sehty/main_shell/cubit/main_shell_cubit.dart';
 import 'package:sehty/main_shell/main_shell_screen.dart';
+import 'package:sehty/features/profile/presentation/pages/edit_profile_screen.dart';
 
 class AppRouter {
   static GoRouter create() {
@@ -20,10 +21,7 @@ class AppRouter {
       //   return null;
       // },
       routes: [
-        GoRoute(
-          path: Routes.login,
-          builder: (_, _) => const LoginScreen(),
-        ),
+        GoRoute(path: Routes.login, builder: (_, _) => const LoginScreen()),
         GoRoute(
           path: Routes.otpVerification,
           builder: (_, _) => const OtpVerficationScreen(),
@@ -38,6 +36,10 @@ class AppRouter {
             value: sl<MainShellCubit>(),
             child: const MainShellScreen(),
           ),
+        ),
+        GoRoute(
+          path: Routes.editProfile,
+          builder: (_, _) => const EditProfileScreen(),
         ),
       ],
     );

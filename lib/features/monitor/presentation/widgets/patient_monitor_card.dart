@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/core/utils/widgets/custom_button.dart';
+import 'package:sehty/features/monitor/presentation/widgets/medicine_bottom_sheet_widgets/patient_medication_bottom_sheet.dart';
 
 class PatientMonitorCard extends StatelessWidget {
   final String name;
@@ -115,36 +117,38 @@ class PatientMonitorCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          InkWell(
-            onTap: () {},
-            borderRadius: BorderRadius.circular(12),
-            child: Container(
-              width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 12),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    context.l10n
-                        .viewMedicationDetails, // "View Medication Details"
-                    style: AppStyles.styleMedium14(
-                      context,
-                    ).copyWith(color: AppColors.darkColor),
-                  ),
-                  const SizedBox(width: 8),
-                  const Icon(
-                    Icons.remove_red_eye_outlined,
-                    color: AppColors.darkColor,
-                    size: 18,
-                  ),
-                ],
-              ),
+          CustomButton(
+            verticalPadding: 16,
+            color: Colors.white,
+            content: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  context
+                      .l10n
+                      .viewMedicationDetails, // "View Medication Details"
+                  style: AppStyles.styleMedium14(
+                    context,
+                  ).copyWith(color: AppColors.darkColor),
+                ),
+                const SizedBox(width: 8),
+                const Icon(
+                  Icons.remove_red_eye_outlined,
+                  color: AppColors.darkColor,
+                ),
+              ],
             ),
+            onTap: () {
+              showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (context) => PatientMedicationBottomSheet(
+                  patientName: name,
+                  phoneNumber: phone,
+                ),
+              );
+            },
           ),
         ],
       ),

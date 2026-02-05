@@ -4,7 +4,7 @@ import 'package:sehty/core/router/routes.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/extensions.dart';
-import 'package:sehty/features/auth/presentation/widgets/register_header.dart'; // Reusing header
+import 'package:sehty/core/utils/widgets/custom_button.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -12,15 +12,16 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: .center,
             children: [
-              const SizedBox(height: 20),
-              const RegisterHeader(),
-              const SizedBox(height: 40),
+              // const SizedBox(height: 20),
+              // const RegisterHeader(),
+              // const SizedBox(height: 40),
               Text(
                 context.l10n.mobileNumber,
                 style: AppStyles.styleBold16(context),
@@ -45,23 +46,16 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 32),
-              ElevatedButton(
-                onPressed: () {
-                  context.push(Routes.otpVerification);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
+              CustomButton(
+                content: Text(
                   context.l10n.sendCode,
                   style: AppStyles.styleBold16(
                     context,
                   ).copyWith(color: Colors.white),
                 ),
+                onTap: () {
+                  context.push(Routes.otpVerification);
+                },
               ),
               const SizedBox(height: 16),
               TextButton(

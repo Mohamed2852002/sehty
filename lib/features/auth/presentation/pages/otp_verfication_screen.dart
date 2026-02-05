@@ -4,7 +4,6 @@ import 'package:sehty/core/router/routes.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
-import 'package:sehty/core/utils/extensions.dart';
 
 class OtpVerficationScreen extends StatelessWidget {
   const OtpVerficationScreen({super.key});

@@ -1,4 +1,4 @@
-package com.fassladev.sehty
+package com.fassladev.se7aty
 
 import io.flutter.embedding.android.FlutterActivity
 

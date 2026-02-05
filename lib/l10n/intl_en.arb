@@ -191,5 +191,7 @@
     "phoneInput": "Phone Input",
     "passwordInput": "Password Input",
     "noAccount": "Don't Have an Account?",
-    "createAccount": "Create Account"
+    "createAccount": "Create Account",
+    "from":"from",
+    "to":"to"
 }

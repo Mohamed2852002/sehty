@@ -3,7 +3,8 @@ import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
-import 'package:sehty/features/record/presentation/widgets/upload_medical_record_dialog.dart';
+import 'package:sehty/features/record/presentation/widgets/upload_medical_dialogue_widgets/upload_medical_record_dialog.dart';
+import 'package:sehty/features/record/presentation/widgets/medical_qr_code_dialogue_widgets/medical_qr_code_dialog.dart';
 
 class RecordHeader extends StatelessWidget {
   const RecordHeader({super.key});
@@ -17,13 +18,12 @@ class RecordHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                context.l10n.medicalRecord, // "Medical Record"
+                context.l10n.medicalRecord,
                 style: AppStyles.styleBold24(context),
               ),
               const SizedBox(height: 4),
               Text(
-                context.l10n
-                    .medicalFilesSecure, // "Your medical files in one secure place"
+                context.l10n.medicalFilesSecure,
                 style: AppStyles.styleRegular14(
                   context,
                 ).copyWith(color: Colors.grey),
@@ -63,7 +63,12 @@ class RecordHeader extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => const MedicalQrCodeDialog(),
+                );
+              },
               borderRadius: BorderRadius.circular(12),
               child: Container(
                 padding: const EdgeInsets.all(12),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:sehty/core/router/routes.dart';
 
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
@@ -20,7 +22,8 @@ class ProfileHeader extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                context.l10n
+                context
+                    .l10n
                     .personalMedicalInfo, // "Your personal and medical information"
                 style: AppStyles.styleRegular14(
                   context,
@@ -30,7 +33,9 @@ class ProfileHeader extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            context.push(Routes.editProfile);
+          },
           borderRadius: BorderRadius.circular(12),
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

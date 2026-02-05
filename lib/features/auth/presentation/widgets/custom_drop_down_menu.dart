@@ -16,8 +16,8 @@ class CustomDropDownMenu extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Icon(Icons.keyboard_arrow_down, color: AppColors.primary),
           Text(value, style: AppStyles.styleRegular14(context)),
+          const Icon(Icons.keyboard_arrow_down, color: AppColors.primary),
         ],
       ),
     );

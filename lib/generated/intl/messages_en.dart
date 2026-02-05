@@ -144,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "filesSecurityTitle": MessageLookupByLibrary.simpleMessage(
       "Your files security:",
     ),
+    "from": MessageLookupByLibrary.simpleMessage("from"),
     "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
     "gender": MessageLookupByLibrary.simpleMessage("Gender"),
     "governorate": MessageLookupByLibrary.simpleMessage("Governorate"),
@@ -333,6 +334,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "takingSchedules": MessageLookupByLibrary.simpleMessage("Taking Schedules"),
     "threeHoursAgo": MessageLookupByLibrary.simpleMessage("3 hours ago"),
     "thyroid": MessageLookupByLibrary.simpleMessage("Thyroid"),
+    "to": MessageLookupByLibrary.simpleMessage("to"),
     "today": MessageLookupByLibrary.simpleMessage("Today"),
     "todayComplianceRate": MessageLookupByLibrary.simpleMessage(
       "Today\'s Compliance Rate",

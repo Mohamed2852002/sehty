@@ -10,9 +10,12 @@ class CustomTextFormField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.2)),
+        border: Border.all(color: const Color(0xffE5E7EB)),
       ),
       child: TextField(
+        onTapOutside: (event) {
+          FocusScope.of(context).unfocus();
+        },
         decoration: InputDecoration(
           hintText: hint,
           hintStyle: AppStyles.styleRegular14(context),

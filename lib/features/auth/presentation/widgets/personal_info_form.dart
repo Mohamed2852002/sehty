@@ -5,7 +5,7 @@ import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/features/auth/presentation/widgets/custom_title_and_drop_down_menu.dart';
-import 'package:sehty/features/auth/presentation/widgets/custom_title_and_text_form_field.dart';
+import 'package:sehty/core/utils/widgets/custom_title_and_text_form_field.dart';
 
 class PersonalInfoForm extends StatelessWidget {
   const PersonalInfoForm({super.key});
@@ -27,7 +27,10 @@ class PersonalInfoForm extends StatelessWidget {
               ),
             ],
           ),
-          CustomTitleAndTextFormField(label: context.l10n.fullName),
+          CustomTitleAndTextFormField(
+            label: context.l10n.fullName,
+            hint: context.l10n.fullName,
+          ),
           Row(
             spacing: 12,
             children: [
