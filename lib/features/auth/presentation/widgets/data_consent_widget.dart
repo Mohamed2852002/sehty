@@ -24,7 +24,7 @@ class _DataConsentWidgetState extends State<DataConsentWidget> {
         gradient: LinearGradient(
           colors: [
             AppColors.primary.withValues(alpha: 0.1),
-            AppColors.primaryDark.withValues(alpha: 0.1),
+            AppColors.darkPrimary.withValues(alpha: 0.1),
           ],
         ),
         borderRadius: BorderRadius.circular(12),

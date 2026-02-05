@@ -134,6 +134,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "جميع ملفاتك الطبية مشفرة ومحفوظة بأعلى معايير الأمان. يمكنك مشاركتها بشكل آمن مع طبيبك",
     ),
     "filesSecurityTitle": MessageLookupByLibrary.simpleMessage("أمان ملفاتك:"),
+    "from": MessageLookupByLibrary.simpleMessage("من"),
     "fullName": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
     "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
     "governorate": MessageLookupByLibrary.simpleMessage("المحافظة"),
@@ -309,6 +310,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "takingSchedules": MessageLookupByLibrary.simpleMessage("مواعيد التناول"),
     "threeHoursAgo": MessageLookupByLibrary.simpleMessage("منذ 3 ساعات"),
     "thyroid": MessageLookupByLibrary.simpleMessage("الغدة الدرقية"),
+    "to": MessageLookupByLibrary.simpleMessage("إلى"),
     "today": MessageLookupByLibrary.simpleMessage("اليوم"),
     "todayComplianceRate": MessageLookupByLibrary.simpleMessage(
       "نسبة الالتزام اليوم",

@@ -6,7 +6,13 @@ import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/main_shell/cubit/main_shell_cubit.dart';
 
 class NavItem extends StatelessWidget {
-  const NavItem({super.key, required this.index, required this.iconPath, required this.label, required this.isSelected});
+  const NavItem({
+    super.key,
+    required this.index,
+    required this.iconPath,
+    required this.label,
+    required this.isSelected,
+  });
   final int index;
   final String iconPath;
   final String label;
@@ -23,12 +29,10 @@ class NavItem extends StatelessWidget {
             SvgPicture.asset(
               iconPath,
               colorFilter: ColorFilter.mode(
-                isSelected
-                    ? AppColors.primary
-                    : Colors.grey, // Or AppColors.darkColor/unselectedColor
+                isSelected ? AppColors.primary : Colors.grey,
                 BlendMode.srcIn,
               ),
-              height: 24, // Consistent size
+              height: 24,
               width: 24,
             ),
             const SizedBox(height: 4),
@@ -50,14 +54,11 @@ class NavItem extends StatelessWidget {
                 width: 6,
                 height: 6,
                 decoration: const BoxDecoration(
-                  color: AppColors.primary, // Or Cyan as in image
+                  color: AppColors.primary,
                   shape: BoxShape.circle,
                 ),
               ),
             ] else
-              // Add invisible spacer to prevent height jumping if needed,
-              // but typically bottom nav items can have different heights or occupy fixed height.
-              // Let's add a spacer to keep alignment stable if desired.
               const SizedBox(height: 10),
           ],
         ),

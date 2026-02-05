@@ -21,7 +21,9 @@ class MonitorHeader extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: AppColors.primary,
+                gradient: const LinearGradient(
+                  colors: AppColors.gradientBtnColors,
+                ),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: SvgPicture.asset(AppAssets.iconsMonitorPeopleIcon),
@@ -35,7 +37,8 @@ class MonitorHeader extends StatelessWidget {
                     style: AppStyles.styleBold20(context),
                   ),
                   Text(
-                    context.l10n
+                    context
+                        .l10n
                         .reassureLovedOnes, // "Reassure on your loved ones..."
                     style: AppStyles.styleRegular12(
                       context,

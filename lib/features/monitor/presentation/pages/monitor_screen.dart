@@ -70,7 +70,6 @@ class MonitorScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-
                 const FamilyTipCard(),
               ],
             ),
