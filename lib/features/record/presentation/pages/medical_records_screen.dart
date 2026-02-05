@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:sehty/core/utils/app_strings.dart';
-import 'package:sehty/features/record/presentation/widgets/medical_record_card.dart';
-import 'package:sehty/features/record/presentation/widgets/medical_record_list_view.dart';
+import 'package:sehty/core/utils/extensions.dart';
+import 'package:sehty/features/record/presentation/widgets/all_records_tab.dart';
+import 'package:sehty/features/record/presentation/widgets/analysis_records_tab.dart';
 import 'package:sehty/features/record/presentation/widgets/medical_record_tab_bar.dart';
 import 'package:sehty/features/record/presentation/widgets/medical_record_tab_bar_delegate.dart';
+import 'package:sehty/features/record/presentation/widgets/prescriptions_records_tab.dart';
 import 'package:sehty/features/record/presentation/widgets/record_header.dart';
+import 'package:sehty/features/record/presentation/widgets/reports_records_tab.dart';
 import 'package:sehty/features/record/presentation/widgets/security_note_card.dart';
+import 'package:sehty/features/record/presentation/widgets/xrays_records_tab.dart';
 
 class MedicalRecordsScreen extends StatelessWidget {
   const MedicalRecordsScreen({super.key});
@@ -13,11 +16,11 @@ class MedicalRecordsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> categories = [
-      AppStrings.all,
-      AppStrings.analyses,
-      AppStrings.xrays,
-      AppStrings.reports,
-      AppStrings.prescriptions,
+      context.l10n.all,
+      context.l10n.analyses,
+      context.l10n.xrays,
+      context.l10n.reports,
+      context.l10n.prescriptions,
     ];
 
     return DefaultTabController(
@@ -41,85 +44,17 @@ class MedicalRecordsScreen extends StatelessWidget {
               ),
             ];
           },
-          body: TabBarView(
+          body: const TabBarView(
             children: [
-              _buildAllTab(),
-              _buildAnalysesTab(),
-              _buildXraysTab(),
-              _buildReportsTab(),
-              _buildPrescriptionsTab(),
-            ], // Reversed for RTL feel
+              AllRecordsTab(),
+              AnalysisRecordsTab(),
+              XraysRecordsTab(),
+              ReportsRecordsTab(),
+              PrescriptionsRecordsTab(),
+            ],
           ),
         ),
       ),
     );
-  }
-
-  Widget _buildAllTab() {
-    return MedicalRecordListView(
-      children: [
-        MedicalRecordCard(
-          title: AppStrings.bloodSugarAnalysis,
-          date: '2026/1/10',
-          type: AppStrings.analyses,
-          icon: Icons.description_outlined,
-        ),
-        MedicalRecordCard(
-          title: AppStrings.chestXray,
-          date: '2026/1/15',
-          type: AppStrings.xrays,
-          icon: Icons.image_outlined,
-        ),
-        MedicalRecordCard(
-          title: AppStrings.doctorReport,
-          date: '2026/1/10',
-          type: AppStrings.reports,
-          icon: Icons.assignment_outlined,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildAnalysesTab() {
-    return MedicalRecordListView(
-      children: [
-        MedicalRecordCard(
-          title: AppStrings.bloodSugarAnalysis,
-          date: '2026/1/10',
-          type: AppStrings.analyses,
-          icon: Icons.description_outlined,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildXraysTab() {
-    return MedicalRecordListView(
-      children: [
-        MedicalRecordCard(
-          title: AppStrings.chestXray,
-          date: '2026/1/15',
-          type: AppStrings.xrays,
-          icon: Icons.image_outlined,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildReportsTab() {
-    return MedicalRecordListView(
-      children: [
-        MedicalRecordCard(
-          title: AppStrings.doctorReport,
-          date: '2026/1/10',
-          type: AppStrings.reports,
-          icon: Icons.assignment_outlined,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildPrescriptionsTab() {
-    return const MedicalRecordListView(children: []);
   }
 }

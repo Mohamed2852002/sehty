@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/core/utils/widgets/icon_container.dart';
@@ -25,7 +25,7 @@ class DailySummaryWidget extends StatelessWidget {
               ),
               Expanded(
                 child: Text(
-                  AppStrings.todaySummary,
+                  context.l10n.todaySummary,
                   style: AppStyles.styleBold20(context),
                 ),
               ),
@@ -53,8 +53,7 @@ class DailySummaryWidget extends StatelessWidget {
                       const SizedBox(width: 8),
                       Expanded(
                         child: Text(
-                          AppStrings
-                              .medicationsNotTaken, // "There are medicines not taken"
+                          context.l10n.medicationsNotTaken,
                           style: AppStyles.styleRegular16(
                             context,
                           ).copyWith(color: Colors.red),
@@ -63,7 +62,7 @@ class DailySummaryWidget extends StatelessWidget {
                       Align(
                         alignment: AlignmentGeometry.topCenter,
                         child: Text(
-                          AppStrings.complianceStatus, // "Commitment status"
+                          context.l10n.complianceStatus,
                           style: AppStyles.styleRegular14(
                             context,
                           ).copyWith(color: AppColors.darkColor),
@@ -86,7 +85,7 @@ class DailySummaryWidget extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  AppStrings.medicineForToday,
+                  context.l10n.medicineForToday,
                   style: AppStyles.styleRegular14(
                     context,
                   ).copyWith(color: AppColors.darkColor),

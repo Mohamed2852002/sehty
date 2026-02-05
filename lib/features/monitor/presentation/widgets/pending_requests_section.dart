@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 
@@ -28,7 +28,7 @@ class PendingRequestsSection extends StatelessWidget {
                 ),
               ),
               Text(
-                AppStrings.pendingRequests,
+                context.l10n.pendingRequests,
                 style: AppStyles.styleBold16(context),
               ),
             ],
@@ -74,7 +74,7 @@ class PendingRequestsSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Text(
-                    AppStrings.waitingAcceptance, // "Waiting Acceptance"
+                    context.l10n.waitingAcceptance, // "Waiting Acceptance"
                     style: AppStyles.styleMedium12(
                       context,
                     ).copyWith(color: AppColors.darkColor),

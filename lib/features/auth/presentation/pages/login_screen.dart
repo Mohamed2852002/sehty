@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sehty/core/router/routes.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/features/auth/presentation/widgets/register_header.dart'; // Reusing header
 
 class LoginScreen extends StatelessWidget {
@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
               const RegisterHeader(),
               const SizedBox(height: 40),
               Text(
-                AppStrings.mobileNumber,
+                context.l10n.mobileNumber,
                 style: AppStyles.styleBold16(context),
               ),
               const SizedBox(height: 8),
@@ -57,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  AppStrings.sendCode,
+                  context.l10n.sendCode,
                   style: AppStyles.styleBold16(
                     context,
                   ).copyWith(color: Colors.white),
@@ -69,7 +69,7 @@ class LoginScreen extends StatelessWidget {
                   context.push(Routes.register);
                 },
                 child: Text(
-                  AppStrings.noAccount,
+                  context.l10n.noAccount,
                   style: AppStyles.styleBold16(
                     context,
                   ).copyWith(color: AppColors.primary),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/features/profile/presentation/bloc/profile_bloc.dart';
@@ -19,7 +19,10 @@ class LanguageSwitcherWidget extends StatelessWidget {
             children: [
               const Icon(Icons.language, color: AppColors.primary, size: 20),
               const SizedBox(width: 8),
-              Text(AppStrings.language, style: AppStyles.styleBold16(context)),
+              Text(
+                context.l10n.language,
+                style: AppStyles.styleBold16(context),
+              ),
             ],
           ),
           const SizedBox(height: 16),
@@ -29,7 +32,7 @@ class LanguageSwitcherWidget extends StatelessWidget {
                 children: [
                   Expanded(
                     child: _LanguageOption(
-                      label: AppStrings.arabic,
+                      label: context.l10n.arabic,
                       isSelected: state.locale == 'ar',
                       onTap: () {
                         context.read<ProfileBloc>().add(
@@ -41,7 +44,7 @@ class LanguageSwitcherWidget extends StatelessWidget {
                   const SizedBox(width: 12),
                   Expanded(
                     child: _LanguageOption(
-                      label: AppStrings.english,
+                      label: context.l10n.english,
                       isSelected: state.locale == 'en',
                       onTap: () {
                         context.read<ProfileBloc>().add(

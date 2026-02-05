@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class UploadMedicalRecordDialog extends StatefulWidget {
@@ -19,7 +19,7 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
   @override
   void initState() {
     super.initState();
-    _selectedCategory = AppStrings.analyses;
+    _selectedCategory = context.l10n.analyses;
   }
 
   @override
@@ -32,10 +32,10 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
   @override
   Widget build(BuildContext context) {
     final List<String> categories = [
-      AppStrings.analyses,
-      AppStrings.prescriptions,
-      AppStrings.xrays,
-      AppStrings.reports,
+      context.l10n.analyses,
+      context.l10n.prescriptions,
+      context.l10n.xrays,
+      context.l10n.reports,
     ];
 
     return Dialog(
@@ -56,33 +56,33 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
                     icon: const Icon(Icons.close, color: AppColors.darkColor),
                   ),
                   Text(
-                    AppStrings.uploadMedicalFile,
+                    context.l10n.uploadMedicalFile,
                     style: AppStyles.styleBold20(context),
                   ),
                 ],
               ),
               const SizedBox(height: 24),
-              _buildFieldLabel(context, AppStrings.fileName),
+              _buildFieldLabel(context, context.l10n.fileName),
               const SizedBox(height: 8),
               _buildTextField(
                 context,
                 controller: _fileNameController,
-                hint: AppStrings.fileNameExample,
+                hint: context.l10n.fileNameExample,
               ),
               const SizedBox(height: 20),
-              _buildFieldLabel(context, AppStrings.category),
+              _buildFieldLabel(context, context.l10n.category),
               const SizedBox(height: 8),
               _buildDropdown(context, categories),
               const SizedBox(height: 20),
-              _buildFieldLabel(context, AppStrings.labName),
+              _buildFieldLabel(context, context.l10n.labName),
               const SizedBox(height: 8),
               _buildTextField(
                 context,
                 controller: _labNameController,
-                hint: AppStrings.labNameExample,
+                hint: context.l10n.labNameExample,
               ),
               const SizedBox(height: 20),
-              _buildFieldLabel(context, AppStrings.file),
+              _buildFieldLabel(context, context.l10n.file),
               const SizedBox(height: 8),
               _buildUploadArea(context),
               const SizedBox(height: 24),
@@ -94,7 +94,7 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
                   Expanded(
                     child: _buildActionButton(
                       context,
-                      text: AppStrings.cancel,
+                      text: context.l10n.cancel,
                       color: Colors.grey.shade200,
                       textColor: AppColors.darkColor,
                       onPressed: () => Navigator.pop(context),
@@ -103,7 +103,7 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
                   Expanded(
                     child: _buildActionButton(
                       context,
-                      text: AppStrings.uploadFile,
+                      text: context.l10n.uploadFile,
                       color: AppColors.primary,
                       textColor: Colors.white,
                       onPressed: () {
@@ -213,12 +213,12 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
           ),
           const SizedBox(height: 16),
           Text(
-            AppStrings.clickToSelectFile,
+            context.l10n.clickToSelectFile,
             style: AppStyles.styleBold16(context),
           ),
           const SizedBox(height: 4),
           Text(
-            AppStrings.orImagePdfNote,
+            context.l10n.orImagePdfNote,
             style: AppStyles.styleRegular12(
               context,
             ).copyWith(color: AppColors.darkColor),
@@ -247,7 +247,7 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
           const SizedBox(width: 8),
           Expanded(
             child: Text(
-              AppStrings.fileSecurityNote,
+              context.l10n.fileSecurityNote,
               style: AppStyles.styleRegular12(
                 context,
               ).copyWith(color: Colors.blue.withValues(alpha: 0.7)),

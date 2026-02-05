@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 
@@ -14,23 +14,23 @@ class ShareTipCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            AppStrings.shareSecurely, // "How to share your files securely?"
+            context.l10n.shareSecurely, // "How to share your files securely?"
             style: AppStyles.styleBold16(context),
           ),
           const SizedBox(height: 12),
           _buildTipItem(
             context,
-            AppStrings.shareSecurelyNote,
+            context.l10n.shareSecurelyNote,
           ), // "Click 'Share' to create a secure, temporary link"
           const SizedBox(height: 8),
           _buildTipItem(
             context,
-            AppStrings.linkValid24Hours,
+            context.l10n.linkValid24Hours,
           ), // "The link works for 24 hours only"
           const SizedBox(height: 8),
           _buildTipItem(
             context,
-            AppStrings.cancelShareAnytime,
+            context.l10n.cancelShareAnytime,
           ), // "You can cancel sharing at any time"
         ],
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class MedicationReminderCard extends StatelessWidget {
@@ -20,7 +20,7 @@ class MedicationReminderCard extends StatelessWidget {
           Row(
             children: [
               Text(
-                AppStrings.rememberNote,
+                context.l10n.rememberNote,
                 style: AppStyles.styleBold16(
                   context,
                 ).copyWith(color: const Color(0xff1A1C1E)),
@@ -29,7 +29,7 @@ class MedicationReminderCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            AppStrings.medicationReminderNote,
+            context.l10n.medicationReminderNote,
             style: AppStyles.styleRegular14(
               context,
             ).copyWith(color: const Color(0xff6A7282), height: 1.5),

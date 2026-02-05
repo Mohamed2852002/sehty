@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_assets.dart';
-import 'package:sehty/core/utils/app_strings.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/features/profile/presentation/widgets/language_switcher_widget.dart';
 import 'package:sehty/features/profile/presentation/widgets/patient_code_card.dart';
@@ -27,19 +26,22 @@ class ProfileScreen extends StatelessWidget {
                 const PatientCodeCard(),
                 const LanguageSwitcherWidget(),
                 ProfileInfoSection(
-                  title: AppStrings.basicInfo,
+                  title: context.l10n.basicInfo,
                   icon: AppAssets.iconsProfilePersonIcon,
                   child: Column(
                     children: [
                       ProfileInfoRow(
-                        label: AppStrings.fullName,
+                        label: context.l10n.fullName,
                         value: 'علي عبدالعزيز',
                       ),
-                      ProfileInfoRow(label: AppStrings.age, value: '70 سنة'),
-                      ProfileInfoRow(label: AppStrings.gender, value: 'ذكر'),
-                      ProfileInfoRow(label: AppStrings.weight, value: '69 كجم'),
+                      ProfileInfoRow(label: context.l10n.age, value: '70 سنة'),
+                      ProfileInfoRow(label: context.l10n.gender, value: 'ذكر'),
                       ProfileInfoRow(
-                        label: AppStrings.phoneNumber,
+                        label: context.l10n.weight,
+                        value: '69 كجم',
+                      ),
+                      ProfileInfoRow(
+                        label: context.l10n.phoneNumber,
                         value: '0121551112',
                         isLast: true,
                       ),
@@ -47,16 +49,16 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 ProfileInfoSection(
-                  title: AppStrings.address,
+                  title: context.l10n.address,
                   icon: AppAssets.iconsProfileAddressIcon,
                   child: Column(
                     children: [
                       ProfileInfoRow(
-                        label: AppStrings.governorate,
+                        label: context.l10n.governorate,
                         value: 'القاهرة',
                       ),
                       ProfileInfoRow(
-                        label: AppStrings.district,
+                        label: context.l10n.district,
                         value: 'مدينة نصر',
                         isLast: true,
                       ),
@@ -64,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 ),
                 ProfileInfoSection(
-                  title: AppStrings.chronicDiseases,
+                  title: context.l10n.chronicDiseases,
                   icon: AppAssets.iconsProfileHeartIcon,
                   child: Container(
                     width: double.infinity,
@@ -79,7 +81,7 @@ class ProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Text(
-                        AppStrings.diabetes,
+                        context.l10n.diabetes,
                         style: const TextStyle(
                           color: AppColors.primary,
                           fontWeight: FontWeight.w500,

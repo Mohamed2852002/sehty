@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class ProfileHeader extends StatelessWidget {
@@ -15,12 +15,12 @@ class ProfileHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppStrings.profile, // "Personal Profile"
+                context.l10n.profile, // "Personal Profile"
                 style: AppStyles.styleBold24(context),
               ),
               const SizedBox(height: 4),
               Text(
-                AppStrings
+                context.l10n
                     .personalMedicalInfo, // "Your personal and medical information"
                 style: AppStyles.styleRegular14(
                   context,
@@ -43,7 +43,7 @@ class ProfileHeader extends StatelessWidget {
                 const Icon(Icons.edit_outlined, color: Colors.white, size: 18),
                 const SizedBox(width: 8),
                 Text(
-                  AppStrings.edit,
+                  context.l10n.edit,
                   style: AppStyles.styleMedium14(
                     context,
                   ).copyWith(color: Colors.white),

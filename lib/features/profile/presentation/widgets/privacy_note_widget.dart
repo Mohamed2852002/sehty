@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class PrivacyNoteWidget extends StatelessWidget {
@@ -24,7 +24,7 @@ class PrivacyNoteWidget extends StatelessWidget {
             children: [
               const Icon(Icons.lock, color: AppColors.greenColor, size: 18),
               Text(
-                AppStrings.privacyImportant, // "Your privacy is important:"
+                context.l10n.privacyImportant, // "Your privacy is important:"
                 style: AppStyles.styleBold14(
                   context,
                 ).copyWith(color: AppColors.greenColor),
@@ -32,7 +32,7 @@ class PrivacyNoteWidget extends StatelessWidget {
             ],
           ),
           Text(
-            AppStrings.privacyNote,
+            context.l10n.privacyNote,
             style: AppStyles.styleRegular12(
               context,
             ).copyWith(color: AppColors.greenColor, height: 1.5),

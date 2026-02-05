@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 import 'package:sehty/features/medication/presentation/widgets/add_medication_dialog.dart';
@@ -18,11 +18,11 @@ class MedicationHeader extends StatelessWidget {
             spacing: 4,
             children: [
               Text(
-                AppStrings.medications, // "Medications"
+                context.l10n.medications, // "Medications"
                 style: AppStyles.styleBold24(context),
               ),
               Text(
-                AppStrings
+                context.l10n
                     .manageMedications, // "Manage your medications and schedules"
                 style: AppStyles.styleRegular14(
                   context,

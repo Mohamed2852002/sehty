@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class AddPatientDialog extends StatefulWidget {
@@ -43,7 +43,7 @@ class _AddPatientDialogState extends State<AddPatientDialog> {
                     icon: const Icon(Icons.close, color: AppColors.darkColor),
                   ),
                   Text(
-                    AppStrings.addPatientForTracking,
+                    context.l10n.addPatientForTracking,
                     style: AppStyles.styleBold20(context),
                   ),
                 ],
@@ -51,22 +51,22 @@ class _AddPatientDialogState extends State<AddPatientDialog> {
               const SizedBox(height: 16),
               _buildInfoBox(context),
               const SizedBox(height: 24),
-              _buildFieldLabel(context, AppStrings.patientNameLabel),
+              _buildFieldLabel(context, context.l10n.patientNameLabel),
               const SizedBox(height: 8),
               _buildTextField(
                 context,
                 controller: _nameController,
-                hint: AppStrings.fatherExample,
+                hint: context.l10n.fatherExample,
               ),
               const SizedBox(height: 4),
               Text(
-                AppStrings.personalUseNote,
+                context.l10n.personalUseNote,
                 style: AppStyles.styleRegular12(
                   context,
                 ).copyWith(color: AppColors.darkColor),
               ),
               const SizedBox(height: 20),
-              _buildFieldLabel(context, AppStrings.patientPhoneNumber),
+              _buildFieldLabel(context, context.l10n.patientPhoneNumber),
               const SizedBox(height: 8),
               _buildTextField(
                 context,
@@ -75,12 +75,12 @@ class _AddPatientDialogState extends State<AddPatientDialog> {
                 keyboardType: TextInputType.phone,
               ),
               const SizedBox(height: 20),
-              _buildFieldLabel(context, AppStrings.relationOptional),
+              _buildFieldLabel(context, context.l10n.relationOptional),
               const SizedBox(height: 8),
               _buildTextField(
                 context,
                 controller: _relationController,
-                hint: AppStrings.relationExample,
+                hint: context.l10n.relationExample,
               ),
               const SizedBox(height: 24),
               _buildWarningBox(context),
@@ -91,7 +91,7 @@ class _AddPatientDialogState extends State<AddPatientDialog> {
                   Expanded(
                     child: _buildActionButton(
                       context,
-                      text: AppStrings.cancel,
+                      text: context.l10n.cancel,
                       color: Colors.grey.shade200,
                       textColor: AppColors.darkColor,
                       onPressed: () => Navigator.pop(context),
@@ -100,7 +100,7 @@ class _AddPatientDialogState extends State<AddPatientDialog> {
                   Expanded(
                     child: _buildActionButton(
                       context,
-                      text: AppStrings.sendRequest,
+                      text: context.l10n.sendRequest,
                       color: AppColors.primary,
                       textColor: Colors.white,
                       icon: Icons.person_add_alt_1_outlined,
@@ -128,7 +128,7 @@ class _AddPatientDialogState extends State<AddPatientDialog> {
         border: Border.all(color: Colors.blue.withValues(alpha: 0.1)),
       ),
       child: Text(
-        AppStrings.addPatientNote,
+        context.l10n.addPatientNote,
         style: AppStyles.styleRegular12(
           context,
         ).copyWith(color: Colors.blue.withValues(alpha: 0.7), height: 1.5),
@@ -149,7 +149,7 @@ class _AddPatientDialogState extends State<AddPatientDialog> {
         children: [
           Expanded(
             child: Text(
-              AppStrings.phoneVerifyNote,
+              context.l10n.phoneVerifyNote,
               style: AppStyles.styleBold12(
                 context,
               ).copyWith(color: Colors.orange.shade700),

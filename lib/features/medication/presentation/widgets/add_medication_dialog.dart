@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class AddMedicationDialog extends StatelessWidget {
@@ -27,7 +27,7 @@ class AddMedicationDialog extends StatelessWidget {
                     constraints: const BoxConstraints(),
                   ),
                   Text(
-                    AppStrings.addNewMedication,
+                    context.l10n.addNewMedication,
                     style: AppStyles.styleBold20(context),
                   ),
                 ],
@@ -41,7 +41,7 @@ class AddMedicationDialog extends StatelessWidget {
                   border: Border.all(color: const Color(0xffD0F0FB)),
                 ),
                 child: Text(
-                  AppStrings.medicationReminderNote,
+                  context.l10n.medicationReminderNote,
                   textAlign: TextAlign.center,
                   style: AppStyles.styleRegular12(
                     context,
@@ -49,15 +49,15 @@ class AddMedicationDialog extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 24),
-              _buildFieldLabel(context, AppStrings.medicineName),
+              _buildFieldLabel(context, context.l10n.medicineName),
               const SizedBox(height: 8),
-              _buildTextField(context, hint: AppStrings.medicineNameExample),
+              _buildTextField(context, hint: context.l10n.medicineNameExample),
               const SizedBox(height: 16),
-              _buildFieldLabel(context, AppStrings.dose),
+              _buildFieldLabel(context, context.l10n.dose),
               const SizedBox(height: 8),
-              _buildTextField(context, hint: AppStrings.doseExample),
+              _buildTextField(context, hint: context.l10n.doseExample),
               const SizedBox(height: 16),
-              _buildFieldLabel(context, AppStrings.takingSchedules),
+              _buildFieldLabel(context, context.l10n.takingSchedules),
               const SizedBox(height: 8),
               _buildTextField(context, readOnly: true),
               const SizedBox(height: 12),
@@ -69,7 +69,7 @@ class AddMedicationDialog extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      AppStrings.addAnotherSchedule,
+                      context.l10n.addAnotherSchedule,
                       style: AppStyles.styleBold14(
                         context,
                       ).copyWith(color: const Color(0xff26C6DA)),
@@ -87,7 +87,7 @@ class AddMedicationDialog extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        _buildFieldLabel(context, AppStrings.startDate),
+                        _buildFieldLabel(context, context.l10n.startDate),
                         const SizedBox(height: 8),
                         _buildTextField(context),
                       ],
@@ -97,7 +97,7 @@ class AddMedicationDialog extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        _buildFieldLabel(context, AppStrings.daysCount),
+                        _buildFieldLabel(context, context.l10n.daysCount),
                         const SizedBox(height: 8),
                         _buildTextField(context, initialValue: '30'),
                       ],
@@ -124,7 +124,7 @@ class AddMedicationDialog extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        AppStrings.addMedication,
+                        context.l10n.addMedication,
                         style: AppStyles.styleBold16(
                           context,
                         ).copyWith(color: Colors.white),
@@ -142,7 +142,7 @@ class AddMedicationDialog extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        AppStrings.cancel,
+                        context.l10n.cancel,
                         style: AppStyles.styleBold16(
                           context,
                         ).copyWith(color: const Color(0xff6A7282)),

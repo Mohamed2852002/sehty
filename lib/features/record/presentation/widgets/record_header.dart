@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 import 'package:sehty/features/record/presentation/widgets/upload_medical_record_dialog.dart';
@@ -17,12 +17,12 @@ class RecordHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                AppStrings.medicalRecord, // "Medical Record"
+                context.l10n.medicalRecord, // "Medical Record"
                 style: AppStyles.styleBold24(context),
               ),
               const SizedBox(height: 4),
               Text(
-                AppStrings
+                context.l10n
                     .medicalFilesSecure, // "Your medical files in one secure place"
                 style: AppStyles.styleRegular14(
                   context,

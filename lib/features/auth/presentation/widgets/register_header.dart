@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_assets.dart';
 
-import 'package:sehty/core/utils/app_strings.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class RegisterHeader extends StatelessWidget {
@@ -23,10 +23,10 @@ class RegisterHeader extends StatelessWidget {
           child: SvgPicture.asset(AppAssets.iconsRegisterProfileIcon),
         ),
         const SizedBox(height: 16),
-        Text(AppStrings.welcomeTitle, style: AppStyles.styleBold24(context)),
+        Text(context.l10n.welcomeTitle, style: AppStyles.styleBold24(context)),
         const SizedBox(height: 8),
         Text(
-          AppStrings.registerSubtitle,
+          context.l10n.registerSubtitle,
           textAlign: TextAlign.center,
           style: AppStyles.styleRegular14(
             context,
