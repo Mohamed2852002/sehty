@@ -19,7 +19,6 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        
         padding: EdgeInsets.symmetric(
           vertical: verticalPadding,
           horizontal: 12,

@@ -33,7 +33,8 @@ class SecurityNoteCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            context.l10n
+            context
+                .l10n
                 .filesSecurityNote, // "All your medical files are encrypted..."
             style: AppStyles.styleRegular14(
               context,

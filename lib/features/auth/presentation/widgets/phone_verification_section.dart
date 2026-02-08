@@ -78,7 +78,8 @@ class PhoneVerificationSection extends StatelessWidget {
         const SizedBox(height: 8),
         Center(
           child: Text(
-            context.l10n
+            context
+                .l10n
                 .sendVerificationCode, // "We will send verification code via SMS"
             style: AppStyles.styleRegular12(
               context,
