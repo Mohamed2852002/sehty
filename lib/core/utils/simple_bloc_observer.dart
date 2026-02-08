@@ -28,9 +28,14 @@ class SimpleBlocObserver implements BlocObserver {
   void onTransition(Bloc bloc, Transition transition) {
     log(transition.toString());
   }
-  
+
   @override
-  void onDone(Bloc<dynamic, dynamic> bloc, Object? event, [Object? error, StackTrace? stackTrace]) {
+  void onDone(
+    Bloc<dynamic, dynamic> bloc,
+    Object? event, [
+    Object? error,
+    StackTrace? stackTrace,
+  ]) {
     log('Done : ${bloc.toString()}');
   }
 }

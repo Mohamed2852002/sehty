@@ -22,7 +22,8 @@ class MedicationHeader extends StatelessWidget {
                 style: AppStyles.styleBold24(context),
               ),
               Text(
-                context.l10n
+                context
+                    .l10n
                     .manageMedications, // "Manage your medications and schedules"
                 style: AppStyles.styleRegular14(
                   context,

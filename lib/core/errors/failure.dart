@@ -48,8 +48,7 @@ class ServerFailure extends Failure {
     Map<String, dynamic> response,
   ) {
     if (statusCode == 400 || statusCode == 403) {
-      final Map<String, dynamic> badResponse = response['errors'];
-      return ServerFailure(errorMessage: badResponse.values.first.first);
+      return ServerFailure(errorMessage: response['message']);
     } else if (statusCode == 401) {
       return ServerFailure(errorMessage: response['message']);
     } else if (statusCode == 404) {

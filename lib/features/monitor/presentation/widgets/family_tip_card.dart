@@ -30,7 +30,8 @@ class FamilyTipCard extends StatelessWidget {
             ],
           ),
           Text(
-            context.l10n
+            context
+                .l10n
                 .familyTipNote, // "Connect with your loved ones regularly..."
             style: AppStyles.styleRegular14(
               context,

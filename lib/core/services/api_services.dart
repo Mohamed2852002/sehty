@@ -22,9 +22,21 @@ class ApiServices {
 
   Future<Map<String, dynamic>> put(
     String url,
-    Map<String, dynamic> data,
-  ) async {
+    Map<String, dynamic> data, {
+    String? accessToken,
+  }) async {
+    dio.options.headers.addAll({'Authorization': 'Bearer $accessToken'});
     final Response response = await dio.put(url, data: data);
+    return response.data;
+  }
+
+  Future<Map<String, dynamic>> postFormData(
+    String url,
+    FormData formData, {
+    String? accessToken,
+  }) async {
+    dio.options.headers.addAll({'Authorization': 'Bearer $accessToken'});
+    final Response response = await dio.post(url, data: formData);
     return response.data;
   }
 }
