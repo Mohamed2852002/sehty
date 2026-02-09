@@ -32,6 +32,7 @@ dependencies:
   dartz: ^0.10.1
   device_info_plus: ^12.3.0
   dio: ^5.9.1
+  dropdown_search: ^6.0.2
   equatable: ^2.0.8
   flutter:
     sdk: flutter

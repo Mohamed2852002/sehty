@@ -7,7 +7,8 @@ import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 
 class DataConsentWidget extends StatefulWidget {
-  const DataConsentWidget({super.key});
+  final ValueChanged<bool> onChanged;
+  const DataConsentWidget({super.key, required this.onChanged});
 
   @override
   State<DataConsentWidget> createState() => _DataConsentWidgetState();
@@ -44,6 +45,7 @@ class _DataConsentWidgetState extends State<DataConsentWidget> {
                   setState(() {
                     _isChecked = val!;
                   });
+                  widget.onChanged(_isChecked);
                 },
                 activeColor: AppColors.primary,
                 shape: RoundedRectangleBorder(

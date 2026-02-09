@@ -37,20 +37,26 @@ class ServerFailure extends Failure {
         return ServerFailure(errorMessage: 'Connection Error');
 
       case DioExceptionType.unknown:
+        if (dioException.message != null &&
+            dioException.message!.contains('SocketException')) {
+          return ServerFailure(errorMessage: 'No Internet Connection');
+        }
         return ServerFailure(
           errorMessage: 'Unexpected Error Occured, Please Try Again!',
         );
     }
   }
 
-  factory ServerFailure.fromResponse(
-    int statusCode,
-    Map<String, dynamic> response,
-  ) {
-    if (statusCode == 400 || statusCode == 403) {
-      return ServerFailure(errorMessage: response['message']);
-    } else if (statusCode == 401) {
-      return ServerFailure(errorMessage: response['message']);
+  factory ServerFailure.fromResponse(int statusCode, dynamic response) {
+    if (statusCode == 400 ||
+        statusCode == 401 ||
+        statusCode == 403 ||
+        statusCode == 422) {
+      if (response is Map<String, dynamic>) {
+        return ServerFailure(errorMessage: response['message']);
+      } else {
+        return ServerFailure(errorMessage: response.toString());
+      }
     } else if (statusCode == 404) {
       return ServerFailure(
         errorMessage: 'Your Request Not Found, Please Try Again Later!',
@@ -58,6 +64,10 @@ class ServerFailure extends Failure {
     } else if (statusCode == 500) {
       return ServerFailure(
         errorMessage: 'Internal Server Error, Please Try Again Later!',
+      );
+    } else if (statusCode == 302) {
+      return ServerFailure(
+        errorMessage: 'Redirection Error: The requested resource has moved.',
       );
     } else {
       return ServerFailure(

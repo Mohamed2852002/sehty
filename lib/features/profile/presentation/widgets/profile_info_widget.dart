@@ -4,12 +4,12 @@ import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/core/utils/widgets/icon_container.dart';
 
-class ProfileInfoSection extends StatelessWidget {
+class ProfileInfoWidget extends StatelessWidget {
   final String title;
-  final String icon; // Or path if SVG
+  final String icon;
   final Widget child;
 
-  const ProfileInfoSection({
+  const ProfileInfoWidget({
     super.key,
     required this.title,
     required this.icon,

@@ -7,7 +7,7 @@ class ChronicDiseaseModel {
 
   factory ChronicDiseaseModel.fromJson(Map<String, dynamic> json) {
     return ChronicDiseaseModel(
-      id: json['id'] as int?,
+      id: json['id'] == null ? null : int.tryParse(json['id'].toString()),
       nameAr: json['name_ar'] as String?,
       nameEn: json['name_en'] as String?,
     );

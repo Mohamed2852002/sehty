@@ -12,6 +12,7 @@
     "weightKg": "الوزن (كجم)",
     "age": "العمر",
     "male": "ذكر",
+    "female": "أنثى",
     "district": "الحي",
     "governorate": "المحافظة",
     "mobileNumber": "رقم الموبايل",
@@ -24,6 +25,8 @@
     "kidney": "الكلى",
     "heart": "القلب",
     "asthma": "الربو",
+    "cancer": "السرطان",
+    "epilepsy": "الصرع",
     "liver": "الكبد",
     "thyroid": "الغدة الدرقية",
     "arthritis": "التهاب المفاصل",
@@ -193,5 +196,15 @@
     "noAccount": "لا تمتلك حسابا؟",
     "createAccount": "إنشاء حساب",
     "from": "من",
-    "to": "إلى"
+    "to": "إلى",
+    "enter_a_value": "برجاء إدخال قيمة",
+    "phoneRequired": "رقم الهاتف مطلوب لإرسال الرمز",
+    "passwordRequired": "كلمة السر مطلوبة",
+    "dataConsentRequired": "الموافقة على البيانات مطلوبة",
+    "otpRequired": "الرمز مطلوب",
+    "logout": "تسجيل الخروج",
+    "verify": "تحقق",
+    "s": "ث",
+    "n_a": "غير معروف",
+    "retry": "إعادة المحاولة"
 }

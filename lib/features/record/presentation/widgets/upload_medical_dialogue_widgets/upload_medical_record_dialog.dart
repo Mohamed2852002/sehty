@@ -5,7 +5,7 @@ import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_button.dart';
 import 'package:sehty/core/utils/widgets/custom_dialog.dart';
 import 'package:sehty/core/utils/widgets/custom_title_and_text_form_field.dart';
-import 'package:sehty/features/auth/presentation/widgets/custom_title_and_drop_down_menu.dart';
+import 'package:sehty/core/utils/widgets/custom_title_and_drop_down_menu.dart';
 import 'package:sehty/features/record/presentation/widgets/upload_medical_dialogue_widgets/upload_area_widget.dart';
 import 'package:sehty/features/record/presentation/widgets/upload_medical_dialogue_widgets/security_note_widget.dart';
 

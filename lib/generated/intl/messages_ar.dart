@@ -73,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelShareAnytime": MessageLookupByLibrary.simpleMessage(
       "يمكنك إلغاء المشاركة في أي وقت",
     ),
+    "cancer": MessageLookupByLibrary.simpleMessage("السرطان"),
     "category": MessageLookupByLibrary.simpleMessage("التصنيف"),
     "chestXray": MessageLookupByLibrary.simpleMessage("أشعة الصدر"),
     "chronicDiseases": MessageLookupByLibrary.simpleMessage("الأمراض المزمنة"),
@@ -88,6 +89,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
     "dataConsentDescription": MessageLookupByLibrary.simpleMessage(
       "أوافق على مشاركة بياناتي الطبية مع مقدمي الرعاية الصحية المعتمدين لتحسين جودة الخدمة والرعاية الصحية المقدمة لي",
+    ),
+    "dataConsentRequired": MessageLookupByLibrary.simpleMessage(
+      "الموافقة على البيانات مطلوبة",
     ),
     "dataConsentTitle": MessageLookupByLibrary.simpleMessage(
       "الموافقة على مشاركة البيانات",
@@ -108,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterVerificationCode": MessageLookupByLibrary.simpleMessage(
       "أدخل رمز التحقق المرسل إلى",
     ),
+    "enter_a_value": MessageLookupByLibrary.simpleMessage("برجاء إدخال قيمة"),
+    "epilepsy": MessageLookupByLibrary.simpleMessage("الصرع"),
     "familyTip": MessageLookupByLibrary.simpleMessage("نصيحة:💙"),
     "familyTipNote": MessageLookupByLibrary.simpleMessage(
       "تواصل مع أحبائك بشكل دوري واسألهم عن صحتهم. الدعم النفسي والعاطفي لا يقل أهمية عن الالتزام بالأدوية",
@@ -122,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "father": MessageLookupByLibrary.simpleMessage("أب"),
     "fatherExample": MessageLookupByLibrary.simpleMessage("مثال: والدي - محمد"),
     "fatherMohamed": MessageLookupByLibrary.simpleMessage("والدي - محمد"),
+    "female": MessageLookupByLibrary.simpleMessage("أنثى"),
     "file": MessageLookupByLibrary.simpleMessage("الملف"),
     "fileName": MessageLookupByLibrary.simpleMessage("اسم الملف"),
     "fileNameExample": MessageLookupByLibrary.simpleMessage(
@@ -162,6 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "liver": MessageLookupByLibrary.simpleMessage("الكبد"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "male": MessageLookupByLibrary.simpleMessage("ذكر"),
     "manageMedications": MessageLookupByLibrary.simpleMessage(
       "إدارة أدويتك ومواعيدها",
@@ -204,6 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "minutesAgo": MessageLookupByLibrary.simpleMessage("منذ 5 دقائق"),
     "mobileNumber": MessageLookupByLibrary.simpleMessage("رقم الموبايل"),
     "motherFatima": MessageLookupByLibrary.simpleMessage("والدتي - فاطمة"),
+    "n_a": MessageLookupByLibrary.simpleMessage("غير معروف"),
     "needsFollowUp": MessageLookupByLibrary.simpleMessage("يحتاج للمتابعة"),
     "newNotifications": MessageLookupByLibrary.simpleMessage(
       "لديك 2 إشعار جديد",
@@ -221,8 +230,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "orImagePdfNote": MessageLookupByLibrary.simpleMessage(
       "أو صورة (حتى 10 ميجا) PDF",
     ),
+    "otpRequired": MessageLookupByLibrary.simpleMessage("الرمز مطلوب"),
     "panadol": MessageLookupByLibrary.simpleMessage("بنادول"),
     "passwordInput": MessageLookupByLibrary.simpleMessage("كلمة السر"),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "كلمة السر مطلوبة",
+    ),
     "patientCode": MessageLookupByLibrary.simpleMessage("كود المريض"),
     "patientNameLabel": MessageLookupByLibrary.simpleMessage(
       "اسم المريض (كما تريد أن يظهر لك)",
@@ -244,6 +257,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "phoneInput": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف"),
+    "phoneRequired": MessageLookupByLibrary.simpleMessage(
+      "رقم الهاتف مطلوب لإرسال الرمز",
+    ),
     "phoneVerifyNote": MessageLookupByLibrary.simpleMessage(
       "⚠️ تأكد من رقم الهاتف - سيتم إرسال طلب المتابعة مباشرة",
     ),
@@ -276,6 +292,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "relationType": MessageLookupByLibrary.simpleMessage("نوع القرابة"),
     "rememberNote": MessageLookupByLibrary.simpleMessage("💙 تذكّر:"),
     "reports": MessageLookupByLibrary.simpleMessage("تقارير"),
+    "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
+    "s": MessageLookupByLibrary.simpleMessage("ث"),
     "save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "scheduledAt": MessageLookupByLibrary.simpleMessage("الموعد:"),
     "schedules": MessageLookupByLibrary.simpleMessage("المواعيد:"),
@@ -326,6 +344,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "verificationCodeNote": MessageLookupByLibrary.simpleMessage(
       "💡 قد يستغرق وصول الرمز دقيقة واحدة",
     ),
+    "verify": MessageLookupByLibrary.simpleMessage("تحقق"),
     "viewMedicationDetails": MessageLookupByLibrary.simpleMessage(
       "عرض تفاصيل الأدوية",
     ),

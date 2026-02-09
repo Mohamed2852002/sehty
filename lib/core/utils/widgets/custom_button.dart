@@ -5,13 +5,13 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.content,
-    required this.onTap,
+    this.onTap,
     this.color = AppColors.primary,
     this.borderRadius = 10,
     this.verticalPadding = 10,
   });
   final Widget content;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Color color;
   final double borderRadius;
   final double verticalPadding;
@@ -29,9 +29,7 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(borderRadius),
         ),
       ),
-      onPressed: () {
-        onTap();
-      },
+      onPressed: onTap,
       child: content,
     );
   }

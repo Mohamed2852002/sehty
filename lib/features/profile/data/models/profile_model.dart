@@ -33,13 +33,15 @@ class ProfileModel {
   });
 
   factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
-    id: json['id'] as int?,
+    id: json['id'] == null ? null : int.tryParse(json['id'].toString()),
     name: json['name'] as String?,
     phone: json['phone'] as String?,
     patientCode: json['patient_code'] as String?,
-    age: (json['age'] as num?)?.toInt(),
+    age: json['age'] == null ? null : int.tryParse(json['age'].toString()),
     gender: json['gender'] as String?,
-    weight: (json['weight'] as num?)?.toDouble(),
+    weight: json['weight'] == null
+        ? null
+        : double.tryParse(json['weight'].toString()),
     governorate: json['governorate'] as String?,
     district: json['district'] as String?,
     dataSharingConsent: json['data_sharing_consent'] as bool?,

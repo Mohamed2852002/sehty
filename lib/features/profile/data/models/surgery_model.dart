@@ -7,7 +7,7 @@ class SurgeryModel {
   SurgeryModel({this.id, this.surgeryName, this.surgeryDate, this.createdAt});
 
   factory SurgeryModel.fromJson(Map<String, dynamic> json) => SurgeryModel(
-    id: json['id'] as int?,
+    id: json['id'] == null ? null : int.tryParse(json['id'].toString()),
     surgeryName: json['surgery_name'] as String?,
     surgeryDate: json['surgery_date'] as String?,
     createdAt: json['created_at'] == null

@@ -11,12 +11,12 @@ part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final HiveHelper _hiveHelper = HiveHelper.instance;
-  final ProfileRepo? profileRepo;
+  final ProfileRepo profileRepo;
 
   static const String _boxName = 'settings';
   static const String _keyLanguage = 'language';
 
-  ProfileBloc({this.profileRepo}) : super(const ProfileInitial()) {
+  ProfileBloc({required this.profileRepo}) : super(const ProfileInitial()) {
     // Language handlers
     on<ChangeLanguageEvent>(_onChangeLanguage);
     on<GetSavedLanguageEvent>(_onGetSavedLanguage);
@@ -34,7 +34,15 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     Emitter<ProfileState> emit,
   ) async {
     await _hiveHelper.put(_boxName, _keyLanguage, event.locale);
-    emit(LanguageChangedState(event.locale));
+
+    final currentState = state;
+    if (currentState is ProfileLoaded) {
+      emit(ProfileLoaded(profile: currentState.profile, locale: event.locale));
+    } else if (currentState is ProfileUpdated) {
+      emit(ProfileUpdated(profile: currentState.profile, locale: event.locale));
+    } else {
+      emit(LanguageChangedState(event.locale));
+    }
   }
 
   Future<void> _onGetSavedLanguage(
@@ -53,12 +61,15 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     GetProfileEvent event,
     Emitter<ProfileState> emit,
   ) async {
-    if (profileRepo == null) return;
-    emit(ProfileLoading(locale: state.locale));
-    final result = await profileRepo!.getProfile();
+    emit(ProfileLoading(locale: state.locale, profile: _getCurrentProfile()));
+    final result = await profileRepo.getProfile();
     result.fold(
       (failure) => emit(
-        ProfileError(message: failure.errorMessage, locale: state.locale),
+        ProfileError(
+          message: failure.errorMessage,
+          locale: state.locale,
+          profile: _getCurrentProfile(),
+        ),
       ),
       (profile) => emit(ProfileLoaded(profile: profile, locale: state.locale)),
     );
@@ -68,16 +79,24 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     UpdateProfileEvent event,
     Emitter<ProfileState> emit,
   ) async {
-    if (profileRepo == null) return;
-    emit(ProfileLoading(locale: state.locale));
-    final result = await profileRepo!.updateProfile(
+    emit(ProfileLoading(locale: state.locale, profile: _getCurrentProfile()));
+    final result = await profileRepo.updateProfile(
+      name: event.name,
+      phone: event.phone,
+      age: event.age,
+      gender: event.gender,
+      governorate: event.governorate,
       weight: event.weight,
       district: event.district,
       chronicDiseases: event.chronicDiseases,
     );
     result.fold(
       (failure) => emit(
-        ProfileError(message: failure.errorMessage, locale: state.locale),
+        ProfileError(
+          message: failure.errorMessage,
+          locale: state.locale,
+          profile: _getCurrentProfile(),
+        ),
       ),
       (profile) => emit(ProfileUpdated(profile: profile, locale: state.locale)),
     );
@@ -87,17 +106,27 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     AddSurgeryEvent event,
     Emitter<ProfileState> emit,
   ) async {
-    if (profileRepo == null) return;
-    emit(ProfileLoading(locale: state.locale));
-    final result = await profileRepo!.addSurgery(
+    final currentProfile = _getCurrentProfile();
+    emit(ProfileLoading(locale: state.locale, profile: currentProfile));
+    final result = await profileRepo.addSurgery(
       surgeryName: event.surgeryName,
       surgeryDate: event.surgeryDate,
     );
     result.fold(
       (failure) => emit(
-        ProfileError(message: failure.errorMessage, locale: state.locale),
+        ProfileError(
+          message: failure.errorMessage,
+          locale: state.locale,
+          profile: currentProfile,
+        ),
       ),
-      (surgery) => emit(SurgeryAdded(surgery: surgery, locale: state.locale)),
+      (surgery) => emit(
+        SurgeryAdded(
+          surgery: surgery,
+          profile: currentProfile,
+          locale: state.locale,
+        ),
+      ),
     );
   }
 
@@ -105,16 +134,35 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     GetChronicDiseasesEvent event,
     Emitter<ProfileState> emit,
   ) async {
-    if (profileRepo == null) return;
-    emit(ProfileLoading(locale: state.locale));
-    final result = await profileRepo!.getListOfChronicDiseases();
+    final currentProfile = _getCurrentProfile();
+    emit(ProfileLoading(locale: state.locale, profile: currentProfile));
+    final result = await profileRepo.getListOfChronicDiseases();
     result.fold(
       (failure) => emit(
-        ProfileError(message: failure.errorMessage, locale: state.locale),
+        ProfileError(
+          message: failure.errorMessage,
+          locale: state.locale,
+          profile: currentProfile,
+        ),
       ),
       (diseases) => emit(
-        ChronicDiseasesLoaded(chronicDiseases: diseases, locale: state.locale),
+        ChronicDiseasesLoaded(
+          chronicDiseases: diseases,
+          profile: currentProfile,
+          locale: state.locale,
+        ),
       ),
     );
+  }
+
+  ProfileEntity? _getCurrentProfile() {
+    final currentState = state;
+    if (currentState is ProfileLoaded) return currentState.profile;
+    if (currentState is ProfileUpdated) return currentState.profile;
+    if (currentState is ProfileLoading) return currentState.profile;
+    if (currentState is ChronicDiseasesLoaded) return currentState.profile;
+    if (currentState is SurgeryAdded) return currentState.profile;
+    if (currentState is ProfileError) return currentState.profile;
+    return null;
   }
 }

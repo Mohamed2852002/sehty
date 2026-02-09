@@ -139,6 +139,11 @@ class S {
     return Intl.message('Male', name: 'male', desc: '', args: []);
   }
 
+  /// `Female`
+  String get female {
+    return Intl.message('Female', name: 'female', desc: '', args: []);
+  }
+
   /// `District`
   String get district {
     return Intl.message('District', name: 'district', desc: '', args: []);
@@ -227,6 +232,16 @@ class S {
   /// `Asthma`
   String get asthma {
     return Intl.message('Asthma', name: 'asthma', desc: '', args: []);
+  }
+
+  /// `Cancer`
+  String get cancer {
+    return Intl.message('Cancer', name: 'cancer', desc: '', args: []);
+  }
+
+  /// `Epilepsy`
+  String get epilepsy {
+    return Intl.message('Epilepsy', name: 'epilepsy', desc: '', args: []);
   }
 
   /// `Liver`
@@ -1607,6 +1622,81 @@ class S {
   /// `to`
   String get to {
     return Intl.message('to', name: 'to', desc: '', args: []);
+  }
+
+  /// `Please enter a value`
+  String get enter_a_value {
+    return Intl.message(
+      'Please enter a value',
+      name: 'enter_a_value',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number is required to send code`
+  String get phoneRequired {
+    return Intl.message(
+      'Phone number is required to send code',
+      name: 'phoneRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required`
+  String get passwordRequired {
+    return Intl.message(
+      'Password is required',
+      name: 'passwordRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data consent is required`
+  String get dataConsentRequired {
+    return Intl.message(
+      'Data consent is required',
+      name: 'dataConsentRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OTP code is required`
+  String get otpRequired {
+    return Intl.message(
+      'OTP code is required',
+      name: 'otpRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message('Verify', name: 'verify', desc: '', args: []);
+  }
+
+  /// `S`
+  String get s {
+    return Intl.message('S', name: 's', desc: '', args: []);
+  }
+
+  /// `N/A`
+  String get n_a {
+    return Intl.message('N/A', name: 'n_a', desc: '', args: []);
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message('Retry', name: 'retry', desc: '', args: []);
   }
 }
 

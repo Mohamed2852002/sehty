@@ -75,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelShareAnytime": MessageLookupByLibrary.simpleMessage(
       "You can cancel sharing at any time",
     ),
+    "cancer": MessageLookupByLibrary.simpleMessage("Cancer"),
     "category": MessageLookupByLibrary.simpleMessage("Category"),
     "chestXray": MessageLookupByLibrary.simpleMessage("Chest X-ray"),
     "chronicDiseases": MessageLookupByLibrary.simpleMessage("Chronic Diseases"),
@@ -92,6 +93,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "dataConsentDescription": MessageLookupByLibrary.simpleMessage(
       "I agree to share my medical data with certified healthcare providers to improve the quality of service and healthcare provided to me",
+    ),
+    "dataConsentRequired": MessageLookupByLibrary.simpleMessage(
+      "Data consent is required",
     ),
     "dataConsentTitle": MessageLookupByLibrary.simpleMessage(
       "Data Sharing Consent",
@@ -112,6 +116,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterVerificationCode": MessageLookupByLibrary.simpleMessage(
       "Enter the verification code sent to",
     ),
+    "enter_a_value": MessageLookupByLibrary.simpleMessage(
+      "Please enter a value",
+    ),
+    "epilepsy": MessageLookupByLibrary.simpleMessage("Epilepsy"),
     "familyTip": MessageLookupByLibrary.simpleMessage("💙Tip:"),
     "familyTipNote": MessageLookupByLibrary.simpleMessage(
       "Communicate with your loved ones regularly and ask about their health. Emotional and psychological support is as important as medication adherence",
@@ -130,6 +138,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "fatherMohamed": MessageLookupByLibrary.simpleMessage(
       "My Father - Mohamed",
     ),
+    "female": MessageLookupByLibrary.simpleMessage("Female"),
     "file": MessageLookupByLibrary.simpleMessage("File"),
     "fileName": MessageLookupByLibrary.simpleMessage("File Name"),
     "fileNameExample": MessageLookupByLibrary.simpleMessage(
@@ -172,6 +181,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "liver": MessageLookupByLibrary.simpleMessage("Liver"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "male": MessageLookupByLibrary.simpleMessage("Male"),
     "manageMedications": MessageLookupByLibrary.simpleMessage(
       "Manage your medications and schedules",
@@ -222,6 +232,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "minutesAgo": MessageLookupByLibrary.simpleMessage("5 minutes ago"),
     "mobileNumber": MessageLookupByLibrary.simpleMessage("Mobile Number"),
     "motherFatima": MessageLookupByLibrary.simpleMessage("My Mother - Fatima"),
+    "n_a": MessageLookupByLibrary.simpleMessage("N/A"),
     "needsFollowUp": MessageLookupByLibrary.simpleMessage("Needs Follow-up"),
     "newNotifications": MessageLookupByLibrary.simpleMessage(
       "You have 2 new notifications",
@@ -241,8 +252,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "orImagePdfNote": MessageLookupByLibrary.simpleMessage(
       "or image (up to 10 MB) PDF",
     ),
+    "otpRequired": MessageLookupByLibrary.simpleMessage("OTP code is required"),
     "panadol": MessageLookupByLibrary.simpleMessage("Panadol"),
     "passwordInput": MessageLookupByLibrary.simpleMessage("Password Input"),
+    "passwordRequired": MessageLookupByLibrary.simpleMessage(
+      "Password is required",
+    ),
     "patientCode": MessageLookupByLibrary.simpleMessage("Patient Code"),
     "patientNameLabel": MessageLookupByLibrary.simpleMessage(
       "Patient Name (as you want it to appear)",
@@ -266,6 +281,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "phoneInput": MessageLookupByLibrary.simpleMessage("Phone Input"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "phoneRequired": MessageLookupByLibrary.simpleMessage(
+      "Phone number is required to send code",
+    ),
     "phoneVerifyNote": MessageLookupByLibrary.simpleMessage(
       "⚠️ Make sure the phone number is correct - the tracking request will be sent immediately",
     ),
@@ -300,6 +318,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "relationType": MessageLookupByLibrary.simpleMessage("Relationship Type"),
     "rememberNote": MessageLookupByLibrary.simpleMessage("💙 Remember:"),
     "reports": MessageLookupByLibrary.simpleMessage("Reports"),
+    "retry": MessageLookupByLibrary.simpleMessage("Retry"),
+    "s": MessageLookupByLibrary.simpleMessage("S"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "scheduledAt": MessageLookupByLibrary.simpleMessage("Scheduled:"),
     "schedules": MessageLookupByLibrary.simpleMessage("Schedules:"),
@@ -352,6 +372,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "verificationCodeNote": MessageLookupByLibrary.simpleMessage(
       "💡 The code may take up to one minute to arrive",
     ),
+    "verify": MessageLookupByLibrary.simpleMessage("Verify"),
     "viewMedicationDetails": MessageLookupByLibrary.simpleMessage(
       "View Medication Details",
     ),

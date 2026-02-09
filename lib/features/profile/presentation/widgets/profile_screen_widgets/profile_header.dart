@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sehty/core/router/routes.dart';
 
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/features/profile/presentation/bloc/profile_bloc.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});
@@ -33,8 +35,11 @@ class ProfileHeader extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {
-            context.push(Routes.editProfile);
+          onTap: () async {
+            await context.push(Routes.editProfile);
+            if (context.mounted) {
+              context.read<ProfileBloc>().add(GetProfileEvent());
+            }
           },
           borderRadius: BorderRadius.circular(12),
           child: Container(

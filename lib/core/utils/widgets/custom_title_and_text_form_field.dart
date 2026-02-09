@@ -8,9 +8,15 @@ class CustomTitleAndTextFormField extends StatelessWidget {
     super.key,
     required this.label,
     required this.hint,
+    this.keyboardType,
+    this.onSaved,
+    this.controller,
   });
   final String label;
   final String hint;
+  final TextInputType? keyboardType;
+  final Function(String?)? onSaved;
+  final TextEditingController? controller;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,7 +29,12 @@ class CustomTitleAndTextFormField extends StatelessWidget {
             context,
           ).copyWith(color: AppColors.darkColor),
         ),
-        CustomTextFormField(hint: hint),
+        CustomTextFormField(
+          hint: hint,
+          keyboardType: keyboardType,
+          onSaved: onSaved,
+          controller: controller,
+        ),
       ],
     );
   }
