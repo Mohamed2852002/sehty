@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sehty/core/di/injection_container.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/features/medication/presentation/bloc/medication_bloc.dart';
 
 import 'package:sehty/features/medication/presentation/widgets/add_medication_dialog.dart';
 
@@ -36,7 +39,10 @@ class MedicationHeader extends StatelessWidget {
           onTap: () {
             showDialog(
               context: context,
-              builder: (context) => const AddMedicationDialog(),
+              builder: (context) => BlocProvider.value(
+                value: sl<MedicationBloc>(),
+                child: const AddMedicationDialog(),
+              ),
             );
           },
           borderRadius: BorderRadius.circular(12),

@@ -1,55 +1,110 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
-
-enum MedicationStatus { taken, missed, pending }
+import 'package:sehty/features/medication/domain/entities/medication_entity.dart';
+import 'package:sehty/features/medication/presentation/bloc/medication_bloc.dart';
 
 class MedicationListItem extends StatelessWidget {
-  final String medicineName;
-  final String time;
-  final MedicationStatus status;
+  final MedicationEntity medication;
 
-  const MedicationListItem({
-    super.key,
-    required this.medicineName,
-    required this.time,
-    required this.status,
-  });
+  const MedicationListItem({super.key, required this.medication});
+
+  bool _isScheduleTaken(String scheduleTime) {
+    if (medication.logs == null || medication.logs!.isEmpty) {
+      return false;
+    }
+
+    final now = DateTime.now();
+    final today = DateFormat('yyyy-MM-dd').format(now);
+
+    for (var log in medication.logs!) {
+      if (log.scheduledAt != null) {
+        final logTime = DateFormat('HH:mm').format(log.scheduledAt!);
+        final logDate = DateFormat('yyyy-MM-dd').format(log.scheduledAt!);
+        if (logDate == today &&
+            _normalizeTime(logTime) == _normalizeTime(scheduleTime)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+
+  String _normalizeTime(String time) {
+    final parts = time.split(':');
+    if (parts.length == 2) {
+      final hour = parts[0].padLeft(2, '0');
+      final minute = parts[1].padLeft(2, '0');
+      return '$hour:$minute';
+    }
+    return time;
+  }
+
+  String? _getNextPendingSchedule() {
+    if (medication.schedules == null || medication.schedules!.isEmpty) {
+      return null;
+    }
+
+    for (var schedule in medication.schedules!) {
+      if (schedule.time != null && !_isScheduleTaken(schedule.time!)) {
+        return schedule.time;
+      }
+    }
+    return null;
+  }
+
+  String _formatTime(String time, BuildContext context) {
+    if (time.isEmpty) return '';
+    final parts = time.split(':');
+    if (parts.length != 2) return time;
+
+    try {
+      final hour = int.parse(parts[0]);
+      final minute = parts[1];
+
+      final period = hour >= 12 ? context.l10n.pm : context.l10n.am;
+      final displayHour = hour > 12 ? hour - 12 : (hour == 0 ? 12 : hour);
+
+      return '${displayHour.toString().padLeft(2, '0')}:$minute $period';
+    } catch (e) {
+      return time;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final nextPendingTime = _getNextPendingSchedule();
+    final isFullyTaken = nextPendingTime == null;
+
     Color statusColor;
+    Color borderColor;
     Color backgroundColor;
     IconData icon;
     Color iconColor;
 
-    switch (status) {
-      case MedicationStatus.taken:
-        statusColor = AppColors.greenColor;
-        backgroundColor = AppColors.greenColor.withValues(alpha: 0.05);
-        icon = Icons.check_circle_outline;
-        iconColor = AppColors.greenColor;
-        break;
-      case MedicationStatus.missed:
-        statusColor = Colors.red;
-        backgroundColor = Colors.red.withValues(alpha: 0.05);
-        icon = Icons.cancel_outlined; // Or similar
-        iconColor = Colors.red;
-        break;
-      case MedicationStatus.pending:
-        statusColor = Colors.grey;
-        backgroundColor = Colors.white; // Or similar
-        icon = Icons.circle_outlined;
-        iconColor = Colors.grey;
-        break;
+    if (isFullyTaken) {
+      statusColor = AppColors.greenColor;
+      borderColor = AppColors.greenColor.withValues(alpha: 0.2);
+      backgroundColor = AppColors.greenColor.withValues(alpha: 0.05);
+      icon = Icons.check_circle_outline;
+      iconColor = AppColors.greenColor;
+    } else {
+      statusColor = AppColors.secondary;
+      borderColor = const Color(0xffE5E7EB);
+      backgroundColor = Colors.white;
+      icon = Icons.cancel_outlined;
+      iconColor = AppColors.secondary;
     }
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: statusColor.withValues(alpha: 0.2)),
+        border: Border.all(color: borderColor),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.02),
@@ -73,20 +128,40 @@ class MedicationListItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(medicineName, style: AppStyles.styleBold16(context)),
                 Text(
-                  time,
-                  style: AppStyles.styleRegular14(
-                    context,
-                  ).copyWith(color: Colors.grey),
+                  medication.name ?? '',
+                  style: AppStyles.styleBold16(context),
                 ),
+                if (medication.schedules != null)
+                  Row(
+                    spacing: 8,
+                    children: medication.schedules!.map((schedule) {
+                      final isTaken = _isScheduleTaken(schedule.time ?? '');
+                      return Text(
+                        _formatTime(schedule.time ?? '', context),
+                        style: AppStyles.styleRegular14(context).copyWith(
+                          color: isTaken ? AppColors.greenColor : Colors.grey,
+                        ),
+                      );
+                    }).toList(),
+                  ),
               ],
             ),
           ),
-          if (status == MedicationStatus.pending) ...[
-            // Action Button
+          if (!isFullyTaken) ...[
             InkWell(
-              onTap: () {},
+              onTap: () {
+                final now = DateTime.now();
+                final dateStr = DateFormat('yyyy-MM-dd').format(now);
+                final scheduledAt = '$dateStr $nextPendingTime:00';
+
+                context.read<MedicationBloc>().add(
+                  ConfirmMedicationTakenEvent(
+                    medicineId: medication.id!,
+                    scheduledAt: scheduledAt,
+                  ),
+                );
+              },
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 12,
@@ -96,11 +171,20 @@ class MedicationListItem extends StatelessWidget {
                   color: AppColors.primary,
                   borderRadius: BorderRadius.circular(10),
                 ),
-                child: Text(
-                  context.l10n.confirmTaking,
-                  style: AppStyles.styleRegular14(
-                    context,
-                  ).copyWith(color: Colors.white),
+                child: BlocBuilder<MedicationBloc, MedicationState>(
+                  builder: (context, state) {
+                    if (state is ConfirmMedicationLoading) {
+                      return const Center(
+                        child: CircularProgressIndicator(color: Colors.white),
+                      );
+                    }
+                    return Text(
+                      context.l10n.confirmTaking,
+                      style: AppStyles.styleRegular14(
+                        context,
+                      ).copyWith(color: Colors.white),
+                    );
+                  },
                 ),
               ),
             ),

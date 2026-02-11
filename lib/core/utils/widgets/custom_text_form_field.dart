@@ -10,16 +10,22 @@ class CustomTextFormField extends StatelessWidget {
     this.onSaved,
     this.onChanged,
     this.controller,
+    this.readOnly = false,
+    this.onTap,
   });
   final String hint;
   final TextInputType? keyboardType;
   final Function(String?)? onSaved;
   final Function(String)? onChanged;
   final TextEditingController? controller;
+  final bool readOnly;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
+      readOnly: readOnly,
+      onTap: onTap,
       keyboardType: keyboardType,
       onTapOutside: (event) {
         FocusScope.of(context).unfocus();

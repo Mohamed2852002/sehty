@@ -3,34 +3,26 @@ import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_button.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_entity.dart';
 import 'package:sehty/features/monitor/presentation/widgets/medicine_bottom_sheet_widgets/patient_medication_bottom_sheet.dart';
 
 class PatientMonitorCard extends StatelessWidget {
-  final String name;
-  final String relation;
-  final String phone;
-  final String progress;
-  final double progressValue;
-  final String takenMedications;
-  final String totalMedications;
-  final Color progressColor;
-  final Color backgroundColor;
+  final FamilyMemberEntity member;
 
-  const PatientMonitorCard({
-    super.key,
-    required this.name,
-    required this.relation,
-    required this.phone,
-    required this.progress,
-    required this.progressValue,
-    required this.takenMedications,
-    required this.totalMedications,
-    required this.progressColor,
-    required this.backgroundColor,
-  });
+  const PatientMonitorCard({super.key, required this.member});
 
   @override
   Widget build(BuildContext context) {
+    final double progressValue = (member.percentage ?? 0) / 100;
+    final int percentage = member.percentage ?? 0;
+    // Determine colors based on progress (example logic, can be refined)
+    final Color progressColor = percentage >= 50
+        ? AppColors.greenColor
+        : const Color(0xffF9A825);
+    final Color backgroundColor = percentage >= 50
+        ? const Color(0xffE6F9EA)
+        : const Color(0xffFFFDE7);
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -46,12 +38,12 @@ class PatientMonitorCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '$relation - $name',
+                      '${member.relationship ?? ''} - ${member.name ?? ''}',
                       style: AppStyles.styleBold16(context),
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      phone,
+                      member.phone ?? '',
                       style: AppStyles.styleRegular12(
                         context,
                       ).copyWith(color: Colors.grey),
@@ -61,7 +53,7 @@ class PatientMonitorCard extends StatelessWidget {
                       spacing: 8,
                       children: [
                         Icon(
-                          progressValue == 1.0
+                          percentage == 100
                               ? Icons.check_circle_outline
                               : Icons.error_outline,
                           color: progressColor,
@@ -69,7 +61,7 @@ class PatientMonitorCard extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '$takenMedications ${context.l10n.addMedicine} $totalMedications ${context.l10n.medicineForToday}', // "X of Y medications today"
+                            '${member.takenToday ?? 0} ${context.l10n.addMedicine} ${member.totalToday ?? 0} ${context.l10n.medicineForToday}',
                             style: AppStyles.styleMedium14(
                               context,
                             ).copyWith(color: const Color(0xff6A7282)),
@@ -79,7 +71,7 @@ class PatientMonitorCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      '${context.l10n.weeklyCommitment} ${progressValue * 100}%',
+                      '${context.l10n.weeklyCommitment} $percentage%',
                       style: AppStyles.styleMedium14(
                         context,
                       ).copyWith(color: progressColor),
@@ -90,14 +82,14 @@ class PatientMonitorCard extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    progress,
+                    '$percentage%',
                     style: AppStyles.styleBold26(
                       context,
                     ).copyWith(color: progressColor, fontSize: 32),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    context.l10n.today, // "Today"
+                    context.l10n.today,
                     style: AppStyles.styleRegular12(
                       context,
                     ).copyWith(color: Colors.grey),
@@ -124,9 +116,7 @@ class PatientMonitorCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  context
-                      .l10n
-                      .viewMedicationDetails, // "View Medication Details"
+                  context.l10n.viewMedicationDetails,
                   style: AppStyles.styleMedium14(
                     context,
                   ).copyWith(color: AppColors.darkColor),
@@ -139,15 +129,18 @@ class PatientMonitorCard extends StatelessWidget {
               ],
             ),
             onTap: () {
-              showModalBottomSheet(
-                context: context,
-                isScrollControlled: true,
-                backgroundColor: Colors.transparent,
-                builder: (context) => PatientMedicationBottomSheet(
-                  patientName: name,
-                  phoneNumber: phone,
-                ),
-              );
+              if (member.id != null) {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,
+                  backgroundColor: Colors.transparent,
+                  builder: (context) => PatientMedicationBottomSheet(
+                    memberId: member.id!,
+                    patientName: member.name ?? '',
+                    phoneNumber: member.phone ?? '',
+                  ),
+                );
+              }
             },
           ),
         ],

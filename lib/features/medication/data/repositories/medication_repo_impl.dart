@@ -5,7 +5,9 @@ import 'package:dio/dio.dart';
 import 'package:sehty/core/errors/failure.dart';
 import 'package:sehty/features/medication/data/datasources/medication_remote_data_source.dart';
 import 'package:sehty/features/medication/data/models/medication_model/medication_model.dart';
+import 'package:sehty/features/medication/domain/entities/log_entity.dart';
 import 'package:sehty/features/medication/domain/entities/medication_entity.dart';
+import 'package:sehty/features/medication/domain/entities/schedule_entity.dart';
 import 'package:sehty/features/medication/domain/repositories/medication_repo.dart';
 
 class MedicationRepoImpl implements MedicationRepo {
@@ -27,7 +29,7 @@ class MedicationRepoImpl implements MedicationRepo {
       notes: model.notes,
       schedules: model.schedules
           ?.map(
-            (s) => ScheduleEntity(
+            (s) => MedicationScheduleEntity(
               id: s.id,
               time: s.time,
               daysOfWeek: s.daysOfWeek,
@@ -36,7 +38,7 @@ class MedicationRepoImpl implements MedicationRepo {
           .toList(),
       logs: model.logs
           ?.map(
-            (l) => LogEntity(
+            (l) => MedicationLogEntity(
               id: l.id,
               scheduledAt: l.scheduledAt,
               takenAt: l.takenAt,
@@ -97,7 +99,7 @@ class MedicationRepoImpl implements MedicationRepo {
     required String dosage,
     required int totalQuantity,
     required String startDate,
-    required List<Map<String, dynamic>> schedules,
+    required List<String> schedules, // List of time strings
   }) async {
     try {
       final response = await medicationRemoteDataSource.addMedication(

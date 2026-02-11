@@ -50,11 +50,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "addPatientNote": MessageLookupByLibrary.simpleMessage(
       "A tracking request will be sent to the patient. After acceptance, you can check on their medication adherence status",
     ),
+    "addRecordsHint": MessageLookupByLibrary.simpleMessage(
+      "Upload your medical files to keep them safe and accessible",
+    ),
     "address": MessageLookupByLibrary.simpleMessage("Address"),
     "age": MessageLookupByLibrary.simpleMessage("Age"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
+    "am": MessageLookupByLibrary.simpleMessage("AM"),
     "amlodipine": MessageLookupByLibrary.simpleMessage("Amlodipine"),
-    "analyses": MessageLookupByLibrary.simpleMessage("Analyses"),
+    "analyses": MessageLookupByLibrary.simpleMessage("Analyss"),
     "analysis": MessageLookupByLibrary.simpleMessage("Analysis"),
     "analysisLabNote": MessageLookupByLibrary.simpleMessage(
       "When selecting analysis category, a field to enter the lab name will open",
@@ -100,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dataConsentTitle": MessageLookupByLibrary.simpleMessage(
       "Data Sharing Consent",
     ),
+    "day": MessageLookupByLibrary.simpleMessage("day"),
     "days30": MessageLookupByLibrary.simpleMessage("30 days"),
     "days60": MessageLookupByLibrary.simpleMessage("60 days"),
     "days90": MessageLookupByLibrary.simpleMessage("90 days"),
@@ -243,8 +248,27 @@ class MessageLookup extends MessageLookupByLibrary {
     "noAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t Have an Account?",
     ),
+    "noAnalysisRecords": MessageLookupByLibrary.simpleMessage(
+      "No analysis records yet",
+    ),
     "noFamilyFollower": MessageLookupByLibrary.simpleMessage(
       "You haven\'t added any family follower yet",
+    ),
+    "noMedicationsAdded": MessageLookupByLibrary.simpleMessage(
+      "No medications added yet",
+    ),
+    "noMedicationsForToday": MessageLookupByLibrary.simpleMessage(
+      "No medications for today",
+    ),
+    "noPrescriptionRecords": MessageLookupByLibrary.simpleMessage(
+      "No prescriptions yet",
+    ),
+    "noRecordsFound": MessageLookupByLibrary.simpleMessage(
+      "No medical records found",
+    ),
+    "noReportsRecords": MessageLookupByLibrary.simpleMessage("No reports yet"),
+    "noXrayRecords": MessageLookupByLibrary.simpleMessage(
+      "No X-ray records yet",
     ),
     "note": MessageLookupByLibrary.simpleMessage("Note"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
@@ -287,6 +311,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneVerifyNote": MessageLookupByLibrary.simpleMessage(
       "⚠️ Make sure the phone number is correct - the tracking request will be sent immediately",
     ),
+    "placeQrCodeInFrame": MessageLookupByLibrary.simpleMessage(
+      "Place the QR code inside the frame to scan it",
+    ),
+    "pleaseSelectFile": MessageLookupByLibrary.simpleMessage(
+      "Please select a file",
+    ),
+    "pm": MessageLookupByLibrary.simpleMessage("PM"),
     "prescriptionDoctorNote": MessageLookupByLibrary.simpleMessage(
       "When selecting prescription category, a field to enter the doctor\'s name will open",
     ),
@@ -300,6 +331,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "qrCodeNote": MessageLookupByLibrary.simpleMessage(
       "Use this code for quick access to your medical record in emergencies",
+    ),
+    "qrCodeTooLarge": MessageLookupByLibrary.simpleMessage(
+      "The QR code data is too large to display as a generated code.",
     ),
     "reassureLovedOnes": MessageLookupByLibrary.simpleMessage(
       "Check on your loved ones and track their medication adherence",
@@ -321,6 +355,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry": MessageLookupByLibrary.simpleMessage("Retry"),
     "s": MessageLookupByLibrary.simpleMessage("S"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
+    "scanQrCode": MessageLookupByLibrary.simpleMessage("Scan QR Code"),
     "scheduledAt": MessageLookupByLibrary.simpleMessage("Scheduled:"),
     "schedules": MessageLookupByLibrary.simpleMessage("Schedules:"),
     "searchPatient": MessageLookupByLibrary.simpleMessage(
@@ -360,6 +395,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Today\'s Compliance Rate",
     ),
     "todaySummary": MessageLookupByLibrary.simpleMessage("Today\'s Summary"),
+    "totalQuantity": MessageLookupByLibrary.simpleMessage("Total Quantity"),
     "treatmentStart": MessageLookupByLibrary.simpleMessage("Treatment Start:"),
     "twoDaysAgo": MessageLookupByLibrary.simpleMessage("2 days ago"),
     "uploadFile": MessageLookupByLibrary.simpleMessage("Upload File"),

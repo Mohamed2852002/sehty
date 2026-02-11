@@ -11,6 +11,12 @@ class MedicationInitial extends MedicationState {}
 
 class MedicationLoading extends MedicationState {}
 
+class TodayMedicationLoading extends MedicationState {}
+
+class AddMedicationLoading extends MedicationState {}
+
+class ConfirmMedicationLoading extends MedicationState {}
+
 class MedicationsLoaded extends MedicationState {
   final List<MedicationEntity> medications;
   const MedicationsLoaded({required this.medications});
@@ -40,6 +46,30 @@ class MedicationConfirmed extends MedicationState {}
 class MedicationError extends MedicationState {
   final String message;
   const MedicationError({required this.message});
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class TodayMedicationError extends MedicationState {
+  final String message;
+  const TodayMedicationError({required this.message});
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class AddMedicationError extends MedicationState {
+  final String message;
+  const AddMedicationError({required this.message});
+
+  @override
+  List<Object?> get props => [message];
+}
+
+class ConfirmMedicationError extends MedicationState {
+  final String message;
+  const ConfirmMedicationError({required this.message});
 
   @override
   List<Object?> get props => [message];

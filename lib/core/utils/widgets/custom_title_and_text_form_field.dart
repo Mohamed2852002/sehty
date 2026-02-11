@@ -11,12 +11,16 @@ class CustomTitleAndTextFormField extends StatelessWidget {
     this.keyboardType,
     this.onSaved,
     this.controller,
+    this.readOnly = false,
+    this.onTap,
   });
   final String label;
   final String hint;
   final TextInputType? keyboardType;
   final Function(String?)? onSaved;
   final TextEditingController? controller;
+  final bool readOnly;
+  final VoidCallback? onTap;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,6 +38,8 @@ class CustomTitleAndTextFormField extends StatelessWidget {
           keyboardType: keyboardType,
           onSaved: onSaved,
           controller: controller,
+          readOnly: readOnly,
+          onTap: onTap,
         ),
       ],
     );

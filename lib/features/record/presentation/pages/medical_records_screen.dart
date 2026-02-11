@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sehty/core/utils/extensions.dart';
-import 'package:sehty/features/record/presentation/widgets/all_records_tab.dart';
-import 'package:sehty/features/record/presentation/widgets/analysis_records_tab.dart';
-import 'package:sehty/features/record/presentation/widgets/medical_record_tab_bar.dart';
-import 'package:sehty/features/record/presentation/widgets/medical_record_tab_bar_delegate.dart';
-import 'package:sehty/features/record/presentation/widgets/prescriptions_records_tab.dart';
-import 'package:sehty/features/record/presentation/widgets/record_header.dart';
-import 'package:sehty/features/record/presentation/widgets/reports_records_tab.dart';
-import 'package:sehty/features/record/presentation/widgets/security_note_card.dart';
-import 'package:sehty/features/record/presentation/widgets/xrays_records_tab.dart';
+import 'package:sehty/features/record/presentation/bloc/record_bloc.dart';
+import 'package:sehty/features/record/presentation/widgets/medical_records_screen_widgets/medical_record_tab_bar.dart';
+import 'package:sehty/features/record/presentation/widgets/medical_records_screen_widgets/medical_record_tab_bar_delegate.dart';
+import 'package:sehty/features/record/presentation/widgets/medical_records_list_widgets/medical_records_list.dart';
+import 'package:sehty/features/record/presentation/widgets/medical_records_screen_widgets/record_header.dart';
+import 'package:sehty/features/record/presentation/widgets/medical_records_screen_widgets/security_note_card.dart';
 
 class MedicalRecordsScreen extends StatelessWidget {
   const MedicalRecordsScreen({super.key});
@@ -17,7 +15,7 @@ class MedicalRecordsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<String> categories = [
       context.l10n.all,
-      context.l10n.analyses,
+      context.l10n.analysis,
       context.l10n.xrays,
       context.l10n.reports,
       context.l10n.prescriptions,
@@ -26,32 +24,29 @@ class MedicalRecordsScreen extends StatelessWidget {
     return DefaultTabController(
       length: categories.length,
       child: Scaffold(
-        body: NestedScrollView(
-          headerSliverBuilder: (context, innerBoxIsScrolled) {
-            return [
-              const SliverToBoxAdapter(
-                child: Column(
-                  spacing: 24,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [RecordHeader(), SecurityNoteCard()],
-                ),
-              ),
-              SliverPersistentHeader(
-                pinned: true,
-                delegate: MedicalRecordTabBarDelegate(
-                  child: MedicalRecordTabBar(categories: categories),
-                ),
-              ),
-            ];
+        body: RefreshIndicator(
+          onRefresh: () async {
+            context.read<RecordBloc>().add(GetMedicalRecordsEvent());
           },
-          body: const TabBarView(
-            children: [
-              AllRecordsTab(),
-              AnalysisRecordsTab(),
-              XraysRecordsTab(),
-              ReportsRecordsTab(),
-              PrescriptionsRecordsTab(),
-            ],
+          child: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                const SliverToBoxAdapter(
+                  child: Column(
+                    spacing: 24,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [RecordHeader(), SecurityNoteCard()],
+                  ),
+                ),
+                SliverPersistentHeader(
+                  pinned: true,
+                  delegate: MedicalRecordTabBarDelegate(
+                    child: MedicalRecordTabBar(categories: categories),
+                  ),
+                ),
+              ];
+            },
+            body: const MedicalRecordsList(),
           ),
         ),
       ),

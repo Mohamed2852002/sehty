@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
-
+import 'package:sehty/features/record/presentation/bloc/record_bloc.dart';
 import 'package:sehty/features/record/presentation/widgets/upload_medical_dialogue_widgets/upload_medical_record_dialog.dart';
-import 'package:sehty/features/record/presentation/widgets/medical_qr_code_dialogue_widgets/medical_qr_code_dialog.dart';
+import 'package:sehty/features/record/presentation/widgets/medical_qr_code_dialogue_widgets/medical_qr_scanner_dialog.dart';
 
 class RecordHeader extends StatelessWidget {
   const RecordHeader({super.key});
@@ -35,11 +36,18 @@ class RecordHeader extends StatelessWidget {
           spacing: 8,
           children: [
             InkWell(
-              onTap: () {
-                showDialog(
+              onTap: () async {
+                final recordBloc = context.read<RecordBloc>();
+                final result = await showDialog<bool>(
                   context: context,
-                  builder: (context) => const UploadMedicalRecordDialog(),
+                  builder: (_) => BlocProvider.value(
+                    value: recordBloc,
+                    child: const UploadMedicalRecordDialog(),
+                  ),
                 );
+                if (result == true) {
+                  recordBloc.add(GetMedicalRecordsEvent());
+                }
               },
               borderRadius: BorderRadius.circular(12),
               child: Container(
@@ -62,28 +70,28 @@ class RecordHeader extends StatelessWidget {
                 ),
               ),
             ),
-            InkWell(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const MedicalQrCodeDialog(),
-                );
-              },
-              borderRadius: BorderRadius.circular(12),
-              child: Container(
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.primary),
-                ),
-                child: const Icon(
-                  Icons.qr_code_2,
-                  color: AppColors.primary,
-                  size: 24,
-                ),
-              ),
-            ),
+            // InkWell(
+            //   onTap: () {
+            //     showDialog(
+            //       context: context,
+            //       builder: (context) => const MedicalQrScannerDialog(),
+            //     );
+            //   },
+            //   borderRadius: BorderRadius.circular(12),
+            //   child: Container(
+            //     padding: const EdgeInsets.all(12),
+            //     decoration: BoxDecoration(
+            //       color: Colors.white,
+            //       borderRadius: BorderRadius.circular(12),
+            //       border: Border.all(color: AppColors.primary),
+            //     ),
+            //     child: const Icon(
+            //       Icons.qr_code_2,
+            //       color: AppColors.primary,
+            //       size: 24,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ],

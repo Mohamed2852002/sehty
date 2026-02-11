@@ -48,9 +48,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "addPatientNote": MessageLookupByLibrary.simpleMessage(
       "سيتم إرسال طلب متابعة للمريض. بعد قبوله، ستتمكن من الاطمئنان على حالة التزامه بالأدوية",
     ),
+    "addRecordsHint": MessageLookupByLibrary.simpleMessage(
+      "ارفع ملفاتك الطبية للحفاظ عليها آمنة وسهلة الوصول",
+    ),
     "address": MessageLookupByLibrary.simpleMessage("العنوان"),
     "age": MessageLookupByLibrary.simpleMessage("العمر"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
+    "am": MessageLookupByLibrary.simpleMessage("صباحاً"),
     "amlodipine": MessageLookupByLibrary.simpleMessage("أملوديبين"),
     "analyses": MessageLookupByLibrary.simpleMessage("تحاليل"),
     "analysis": MessageLookupByLibrary.simpleMessage("تحليل"),
@@ -96,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "dataConsentTitle": MessageLookupByLibrary.simpleMessage(
       "الموافقة على مشاركة البيانات",
     ),
+    "day": MessageLookupByLibrary.simpleMessage("يوم"),
     "days30": MessageLookupByLibrary.simpleMessage("30 يوم"),
     "days60": MessageLookupByLibrary.simpleMessage("60 يوم"),
     "days90": MessageLookupByLibrary.simpleMessage("90 يوم"),
@@ -221,9 +226,28 @@ class MessageLookup extends MessageLookupByLibrary {
       "التالي - تأكيد رقم الهاتف",
     ),
     "noAccount": MessageLookupByLibrary.simpleMessage("لا تمتلك حسابا؟"),
+    "noAnalysisRecords": MessageLookupByLibrary.simpleMessage(
+      "لا توجد تحاليل بعد",
+    ),
     "noFamilyFollower": MessageLookupByLibrary.simpleMessage(
       "لم تضف أي متابع عائلي بعد",
     ),
+    "noMedicationsAdded": MessageLookupByLibrary.simpleMessage(
+      "لم يتم إضافة أدوية بعد",
+    ),
+    "noMedicationsForToday": MessageLookupByLibrary.simpleMessage(
+      "لا توجد أدوية لليوم",
+    ),
+    "noPrescriptionRecords": MessageLookupByLibrary.simpleMessage(
+      "لا توجد روشتات بعد",
+    ),
+    "noRecordsFound": MessageLookupByLibrary.simpleMessage(
+      "لا توجد سجلات طبية",
+    ),
+    "noReportsRecords": MessageLookupByLibrary.simpleMessage(
+      "لا توجد تقارير بعد",
+    ),
+    "noXrayRecords": MessageLookupByLibrary.simpleMessage("لا توجد أشعة بعد"),
     "note": MessageLookupByLibrary.simpleMessage("ملحوظة"),
     "notifications": MessageLookupByLibrary.simpleMessage("الإشعارات"),
     "ofMedications": MessageLookupByLibrary.simpleMessage("من 3 أدوية"),
@@ -263,6 +287,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "phoneVerifyNote": MessageLookupByLibrary.simpleMessage(
       "⚠️ تأكد من رقم الهاتف - سيتم إرسال طلب المتابعة مباشرة",
     ),
+    "placeQrCodeInFrame": MessageLookupByLibrary.simpleMessage(
+      "ضع رمز QR داخل الإطار لمسحه",
+    ),
+    "pleaseSelectFile": MessageLookupByLibrary.simpleMessage(
+      "الرجاء اختيار ملف",
+    ),
+    "pm": MessageLookupByLibrary.simpleMessage("مساءً"),
     "prescriptionDoctorNote": MessageLookupByLibrary.simpleMessage(
       "في حالة اختيار التصنيف روشتة بيتم فتح حقل كتابة اسم الطبيب",
     ),
@@ -274,6 +305,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "qrCodeNote": MessageLookupByLibrary.simpleMessage(
       "استخدم هذا الرمز للوصول السريع لسجلك الطبي في حالات الطوارئ",
+    ),
+    "qrCodeTooLarge": MessageLookupByLibrary.simpleMessage(
+      "بيانات رمز QR كبيرة جداً للعرض كرمز مولد.",
     ),
     "reassureLovedOnes": MessageLookupByLibrary.simpleMessage(
       "اطمئن على أحبائك وتابع التزامهم بالأدوية",
@@ -295,6 +329,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "retry": MessageLookupByLibrary.simpleMessage("إعادة المحاولة"),
     "s": MessageLookupByLibrary.simpleMessage("ث"),
     "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+    "scanQrCode": MessageLookupByLibrary.simpleMessage("مسح رمز QR"),
     "scheduledAt": MessageLookupByLibrary.simpleMessage("الموعد:"),
     "schedules": MessageLookupByLibrary.simpleMessage("المواعيد:"),
     "searchPatient": MessageLookupByLibrary.simpleMessage(
@@ -334,6 +369,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "نسبة الالتزام اليوم",
     ),
     "todaySummary": MessageLookupByLibrary.simpleMessage("ملخص اليوم"),
+    "totalQuantity": MessageLookupByLibrary.simpleMessage("الكمية الإجمالية"),
     "treatmentStart": MessageLookupByLibrary.simpleMessage("بداية العلاج:"),
     "twoDaysAgo": MessageLookupByLibrary.simpleMessage("منذ يومين"),
     "uploadFile": MessageLookupByLibrary.simpleMessage("رفع الملف"),

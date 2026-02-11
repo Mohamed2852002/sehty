@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:sehty/features/monitor/domain/entities/monitor_entities.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_entity.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_medication/family_member_medication_entity.dart';
 import 'package:sehty/features/monitor/domain/repositories/monitor_repo.dart';
 
 part 'monitor_event.dart';

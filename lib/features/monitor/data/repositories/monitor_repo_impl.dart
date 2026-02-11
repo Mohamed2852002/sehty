@@ -8,7 +8,10 @@ import 'package:sehty/features/monitor/data/models/family_member_model/family_me
 import 'package:sehty/features/monitor/data/models/family_member_model/patient.dart';
 import 'package:sehty/features/monitor/data/models/family_member_medications_model/family_member_medications_model.dart';
 import 'package:sehty/features/monitor/data/models/family_member_medications_model/statistics.dart';
-import 'package:sehty/features/monitor/domain/entities/monitor_entities.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_entity.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_medication/family_member_medication_entity.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_medication/patient_entitiy.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_medication/statistics_entity.dart';
 import 'package:sehty/features/monitor/domain/repositories/monitor_repo.dart';
 
 class MonitorRepoImpl implements MonitorRepo {
@@ -70,7 +73,15 @@ class MonitorRepoImpl implements MonitorRepo {
       final response = await monitorRemoteDataSource
           .getListOfFamilyConnections();
       log('Response in getListOfFamilyConnections: $response');
-      final List<dynamic> data = response['data'] ?? [];
+      final dynamic rawData = response['data'];
+      List<dynamic> data = [];
+      if (rawData is List) {
+        data = rawData;
+      } else if (rawData is Map) {
+        data =
+            (rawData['connections'] ?? rawData['data'] ?? []) as List<dynamic>;
+      }
+
       final members = data
           .map(
             (json) =>

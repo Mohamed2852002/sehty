@@ -914,9 +914,9 @@ class S {
     return Intl.message('X-rays', name: 'xrays', desc: '', args: []);
   }
 
-  /// `Analyses`
+  /// `Analyss`
   String get analyses {
-    return Intl.message('Analyses', name: 'analyses', desc: '', args: []);
+    return Intl.message('Analyss', name: 'analyses', desc: '', args: []);
   }
 
   /// `All`
@@ -1694,9 +1694,149 @@ class S {
     return Intl.message('N/A', name: 'n_a', desc: '', args: []);
   }
 
+  /// `day`
+  String get day {
+    return Intl.message('day', name: 'day', desc: '', args: []);
+  }
+
   /// `Retry`
   String get retry {
     return Intl.message('Retry', name: 'retry', desc: '', args: []);
+  }
+
+  /// `No medications added yet`
+  String get noMedicationsAdded {
+    return Intl.message(
+      'No medications added yet',
+      name: 'noMedicationsAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Quantity`
+  String get totalQuantity {
+    return Intl.message(
+      'Total Quantity',
+      name: 'totalQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No medications for today`
+  String get noMedicationsForToday {
+    return Intl.message(
+      'No medications for today',
+      name: 'noMedicationsForToday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AM`
+  String get am {
+    return Intl.message('AM', name: 'am', desc: '', args: []);
+  }
+
+  /// `PM`
+  String get pm {
+    return Intl.message('PM', name: 'pm', desc: '', args: []);
+  }
+
+  /// `No medical records found`
+  String get noRecordsFound {
+    return Intl.message(
+      'No medical records found',
+      name: 'noRecordsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No analysis records yet`
+  String get noAnalysisRecords {
+    return Intl.message(
+      'No analysis records yet',
+      name: 'noAnalysisRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No X-ray records yet`
+  String get noXrayRecords {
+    return Intl.message(
+      'No X-ray records yet',
+      name: 'noXrayRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No reports yet`
+  String get noReportsRecords {
+    return Intl.message(
+      'No reports yet',
+      name: 'noReportsRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No prescriptions yet`
+  String get noPrescriptionRecords {
+    return Intl.message(
+      'No prescriptions yet',
+      name: 'noPrescriptionRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload your medical files to keep them safe and accessible`
+  String get addRecordsHint {
+    return Intl.message(
+      'Upload your medical files to keep them safe and accessible',
+      name: 'addRecordsHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan QR Code`
+  String get scanQrCode {
+    return Intl.message('Scan QR Code', name: 'scanQrCode', desc: '', args: []);
+  }
+
+  /// `Place the QR code inside the frame to scan it`
+  String get placeQrCodeInFrame {
+    return Intl.message(
+      'Place the QR code inside the frame to scan it',
+      name: 'placeQrCodeInFrame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The QR code data is too large to display as a generated code.`
+  String get qrCodeTooLarge {
+    return Intl.message(
+      'The QR code data is too large to display as a generated code.',
+      name: 'qrCodeTooLarge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a file`
+  String get pleaseSelectFile {
+    return Intl.message(
+      'Please select a file',
+      name: 'pleaseSelectFile',
+      desc: '',
+      args: [],
+    );
   }
 }
 

@@ -9,7 +9,7 @@ class MedicationModel {
   int? remainingQuantity;
   double? percentage;
   String? startDate;
-  dynamic endDate;
+  DateTime? endDate;
   bool? isActive;
   dynamic notes;
   List<Schedule>? schedules;
@@ -41,7 +41,9 @@ class MedicationModel {
         remainingQuantity: json['remaining_quantity'] as int?,
         percentage: (json['percentage'] as num?)?.toDouble(),
         startDate: json['start_date'] as String?,
-        endDate: json['end_date'] as dynamic,
+        endDate: json['end_date'] == null
+            ? null
+            : DateTime.parse(json['end_date'] as String),
         isActive: json['is_active'] as bool?,
         notes: json['notes'] as dynamic,
         schedules: (json['schedules'] as List<dynamic>?)
@@ -63,7 +65,7 @@ class MedicationModel {
     'remaining_quantity': remainingQuantity,
     'percentage': percentage,
     'start_date': startDate,
-    'end_date': endDate,
+    'end_date': endDate?.toIso8601String(),
     'is_active': isActive,
     'notes': notes,
     'schedules': schedules?.map((e) => e.toJson()).toList(),

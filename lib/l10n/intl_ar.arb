@@ -206,5 +206,21 @@
     "verify": "تحقق",
     "s": "ث",
     "n_a": "غير معروف",
-    "retry": "إعادة المحاولة"
+    "day": "يوم",
+    "retry": "إعادة المحاولة",
+    "noMedicationsAdded": "لم يتم إضافة أدوية بعد",
+    "totalQuantity": "الكمية الإجمالية",
+    "noMedicationsForToday": "لا توجد أدوية لليوم",
+    "am": "صباحاً",
+    "pm": "مساءً",
+    "noRecordsFound": "لا توجد سجلات طبية",
+    "noAnalysisRecords": "لا توجد تحاليل بعد",
+    "noXrayRecords": "لا توجد أشعة بعد",
+    "noReportsRecords": "لا توجد تقارير بعد",
+    "noPrescriptionRecords": "لا توجد روشتات بعد",
+    "addRecordsHint": "ارفع ملفاتك الطبية للحفاظ عليها آمنة وسهلة الوصول",
+    "scanQrCode": "مسح رمز QR",
+    "placeQrCodeInFrame": "ضع رمز QR داخل الإطار لمسحه",
+    "qrCodeTooLarge": "بيانات رمز QR كبيرة جداً للعرض كرمز مولد.",
+    "pleaseSelectFile":"الرجاء اختيار ملف"
 }
