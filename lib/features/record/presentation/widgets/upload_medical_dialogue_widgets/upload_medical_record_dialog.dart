@@ -31,6 +31,7 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
   String? _selectedFilePath;
   String? _selectedFileName;
   bool _isUploading = false;
+  bool _showFileError = false;
 
   // Map category display names to API values
   static const Map<String, String> _categoryToFileType = {
@@ -67,6 +68,10 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
     return _getFileTypeForCategory(context, _selectedCategory) == 'lab_test';
   }
 
+  bool _isXrays(BuildContext context) {
+    return _getFileTypeForCategory(context, _selectedCategory) == 'radiology';
+  }
+
   Future<void> _pickFile() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
@@ -76,17 +81,16 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
       setState(() {
         _selectedFilePath = result.files.single.path;
         _selectedFileName = result.files.single.name;
+        _showFileError = false;
       });
     }
   }
 
-  void _uploadFile() {
+  void _uploadFile(BuildContext context) {
     if (_selectedFilePath == null) {
-      AppFunctions.showCustomSnackBar(
-        context,
-        context.l10n.pleaseSelectFile,
-        backgroundColor: Colors.red,
-      );
+      setState(() {
+        _showFileError = true;
+      });
       return;
     }
 
@@ -119,12 +123,12 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
   Widget build(BuildContext context) {
     return BlocListener<RecordBloc, RecordState>(
       listener: (context, state) {
-        if (state is RecordLoading) {
+        if (state is UploadMedicalRecordLoading) {
           setState(() => _isUploading = true);
         } else if (state is MedicalRecordUploaded) {
           setState(() => _isUploading = false);
           Navigator.pop(context, true);
-        } else if (state is RecordError) {
+        } else if (state is UploadMedicalRecordError) {
           setState(() => _isUploading = false);
           AppFunctions.showCustomSnackBar(
             context,
@@ -182,13 +186,11 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
                   padding: const EdgeInsets.only(bottom: 20),
                   child: CustomTitleAndTextFormField(
                     controller: _labNameController,
-                    label: context.l10n.doctorReport
-                        .split(' ')
-                        .first, // "Doctor"
-                    hint: context.l10n.fatherExample, // placeholder
+                    label: context.l10n.doctorName,
+                    hint: context.l10n.doctorReportExample,
                   ),
                 ),
-              if (_isAnalysis(context))
+              if (_isAnalysis(context) || _isXrays(context))
                 Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: CustomTitleAndTextFormField(
@@ -200,6 +202,8 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
               UploadAreaWidget(
                 onTap: _isUploading ? null : _pickFile,
                 selectedFileName: _selectedFileName,
+                showError: _showFileError,
+                errorMessage: context.l10n.pleaseSelectFile,
               ),
               const SizedBox(height: 24),
               const SecurityNoteWidget(),
@@ -226,7 +230,7 @@ class _UploadMedicalRecordDialogState extends State<UploadMedicalRecordDialog> {
                             ),
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          _uploadFile();
+                          _uploadFile(context);
                         } else {
                           setState(() {
                             _autoValidateMode = AutovalidateMode.always;

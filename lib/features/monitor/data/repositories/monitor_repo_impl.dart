@@ -8,6 +8,8 @@ import 'package:sehty/features/monitor/data/models/family_member_model/family_me
 import 'package:sehty/features/monitor/data/models/family_member_model/patient.dart';
 import 'package:sehty/features/monitor/data/models/family_member_medications_model/family_member_medications_model.dart';
 import 'package:sehty/features/monitor/data/models/family_member_medications_model/statistics.dart';
+import 'package:sehty/features/monitor/data/models/family_member_model/family_connection.dart';
+import 'package:sehty/features/monitor/domain/entities/family_connection_entity.dart';
 import 'package:sehty/features/monitor/domain/entities/family_member_entity.dart';
 import 'package:sehty/features/monitor/domain/entities/family_member_medication/family_member_medication_entity.dart';
 import 'package:sehty/features/monitor/domain/entities/family_member_medication/patient_entitiy.dart';
@@ -67,28 +69,19 @@ class MonitorRepoImpl implements MonitorRepo {
   }
 
   @override
-  Future<Either<Failure, List<FamilyMemberEntity>>>
+  Future<Either<Failure, FamilyConnectionEntity>>
   getListOfFamilyConnections() async {
     try {
       final response = await monitorRemoteDataSource
           .getListOfFamilyConnections();
       log('Response in getListOfFamilyConnections: $response');
       final dynamic rawData = response['data'];
-      List<dynamic> data = [];
-      if (rawData is List) {
-        data = rawData;
-      } else if (rawData is Map) {
-        data =
-            (rawData['connections'] ?? rawData['data'] ?? []) as List<dynamic>;
-      }
 
-      final members = data
-          .map(
-            (json) =>
-                _mapFamilyMemberModelToEntity(FamilyMemberModel.fromJson(json)),
-          )
-          .toList();
-      return Right(members);
+      final familyConnection = FamilyConnection.fromJson(
+        rawData as Map<String, dynamic>,
+      );
+
+      return Right(familyConnection.toEntity(_mapFamilyMemberModelToEntity));
     } on DioException catch (e) {
       log(
         'Error in MonitorRepoImpl : getListOfFamilyConnections: ${e.toString()}',

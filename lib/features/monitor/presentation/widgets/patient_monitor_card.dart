@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sehty/core/di/injection_container.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_button.dart';
 import 'package:sehty/features/monitor/domain/entities/family_member_entity.dart';
+import 'package:sehty/features/monitor/presentation/bloc/monitor_bloc.dart';
 import 'package:sehty/features/monitor/presentation/widgets/medicine_bottom_sheet_widgets/patient_medication_bottom_sheet.dart';
 
 class PatientMonitorCard extends StatelessWidget {
@@ -61,7 +64,7 @@ class PatientMonitorCard extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '${member.takenToday ?? 0} ${context.l10n.addMedicine} ${member.totalToday ?? 0} ${context.l10n.medicineForToday}',
+                            '${member.takenToday ?? 0} ${context.l10n.from} ${member.totalToday ?? 0} ${context.l10n.medicineForToday}',
                             style: AppStyles.styleMedium14(
                               context,
                             ).copyWith(color: const Color(0xff6A7282)),
@@ -134,10 +137,13 @@ class PatientMonitorCard extends StatelessWidget {
                   context: context,
                   isScrollControlled: true,
                   backgroundColor: Colors.transparent,
-                  builder: (context) => PatientMedicationBottomSheet(
-                    memberId: member.id!,
-                    patientName: member.name ?? '',
-                    phoneNumber: member.phone ?? '',
+                  builder: (context) => BlocProvider.value(
+                    value: sl<MonitorBloc>(),
+                    child: PatientMedicationBottomSheet(
+                      memberId: member.id!,
+                      patientName: member.name ?? '',
+                      phoneNumber: member.phone ?? '',
+                    ),
                   ),
                 );
               }

@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:sehty/core/errors/failure.dart';
 import 'package:sehty/features/record/domain/entities/medical_record_entity.dart';
+import 'package:sehty/features/record/domain/entities/shared_medical_record_entity.dart';
+import 'package:sehty/features/record/domain/entities/shared_record_info_entity.dart';
 
 abstract class RecordRepo {
   Future<Either<Failure, List<MedicalRecordEntity>>> getListOfMedicalRecords();
@@ -14,5 +16,11 @@ abstract class RecordRepo {
     required String name,
   });
 
-  Future<Either<Failure, Unit>> shareMedicalRecord({required int recordId});
+  Future<Either<Failure, SharedRecordInfoEntity>> shareMedicalRecord({
+    required int recordId,
+  });
+
+  Future<Either<Failure, SharedMedicalRecordEntity>> getSharedMedicalRecord({
+    required String shareToken,
+  });
 }

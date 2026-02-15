@@ -908,7 +908,7 @@ class EgyptGovernorates {
       "id": "130",
       "governorate_id": "3",
       "city_name_ar": "الساحل الشمالي",
-      "city_name_en": "North Coast\/sahel",
+      "city_name_en": "North Coast/sahel",
     },
     {
       "id": "131",

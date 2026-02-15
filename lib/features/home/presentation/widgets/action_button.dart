@@ -5,7 +5,12 @@ import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 
 class ActionButton extends StatelessWidget {
-  const ActionButton({super.key, required this.title, required this.icon, required this.onTap});
+  const ActionButton({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  });
 
   final String title;
   final String icon;

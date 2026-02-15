@@ -24,10 +24,6 @@ class XraysRecordsTab extends StatelessWidget {
           .map(
             (record) => MedicalRecordCard(
               record: record,
-              title: record.name ?? '',
-              date: record.recordDate ?? '',
-              type: context.l10n.xrays,
-              icon: Icons.image_outlined,
             ),
           )
           .toList(),

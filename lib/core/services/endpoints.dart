@@ -6,6 +6,9 @@ class Endpoints {
   static const String register = "register";
   static const String logout = "logout";
 
+  // home endpoints
+  static const String homeDashboard = 'home';
+
   // profile endpoints
   static const String getProfile = "profile";
   static const String updateProfile = "profile";
@@ -33,6 +36,8 @@ class Endpoints {
   static const String uploadMedicalRecord = "medical-records";
   static String shareMedicalRecord(int recordId) =>
       "medical-records/$recordId/share";
+  static String getSharedMedicalRecord(String shareToken) =>
+      "shared/records/$shareToken";
 
   // notifications endpoints
   static const String getListOfNotifications = "notifications";

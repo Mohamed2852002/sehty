@@ -11,19 +11,34 @@ import 'package:sehty/features/record/presentation/widgets/medical_qr_code_dialo
 
 class MedicalRecordCard extends StatelessWidget {
   final MedicalRecordEntity record;
-  final String title;
-  final String date;
-  final String type;
-  final IconData icon;
 
-  const MedicalRecordCard({
-    super.key,
-    required this.record,
-    required this.title,
-    required this.date,
-    required this.type,
-    required this.icon,
-  });
+  const MedicalRecordCard({super.key, required this.record});
+
+  String _getTypeLabel(BuildContext context, String? fileType) {
+    switch (fileType) {
+      case 'lab_test':
+        return context.l10n.analysis;
+      case 'radiology':
+        return context.l10n.xrays;
+      case 'prescription':
+        return context.l10n.prescriptions;
+      default:
+        return context.l10n.reports;
+    }
+  }
+
+  IconData _getTypeIcon(String? fileType) {
+    switch (fileType) {
+      case 'lab_test':
+        return Icons.description_outlined;
+      case 'radiology':
+        return Icons.image_outlined;
+      case 'prescription':
+        return Icons.medication_outlined;
+      default:
+        return Icons.assignment_outlined;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +52,29 @@ class MedicalRecordCard extends StatelessWidget {
                   spacing: 8,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title, style: AppStyles.styleBold16(context)),
+                    Text(
+                      record.name ?? '',
+                      style: AppStyles.styleBold16(context),
+                    ),
+                    if (record.labName != null || record.doctorName != null)
+                      Column(
+                        children: [
+                          if (record.labName != null)
+                            Text(
+                              record.labName ?? '',
+                              style: AppStyles.styleBold12(
+                                context,
+                              ).copyWith(color: Colors.grey),
+                            ),
+                          if (record.doctorName != null)
+                            Text(
+                              record.doctorName ?? '',
+                              style: AppStyles.styleBold12(
+                                context,
+                              ).copyWith(color: Colors.grey),
+                            ),
+                        ],
+                      ),
                     Container(
                       padding: const EdgeInsets.symmetric(
                         horizontal: 8,
@@ -48,14 +85,14 @@ class MedicalRecordCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(
-                        type,
+                        _getTypeLabel(context, record.fileType),
                         style: AppStyles.styleRegular12(
                           context,
                         ).copyWith(color: AppColors.primary),
                       ),
                     ),
                     Text(
-                      date,
+                      record.recordDate ?? '',
                       style: AppStyles.styleRegular12(
                         context,
                       ).copyWith(color: Colors.grey),
@@ -69,7 +106,11 @@ class MedicalRecordCard extends StatelessWidget {
                   color: const Color(0xffE0F7FA),
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: Icon(icon, color: AppColors.primary, size: 24),
+                child: Icon(
+                  _getTypeIcon(record.fileType),
+                  color: AppColors.primary,
+                  size: 24,
+                ),
               ),
             ],
           ),
@@ -111,25 +152,25 @@ class MedicalRecordCard extends StatelessWidget {
                   },
                 ),
               ),
-              Expanded(
-                child: CustomButton(
-                  content: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.download, color: AppColors.darkColor),
-                      const SizedBox(width: 8),
-                      Text(
-                        context.l10n.download, // "Download"
-                        style: AppStyles.styleMedium14(
-                          context,
-                        ).copyWith(color: AppColors.darkColor),
-                      ),
-                    ],
-                  ),
-                  color: AppColors.greyButtonColor,
-                  onTap: () {},
-                ),
-              ),
+              // Expanded(
+              //   child: CustomButton(
+              //     content: Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: [
+              //         const Icon(Icons.download, color: AppColors.darkColor),
+              //         const SizedBox(width: 8),
+              //         Text(
+              //           context.l10n.download, // "Download"
+              //           style: AppStyles.styleMedium14(
+              //             context,
+              //           ).copyWith(color: AppColors.darkColor),
+              //         ),
+              //       ],
+              //     ),
+              //     color: AppColors.greyButtonColor,
+              //     onTap: () {},
+              //   ),
+              // ),
             ],
           ),
         ],

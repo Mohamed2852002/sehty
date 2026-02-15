@@ -46,6 +46,13 @@ class _OtpVerficationScreenState extends State<OtpVerficationScreen> {
         FocusScope.of(context).requestFocus(_focusNodes[index + 1]);
       } else {
         FocusScope.of(context).unfocus();
+        // Construct code immediately to ensure we have the latest value
+        final code = _controllers.map((e) => e.text).join();
+        if (code.length == 6) {
+          context.read<AuthBloc>().add(
+            LoginEvent(phone: widget.phone, otp: code),
+          );
+        }
       }
     }
     _updateOtpCode();

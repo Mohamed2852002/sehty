@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/features/monitor/presentation/bloc/monitor_bloc.dart';
 import 'package:sehty/features/monitor/presentation/widgets/medicine_bottom_sheet_widgets/medication_compliance_summary.dart';
 import 'package:sehty/features/monitor/presentation/widgets/medicine_bottom_sheet_widgets/medication_item_widget.dart';
@@ -62,7 +63,7 @@ class _PatientMedicationBottomSheetState
                     crossAxisAlignment: .start,
                     children: [
                       Text(
-                        'أدوية ${widget.patientName}',
+                        '${context.l10n.medications} ${widget.patientName}',
                         style: AppStyles.styleBold20(context),
                       ),
                       Text(
@@ -83,10 +84,14 @@ class _PatientMedicationBottomSheetState
             const SizedBox(height: 16),
             Expanded(
               child: BlocBuilder<MonitorBloc, MonitorState>(
+                buildWhen: (previous, current) =>
+                    current is FamilyMemberMedicationsLoaded ||
+                    current is FamilyMemberMedicationsLoading ||
+                    current is FamilyMemberMedicationsError,
                 builder: (context, state) {
-                  if (state is MonitorLoading) {
+                  if (state is FamilyMemberMedicationsLoading) {
                     return const Center(child: CircularProgressIndicator());
-                  } else if (state is MonitorError) {
+                  } else if (state is FamilyMemberMedicationsError) {
                     return Center(child: Text(state.message));
                   } else if (state is FamilyMemberMedicationsLoaded) {
                     final stats = state.memberMedications.statistics;

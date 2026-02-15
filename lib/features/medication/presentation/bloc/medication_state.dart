@@ -15,7 +15,13 @@ class TodayMedicationLoading extends MedicationState {}
 
 class AddMedicationLoading extends MedicationState {}
 
-class ConfirmMedicationLoading extends MedicationState {}
+class ConfirmMedicationLoading extends MedicationState {
+  final int medicineId;
+  const ConfirmMedicationLoading({required this.medicineId});
+
+  @override
+  List<Object?> get props => [medicineId];
+}
 
 class MedicationsLoaded extends MedicationState {
   final List<MedicationEntity> medications;

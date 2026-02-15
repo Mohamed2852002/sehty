@@ -222,5 +222,8 @@
     "scanQrCode": "مسح رمز QR",
     "placeQrCodeInFrame": "ضع رمز QR داخل الإطار لمسحه",
     "qrCodeTooLarge": "بيانات رمز QR كبيرة جداً للعرض كرمز مولد.",
-    "pleaseSelectFile":"الرجاء اختيار ملف"
+    "pleaseSelectFile":"الرجاء اختيار ملف",
+    "noPatientsFound": "لا يوجد مرضى",
+    "doctorReportExample": "مثال: دكتور محسن",
+    "doctorName": "اسم الدكتور"
 }

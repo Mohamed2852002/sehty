@@ -222,5 +222,8 @@
     "scanQrCode": "Scan QR Code",
     "placeQrCodeInFrame": "Place the QR code inside the frame to scan it",
     "qrCodeTooLarge": "The QR code data is too large to display as a generated code.",
-    "pleaseSelectFile": "Please select a file"
+    "pleaseSelectFile": "Please select a file",
+    "noPatientsFound": "No patients found",
+    "doctorReportExample": "Example: Dr. Smith",
+    "doctorName": "Doctor Name"
 }

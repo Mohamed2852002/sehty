@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sehty/core/themes/app_colors.dart';
+import 'package:sehty/core/utils/app_functions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/widgets/custom_button.dart';
 import 'package:sehty/features/home/presentation/widgets/medication_list_item.dart';
 import 'package:sehty/features/medication/presentation/bloc/medication_bloc.dart';
 
-class MedicationList extends StatefulWidget {
+class MedicationList extends StatelessWidget {
   const MedicationList({super.key});
-
-  @override
-  State<MedicationList> createState() => _MedicationListState();
-}
-
-class _MedicationListState extends State<MedicationList> {
-  @override
-  void initState() {
-    super.initState();
-    context.read<MedicationBloc>().add(GetTodayMedicationsEvent());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +18,10 @@ class _MedicationListState extends State<MedicationList> {
         if (state is MedicationConfirmed) {
           context.read<MedicationBloc>().add(GetTodayMedicationsEvent());
         } else if (state is ConfirmMedicationError) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.message),
-              backgroundColor: AppColors.secondary,
-            ),
+          AppFunctions.showCustomSnackBar(
+            context,
+            state.message,
+            backgroundColor: AppColors.secondary,
           );
         }
       },

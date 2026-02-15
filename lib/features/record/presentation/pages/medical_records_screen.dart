@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sehty/core/utils/extensions.dart';
-import 'package:sehty/features/record/presentation/bloc/record_bloc.dart';
 import 'package:sehty/features/record/presentation/widgets/medical_records_screen_widgets/medical_record_tab_bar.dart';
 import 'package:sehty/features/record/presentation/widgets/medical_records_screen_widgets/medical_record_tab_bar_delegate.dart';
 import 'package:sehty/features/record/presentation/widgets/medical_records_list_widgets/medical_records_list.dart';
@@ -24,30 +22,25 @@ class MedicalRecordsScreen extends StatelessWidget {
     return DefaultTabController(
       length: categories.length,
       child: Scaffold(
-        body: RefreshIndicator(
-          onRefresh: () async {
-            context.read<RecordBloc>().add(GetMedicalRecordsEvent());
+        body: NestedScrollView(
+          headerSliverBuilder: (context, innerBoxIsScrolled) {
+            return [
+              const SliverToBoxAdapter(
+                child: Column(
+                  spacing: 24,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [RecordHeader(), SecurityNoteCard()],
+                ),
+              ),
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: MedicalRecordTabBarDelegate(
+                  child: MedicalRecordTabBar(categories: categories),
+                ),
+              ),
+            ];
           },
-          child: NestedScrollView(
-            headerSliverBuilder: (context, innerBoxIsScrolled) {
-              return [
-                const SliverToBoxAdapter(
-                  child: Column(
-                    spacing: 24,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [RecordHeader(), SecurityNoteCard()],
-                  ),
-                ),
-                SliverPersistentHeader(
-                  pinned: true,
-                  delegate: MedicalRecordTabBarDelegate(
-                    child: MedicalRecordTabBar(categories: categories),
-                  ),
-                ),
-              ];
-            },
-            body: const MedicalRecordsList(),
-          ),
+          body: const MedicalRecordsList(),
         ),
       ),
     );

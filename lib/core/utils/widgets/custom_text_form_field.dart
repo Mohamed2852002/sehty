@@ -12,14 +12,18 @@ class CustomTextFormField extends StatelessWidget {
     this.controller,
     this.readOnly = false,
     this.onTap,
+    this.validator,
+    this.suffixIcon,
   });
   final String hint;
   final TextInputType? keyboardType;
+  final Widget? suffixIcon;
   final Function(String?)? onSaved;
   final Function(String)? onChanged;
   final TextEditingController? controller;
   final bool readOnly;
   final VoidCallback? onTap;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -30,15 +34,18 @@ class CustomTextFormField extends StatelessWidget {
       onTapOutside: (event) {
         FocusScope.of(context).unfocus();
       },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return S.of(context).enter_a_value;
-        }
-        return null;
-      },
+      validator:
+          validator ??
+          (value) {
+            if (value == null || value.isEmpty) {
+              return S.of(context).enter_a_value;
+            }
+            return null;
+          },
       onChanged: onChanged,
       onSaved: onSaved,
       decoration: InputDecoration(
+        suffixIcon: suffixIcon,
         contentPadding: const EdgeInsets.all(12),
         hintText: hint,
         hintStyle: AppStyles.styleRegular14(context),

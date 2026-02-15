@@ -111,7 +111,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "daysCount": MessageLookupByLibrary.simpleMessage("Number of Days"),
     "diabetes": MessageLookupByLibrary.simpleMessage("Diabetes"),
     "district": MessageLookupByLibrary.simpleMessage("District"),
+    "doctorName": MessageLookupByLibrary.simpleMessage("Doctor Name"),
     "doctorReport": MessageLookupByLibrary.simpleMessage("Doctor\'s Report"),
+    "doctorReportExample": MessageLookupByLibrary.simpleMessage(
+      "Example: Dr. Smith",
+    ),
     "dose": MessageLookupByLibrary.simpleMessage("Dose"),
     "doseExample": MessageLookupByLibrary.simpleMessage("Example: 100 mg"),
     "download": MessageLookupByLibrary.simpleMessage("Download"),
@@ -259,6 +263,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "noMedicationsForToday": MessageLookupByLibrary.simpleMessage(
       "No medications for today",
+    ),
+    "noPatientsFound": MessageLookupByLibrary.simpleMessage(
+      "No patients found",
     ),
     "noPrescriptionRecords": MessageLookupByLibrary.simpleMessage(
       "No prescriptions yet",

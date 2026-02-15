@@ -44,3 +44,11 @@ class ShareMedicalRecordEvent extends RecordEvent {
   @override
   List<Object?> get props => [recordId];
 }
+
+class GetSharedMedicalRecordEvent extends RecordEvent {
+  final String shareToken;
+  const GetSharedMedicalRecordEvent({required this.shareToken});
+
+  @override
+  List<Object?> get props => [shareToken];
+}

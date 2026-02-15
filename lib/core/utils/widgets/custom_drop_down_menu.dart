@@ -5,14 +5,15 @@ import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/extensions.dart';
 
 class CustomDropDownMenu extends StatelessWidget {
-  const  CustomDropDownMenu({
+  const CustomDropDownMenu({
     super.key,
     required this.value,
     required this.items,
     required this.onChanged,
     this.hint,
     this.onSaved,
-    this.dropDownIconVisible = true,});
+    this.dropDownIconVisible = true,
+  });
   final String? value;
   final List<String> items;
   final Function(String?) onChanged;
@@ -36,11 +37,17 @@ class CustomDropDownMenu extends StatelessWidget {
       },
       selectedItem: value,
       autoValidateMode: AutovalidateMode.onUserInteraction,
-      suffixProps:  DropdownSuffixProps(
+      suffixProps: DropdownSuffixProps(
         dropdownButtonProps: DropdownButtonProps(
           isVisible: dropDownIconVisible,
-          iconOpened: const Icon(Icons.keyboard_arrow_up, color: AppColors.primary),
-          iconClosed: const Icon(Icons.keyboard_arrow_down, color: AppColors.primary),
+          iconOpened: const Icon(
+            Icons.keyboard_arrow_up,
+            color: AppColors.primary,
+          ),
+          iconClosed: const Icon(
+            Icons.keyboard_arrow_down,
+            color: AppColors.primary,
+          ),
         ),
       ),
       popupProps: PopupProps.menu(

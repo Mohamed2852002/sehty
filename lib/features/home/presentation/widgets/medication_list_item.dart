@@ -18,12 +18,12 @@ class MedicationListItem extends StatelessWidget {
     }
 
     final now = DateTime.now();
-    final today = DateFormat('yyyy-MM-dd').format(now);
+    final today = DateFormat('yyyy-MM-dd', 'en').format(now);
 
     for (var log in medication.logs!) {
       if (log.scheduledAt != null) {
-        final logTime = DateFormat('HH:mm').format(log.scheduledAt!);
-        final logDate = DateFormat('yyyy-MM-dd').format(log.scheduledAt!);
+        final logTime = DateFormat('HH:mm', 'en').format(log.scheduledAt!);
+        final logDate = DateFormat('yyyy-MM-dd', 'en').format(log.scheduledAt!);
         if (logDate == today &&
             _normalizeTime(logTime) == _normalizeTime(scheduleTime)) {
           return true;
@@ -126,6 +126,7 @@ class MedicationListItem extends StatelessWidget {
           const SizedBox(width: 12),
           Expanded(
             child: Column(
+              spacing: 4,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -133,8 +134,9 @@ class MedicationListItem extends StatelessWidget {
                   style: AppStyles.styleBold16(context),
                 ),
                 if (medication.schedules != null)
-                  Row(
+                  Wrap(
                     spacing: 8,
+                    // runSpacing: 4,
                     children: medication.schedules!.map((schedule) {
                       final isTaken = _isScheduleTaken(schedule.time ?? '');
                       return Text(
@@ -152,7 +154,7 @@ class MedicationListItem extends StatelessWidget {
             InkWell(
               onTap: () {
                 final now = DateTime.now();
-                final dateStr = DateFormat('yyyy-MM-dd').format(now);
+                final dateStr = DateFormat('yyyy-MM-dd', 'en').format(now);
                 final scheduledAt = '$dateStr $nextPendingTime:00';
 
                 context.read<MedicationBloc>().add(
@@ -173,7 +175,8 @@ class MedicationListItem extends StatelessWidget {
                 ),
                 child: BlocBuilder<MedicationBloc, MedicationState>(
                   builder: (context, state) {
-                    if (state is ConfirmMedicationLoading) {
+                    if (state is ConfirmMedicationLoading &&
+                        state.medicineId == medication.id) {
                       return const Center(
                         child: CircularProgressIndicator(color: Colors.white),
                       );

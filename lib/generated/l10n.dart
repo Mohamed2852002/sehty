@@ -1838,6 +1838,31 @@ class S {
       args: [],
     );
   }
+
+  /// `No patients found`
+  String get noPatientsFound {
+    return Intl.message(
+      'No patients found',
+      name: 'noPatientsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Example: Dr. Smith`
+  String get doctorReportExample {
+    return Intl.message(
+      'Example: Dr. Smith',
+      name: 'doctorReportExample',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Doctor Name`
+  String get doctorName {
+    return Intl.message('Doctor Name', name: 'doctorName', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

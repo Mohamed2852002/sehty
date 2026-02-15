@@ -107,7 +107,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "daysCount": MessageLookupByLibrary.simpleMessage("عدد الأيام"),
     "diabetes": MessageLookupByLibrary.simpleMessage("السكري"),
     "district": MessageLookupByLibrary.simpleMessage("الحي"),
+    "doctorName": MessageLookupByLibrary.simpleMessage("اسم الدكتور"),
     "doctorReport": MessageLookupByLibrary.simpleMessage("تقرير الطبيب"),
+    "doctorReportExample": MessageLookupByLibrary.simpleMessage(
+      "مثال: دكتور محسن",
+    ),
     "dose": MessageLookupByLibrary.simpleMessage("الجرعة"),
     "doseExample": MessageLookupByLibrary.simpleMessage("مثال: 100 ملغ"),
     "download": MessageLookupByLibrary.simpleMessage("تحميل"),
@@ -238,6 +242,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noMedicationsForToday": MessageLookupByLibrary.simpleMessage(
       "لا توجد أدوية لليوم",
     ),
+    "noPatientsFound": MessageLookupByLibrary.simpleMessage("لا يوجد مرضى"),
     "noPrescriptionRecords": MessageLookupByLibrary.simpleMessage(
       "لا توجد روشتات بعد",
     ),

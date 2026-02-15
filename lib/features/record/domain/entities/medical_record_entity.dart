@@ -9,7 +9,7 @@ class MedicalRecordEntity extends Equatable {
   final String? recordDate;
   final String? qrCode;
   final bool? hasActiveShare;
-  final dynamic shareExpiresAt;
+  final DateTime? shareExpiresAt;
   final DateTime? createdAt;
 
   const MedicalRecordEntity({

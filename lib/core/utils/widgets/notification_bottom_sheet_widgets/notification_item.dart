@@ -3,8 +3,8 @@ import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_button.dart';
-import 'package:sehty/features/home/presentation/widgets/notification_bottom_sheet_widgets/notification_icon_widget.dart';
-import 'package:sehty/features/home/presentation/widgets/notification_bottom_sheet_widgets/unread_dot_widget.dart';
+import 'package:sehty/core/utils/widgets/notification_bottom_sheet_widgets/notification_icon_widget.dart';
+import 'package:sehty/core/utils/widgets/notification_bottom_sheet_widgets/unread_dot_widget.dart';
 
 class NotificationItem extends StatelessWidget {
   final String title;

@@ -8,3 +8,23 @@ abstract class HomeState extends Equatable {
 }
 
 class HomeInitial extends HomeState {}
+
+class HomeLoading extends HomeState {}
+
+class HomeLoaded extends HomeState {
+  final HomeDashboardEntity dashboard;
+
+  const HomeLoaded({required this.dashboard});
+
+  @override
+  List<Object> get props => [dashboard];
+}
+
+class HomeError extends HomeState {
+  final String message;
+
+  const HomeError({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}

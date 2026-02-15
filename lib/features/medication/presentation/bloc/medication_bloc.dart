@@ -62,7 +62,7 @@ class MedicationBloc extends Bloc<MedicationEvent, MedicationState> {
     ConfirmMedicationTakenEvent event,
     Emitter<MedicationState> emit,
   ) async {
-    emit(ConfirmMedicationLoading());
+    emit(ConfirmMedicationLoading(medicineId: event.medicineId));
     final result = await medicationRepo.confirmMedicationTaken(
       medicineId: event.medicineId,
       scheduledAt: event.scheduledAt,

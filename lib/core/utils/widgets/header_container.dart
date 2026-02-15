@@ -12,8 +12,6 @@ class HeaderContainer extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           colors: AppColors.gradientBtnColors,
-          begin: AlignmentGeometry.centerLeft,
-          end: AlignmentGeometry.centerRight,
         ),
         borderRadius: BorderRadius.circular(24),
         boxShadow: [

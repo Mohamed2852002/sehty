@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sehty/core/utils/extensions.dart';
-import 'package:sehty/features/home/presentation/widgets/notification_bottom_sheet_widgets/bottom_sheet_footer.dart';
-import 'package:sehty/features/home/presentation/widgets/notification_bottom_sheet_widgets/bottom_sheet_header.dart';
-import 'package:sehty/features/home/presentation/widgets/notification_bottom_sheet_widgets/notification_item.dart';
+import 'package:sehty/core/utils/widgets/notification_bottom_sheet_widgets/bottom_sheet_footer.dart';
+import 'package:sehty/core/utils/widgets/notification_bottom_sheet_widgets/bottom_sheet_header.dart';
+import 'package:sehty/core/utils/widgets/notification_bottom_sheet_widgets/notification_item.dart';
 
 class NotificationBottomSheet extends StatelessWidget {
   const NotificationBottomSheet({super.key});

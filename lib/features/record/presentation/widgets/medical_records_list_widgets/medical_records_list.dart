@@ -27,6 +27,11 @@ class _MedicalRecordsListState extends State<MedicalRecordsList> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<RecordBloc, RecordState>(
+      buildWhen: (previous, current) {
+        return current is RecordLoading ||
+            current is RecordError ||
+            current is MedicalRecordsLoaded;
+      },
       builder: (context, state) {
         if (state is RecordLoading) {
           return const TabBarView(

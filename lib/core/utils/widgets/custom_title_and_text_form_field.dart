@@ -13,6 +13,7 @@ class CustomTitleAndTextFormField extends StatelessWidget {
     this.controller,
     this.readOnly = false,
     this.onTap,
+    this.validator,
   });
   final String label;
   final String hint;
@@ -21,6 +22,7 @@ class CustomTitleAndTextFormField extends StatelessWidget {
   final TextEditingController? controller;
   final bool readOnly;
   final VoidCallback? onTap;
+  final String? Function(String?)? validator;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,6 +42,7 @@ class CustomTitleAndTextFormField extends StatelessWidget {
           controller: controller,
           readOnly: readOnly,
           onTap: onTap,
+          validator: validator,
         ),
       ],
     );

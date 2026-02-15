@@ -52,3 +52,15 @@ class ApproveFamilyInvitationEvent extends MonitorEvent {
   @override
   List<Object?> get props => [invitationId];
 }
+
+class SearchFamilyMembersEvent extends MonitorEvent {
+  final String query;
+  const SearchFamilyMembersEvent({required this.query});
+
+  @override
+  List<Object?> get props => [query];
+}
+
+class ClearSearchFamilyMemberEvent extends MonitorEvent {
+  const ClearSearchFamilyMemberEvent();
+}

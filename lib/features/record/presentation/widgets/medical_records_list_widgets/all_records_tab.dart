@@ -21,42 +21,8 @@ class AllRecordsTab extends StatelessWidget {
 
     return MedicalRecordListView(
       children: records
-          .map(
-            (record) => MedicalRecordCard(
-              record: record,
-              title: record.name ?? '',
-              date: record.recordDate ?? '',
-              type: _getTypeLabel(context, record.fileType),
-              icon: _getTypeIcon(record.fileType),
-            ),
-          )
+          .map((record) => MedicalRecordCard(record: record))
           .toList(),
     );
-  }
-
-  String _getTypeLabel(BuildContext context, String? fileType) {
-    switch (fileType) {
-      case 'lab_test':
-        return context.l10n.analyses;
-      case 'radiology':
-        return context.l10n.xrays;
-      case 'prescription':
-        return context.l10n.prescriptions;
-      default:
-        return context.l10n.reports;
-    }
-  }
-
-  IconData _getTypeIcon(String? fileType) {
-    switch (fileType) {
-      case 'lab_test':
-        return Icons.description_outlined;
-      case 'radiology':
-        return Icons.image_outlined;
-      case 'prescription':
-        return Icons.medication_outlined;
-      default:
-        return Icons.assignment_outlined;
-    }
   }
 }

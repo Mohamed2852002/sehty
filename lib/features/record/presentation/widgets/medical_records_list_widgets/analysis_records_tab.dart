@@ -21,15 +21,7 @@ class AnalysisRecordsTab extends StatelessWidget {
 
     return MedicalRecordListView(
       children: records
-          .map(
-            (record) => MedicalRecordCard(
-              record: record,
-              title: record.name ?? '',
-              date: record.recordDate ?? '',
-              type: context.l10n.analyses,
-              icon: Icons.description_outlined,
-            ),
-          )
+          .map((record) => MedicalRecordCard(record: record))
           .toList(),
     );
   }

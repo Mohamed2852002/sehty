@@ -2,12 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/features/record/presentation/widgets/upload_medical_dialogue_widgets/upload_area_empty_state.dart';
+import 'package:sehty/features/record/presentation/widgets/upload_medical_dialogue_widgets/upload_area_selected_file_state.dart';
 
 class UploadAreaWidget extends StatelessWidget {
-  const UploadAreaWidget({super.key, this.onTap, this.selectedFileName});
+  const UploadAreaWidget({
+    super.key,
+    this.onTap,
+    this.selectedFileName,
+    this.showError = false,
+    this.errorMessage,
+  });
 
   final VoidCallback? onTap;
   final String? selectedFileName;
+  final bool showError;
+  final String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -30,79 +40,30 @@ class UploadAreaWidget extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: selectedFileName != null
-                    ? AppColors.primary
-                    : Colors.grey.shade300,
+                color: showError
+                    ? Colors.red
+                    : (selectedFileName != null
+                          ? AppColors.primary
+                          : Colors.grey.shade300),
               ),
               color: selectedFileName != null
                   ? AppColors.primary.withValues(alpha: 0.05)
                   : null,
             ),
             child: selectedFileName != null
-                ? _buildSelectedFile(context)
-                : _buildUploadPrompt(context),
+                ? UploadAreaSelectedFileState(
+                    selectedFileName: selectedFileName!,
+                  )
+                : const UploadAreaEmptyState(),
           ),
         ),
-      ],
-    );
-  }
-
-  Widget _buildUploadPrompt(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            color: AppColors.primary.withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(12),
+        if (showError && errorMessage != null)
+          Text(
+            errorMessage!,
+            style: AppStyles.styleRegular12(
+              context,
+            ).copyWith(color: Colors.red),
           ),
-          child: const Icon(
-            Icons.file_upload_outlined,
-            color: AppColors.primary,
-            size: 32,
-          ),
-        ),
-        const SizedBox(height: 16),
-        Text(
-          context.l10n.clickToSelectFile,
-          style: AppStyles.styleBold16(context),
-        ),
-        const SizedBox(height: 4),
-        Text(
-          context.l10n.orImagePdfNote,
-          style: AppStyles.styleRegular12(
-            context,
-          ).copyWith(color: AppColors.darkColor),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildSelectedFile(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            color: AppColors.primary.withValues(alpha: 0.1),
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: const Icon(
-            Icons.insert_drive_file_outlined,
-            color: AppColors.primary,
-            size: 24,
-          ),
-        ),
-        const SizedBox(width: 12),
-        Expanded(
-          child: Text(
-            selectedFileName!,
-            style: AppStyles.styleMedium14(context),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-        const Icon(Icons.check_circle, color: AppColors.primary, size: 24),
       ],
     );
   }
