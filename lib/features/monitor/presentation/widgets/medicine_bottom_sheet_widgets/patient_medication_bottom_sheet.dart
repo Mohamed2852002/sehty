@@ -1,19 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/core/utils/extensions.dart';
+import 'package:sehty/features/monitor/presentation/bloc/monitor_bloc.dart';
 import 'package:sehty/features/monitor/presentation/widgets/medicine_bottom_sheet_widgets/medication_compliance_summary.dart';
 import 'package:sehty/features/monitor/presentation/widgets/medicine_bottom_sheet_widgets/medication_item_widget.dart';
 import 'package:sehty/features/monitor/presentation/widgets/medicine_bottom_sheet_widgets/shared_data_note_widget.dart';
 
-class PatientMedicationBottomSheet extends StatelessWidget {
+class PatientMedicationBottomSheet extends StatefulWidget {
   const PatientMedicationBottomSheet({
     super.key,
+    required this.memberId,
     required this.patientName,
     required this.phoneNumber,
   });
 
+  final int memberId;
   final String patientName;
   final String phoneNumber;
+
+  @override
+  State<PatientMedicationBottomSheet> createState() =>
+      _PatientMedicationBottomSheetState();
+}
+
+class _PatientMedicationBottomSheetState
+    extends State<PatientMedicationBottomSheet> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<MonitorBloc>().add(
+      GetFamilyMemberMedicationsEvent(memberId: widget.memberId),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,11 +63,11 @@ class PatientMedicationBottomSheet extends StatelessWidget {
                     crossAxisAlignment: .start,
                     children: [
                       Text(
-                        'أدوية $patientName',
+                        '${context.l10n.medications} ${widget.patientName}',
                         style: AppStyles.styleBold20(context),
                       ),
                       Text(
-                        phoneNumber,
+                        widget.phoneNumber,
                         style: AppStyles.styleRegular14(
                           context,
                         ).copyWith(color: Colors.grey),
@@ -62,48 +82,72 @@ class PatientMedicationBottomSheet extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16),
-            // Compliance Summary
-            const MedicationComplianceSummary(
-              complianceRate: 67,
-              takenCount: 2,
-              totalCount: 3,
-            ),
-            const SizedBox(height: 24),
+            Expanded(
+              child: BlocBuilder<MonitorBloc, MonitorState>(
+                buildWhen: (previous, current) =>
+                    current is FamilyMemberMedicationsLoaded ||
+                    current is FamilyMemberMedicationsLoading ||
+                    current is FamilyMemberMedicationsError,
+                builder: (context, state) {
+                  if (state is FamilyMemberMedicationsLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (state is FamilyMemberMedicationsError) {
+                    return Center(child: Text(state.message));
+                  } else if (state is FamilyMemberMedicationsLoaded) {
+                    final stats = state.memberMedications.statistics;
+                    final medications =
+                        state.memberMedications.medications ?? [];
 
-            // Divider
-            const Divider(height: 0, color: Color(0xffF2F4F7)),
-            const SizedBox(height: 24),
-            // Medications List
-            const Flexible(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    MedicationItemWidget(
-                      name: 'أسبرين',
-                      dose: '100 ملغ',
-                      scheduledTime: '08:00 ص',
-                      takenTime: '08:05 ص',
-                      isTaken: true,
-                    ),
-                    MedicationItemWidget(
-                      name: 'ميتفورمين',
-                      dose: '500 ملغ',
-                      scheduledTime: '12:00 م',
-                      takenTime: '12:10 م',
-                      isTaken: true,
-                    ),
-                    MedicationItemWidget(
-                      name: 'أملوديبين',
-                      dose: '5 ملغ',
-                      scheduledTime: '08:00 م',
-                      isTaken: false,
-                    ),
-                  ],
-                ),
+                    return Column(
+                      children: [
+                        // Compliance Summary
+                        MedicationComplianceSummary(
+                          complianceRate: stats?.percentage ?? 0,
+                          takenCount: stats?.takenToday ?? 0,
+                          totalCount: stats?.totalToday ?? 0,
+                        ),
+                        const SizedBox(height: 24),
+
+                        // Divider
+                        const Divider(height: 0, color: Color(0xffF2F4F7)),
+                        const SizedBox(height: 24),
+                        // Medications List
+                        Flexible(
+                          child: medications.isEmpty
+                              ? Center(
+                                  child: Text(
+                                    'No medications found',
+                                    style: AppStyles.styleRegular14(context),
+                                  ),
+                                )
+                              : SingleChildScrollView(
+                                  child: Column(
+                                    children: medications.map((med) {
+                                      final map = med as Map<String, dynamic>;
+                                      return MedicationItemWidget(
+                                        name: map['name']?.toString() ?? '',
+                                        dose: map['dose']?.toString() ?? '',
+                                        scheduledTime:
+                                            map['scheduled_at']?.toString() ??
+                                            '',
+                                        takenTime: map['taken_at']?.toString(),
+                                        isTaken:
+                                            map['is_taken'] == true ||
+                                            map['taken_at'] != null,
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                        ),
+                        // Footer Note
+                        const SharedDataNoteWidget(),
+                      ],
+                    );
+                  }
+                  return const SizedBox.shrink();
+                },
               ),
             ),
-            // Footer Note
-            const SharedDataNoteWidget(),
           ],
         ),
       ),

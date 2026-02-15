@@ -11,16 +11,26 @@ class ProfileRemoteDataSource {
   }
 
   Future<Map<String, dynamic>> updateProfile({
+    required String name,
+    required String phone,
+    required int age,
+    required String gender,
+    required String governorate,
     required double weight,
     required String district,
     required List<int> chronicDiseases,
   }) async {
     final Map<String, dynamic> profileData = {
+      'name': name,
+      'phone': phone,
+      'age': age,
+      'gender': gender,
+      'governorate': governorate,
       'weight': weight,
       'district': district,
       'chronic_diseases': chronicDiseases,
     };
-    return await apiServices.post(Endpoints.updateProfile, profileData);
+    return await apiServices.put(Endpoints.updateProfile, profileData);
   }
 
   Future<Map<String, dynamic>> addSurgery({

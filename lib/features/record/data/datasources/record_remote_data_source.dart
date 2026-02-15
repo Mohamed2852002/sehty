@@ -38,4 +38,10 @@ class RecordRemoteDataSource {
   }) async {
     return await apiServices.post(Endpoints.shareMedicalRecord(recordId), {});
   }
+
+  Future<Map<String, dynamic>> getSharedMedicalRecord({
+    required String shareToken,
+  }) async {
+    return await apiServices.get(Endpoints.getSharedMedicalRecord(shareToken));
+  }
 }

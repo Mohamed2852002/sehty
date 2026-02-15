@@ -8,7 +8,12 @@ import 'package:sehty/features/monitor/data/models/family_member_model/family_me
 import 'package:sehty/features/monitor/data/models/family_member_model/patient.dart';
 import 'package:sehty/features/monitor/data/models/family_member_medications_model/family_member_medications_model.dart';
 import 'package:sehty/features/monitor/data/models/family_member_medications_model/statistics.dart';
-import 'package:sehty/features/monitor/domain/entities/monitor_entities.dart';
+import 'package:sehty/features/monitor/data/models/family_member_model/family_connection.dart';
+import 'package:sehty/features/monitor/domain/entities/family_connection_entity.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_entity.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_medication/family_member_medication_entity.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_medication/patient_entitiy.dart';
+import 'package:sehty/features/monitor/domain/entities/family_member_medication/statistics_entity.dart';
 import 'package:sehty/features/monitor/domain/repositories/monitor_repo.dart';
 
 class MonitorRepoImpl implements MonitorRepo {
@@ -64,20 +69,19 @@ class MonitorRepoImpl implements MonitorRepo {
   }
 
   @override
-  Future<Either<Failure, List<FamilyMemberEntity>>>
+  Future<Either<Failure, FamilyConnectionEntity>>
   getListOfFamilyConnections() async {
     try {
       final response = await monitorRemoteDataSource
           .getListOfFamilyConnections();
       log('Response in getListOfFamilyConnections: $response');
-      final List<dynamic> data = response['data'] ?? [];
-      final members = data
-          .map(
-            (json) =>
-                _mapFamilyMemberModelToEntity(FamilyMemberModel.fromJson(json)),
-          )
-          .toList();
-      return Right(members);
+      final dynamic rawData = response['data'];
+
+      final familyConnection = FamilyConnection.fromJson(
+        rawData as Map<String, dynamic>,
+      );
+
+      return Right(familyConnection.toEntity(_mapFamilyMemberModelToEntity));
     } on DioException catch (e) {
       log(
         'Error in MonitorRepoImpl : getListOfFamilyConnections: ${e.toString()}',

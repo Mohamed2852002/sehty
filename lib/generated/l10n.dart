@@ -139,6 +139,11 @@ class S {
     return Intl.message('Male', name: 'male', desc: '', args: []);
   }
 
+  /// `Female`
+  String get female {
+    return Intl.message('Female', name: 'female', desc: '', args: []);
+  }
+
   /// `District`
   String get district {
     return Intl.message('District', name: 'district', desc: '', args: []);
@@ -227,6 +232,16 @@ class S {
   /// `Asthma`
   String get asthma {
     return Intl.message('Asthma', name: 'asthma', desc: '', args: []);
+  }
+
+  /// `Cancer`
+  String get cancer {
+    return Intl.message('Cancer', name: 'cancer', desc: '', args: []);
+  }
+
+  /// `Epilepsy`
+  String get epilepsy {
+    return Intl.message('Epilepsy', name: 'epilepsy', desc: '', args: []);
   }
 
   /// `Liver`
@@ -899,9 +914,9 @@ class S {
     return Intl.message('X-rays', name: 'xrays', desc: '', args: []);
   }
 
-  /// `Analyses`
+  /// `Analyss`
   String get analyses {
-    return Intl.message('Analyses', name: 'analyses', desc: '', args: []);
+    return Intl.message('Analyss', name: 'analyses', desc: '', args: []);
   }
 
   /// `All`
@@ -1607,6 +1622,246 @@ class S {
   /// `to`
   String get to {
     return Intl.message('to', name: 'to', desc: '', args: []);
+  }
+
+  /// `Please enter a value`
+  String get enter_a_value {
+    return Intl.message(
+      'Please enter a value',
+      name: 'enter_a_value',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number is required to send code`
+  String get phoneRequired {
+    return Intl.message(
+      'Phone number is required to send code',
+      name: 'phoneRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password is required`
+  String get passwordRequired {
+    return Intl.message(
+      'Password is required',
+      name: 'passwordRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Data consent is required`
+  String get dataConsentRequired {
+    return Intl.message(
+      'Data consent is required',
+      name: 'dataConsentRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `OTP code is required`
+  String get otpRequired {
+    return Intl.message(
+      'OTP code is required',
+      name: 'otpRequired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: '', args: []);
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message('Verify', name: 'verify', desc: '', args: []);
+  }
+
+  /// `S`
+  String get s {
+    return Intl.message('S', name: 's', desc: '', args: []);
+  }
+
+  /// `N/A`
+  String get n_a {
+    return Intl.message('N/A', name: 'n_a', desc: '', args: []);
+  }
+
+  /// `day`
+  String get day {
+    return Intl.message('day', name: 'day', desc: '', args: []);
+  }
+
+  /// `Retry`
+  String get retry {
+    return Intl.message('Retry', name: 'retry', desc: '', args: []);
+  }
+
+  /// `No medications added yet`
+  String get noMedicationsAdded {
+    return Intl.message(
+      'No medications added yet',
+      name: 'noMedicationsAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total Quantity`
+  String get totalQuantity {
+    return Intl.message(
+      'Total Quantity',
+      name: 'totalQuantity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No medications for today`
+  String get noMedicationsForToday {
+    return Intl.message(
+      'No medications for today',
+      name: 'noMedicationsForToday',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `AM`
+  String get am {
+    return Intl.message('AM', name: 'am', desc: '', args: []);
+  }
+
+  /// `PM`
+  String get pm {
+    return Intl.message('PM', name: 'pm', desc: '', args: []);
+  }
+
+  /// `No medical records found`
+  String get noRecordsFound {
+    return Intl.message(
+      'No medical records found',
+      name: 'noRecordsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No analysis records yet`
+  String get noAnalysisRecords {
+    return Intl.message(
+      'No analysis records yet',
+      name: 'noAnalysisRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No X-ray records yet`
+  String get noXrayRecords {
+    return Intl.message(
+      'No X-ray records yet',
+      name: 'noXrayRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No reports yet`
+  String get noReportsRecords {
+    return Intl.message(
+      'No reports yet',
+      name: 'noReportsRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No prescriptions yet`
+  String get noPrescriptionRecords {
+    return Intl.message(
+      'No prescriptions yet',
+      name: 'noPrescriptionRecords',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload your medical files to keep them safe and accessible`
+  String get addRecordsHint {
+    return Intl.message(
+      'Upload your medical files to keep them safe and accessible',
+      name: 'addRecordsHint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan QR Code`
+  String get scanQrCode {
+    return Intl.message('Scan QR Code', name: 'scanQrCode', desc: '', args: []);
+  }
+
+  /// `Place the QR code inside the frame to scan it`
+  String get placeQrCodeInFrame {
+    return Intl.message(
+      'Place the QR code inside the frame to scan it',
+      name: 'placeQrCodeInFrame',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The QR code data is too large to display as a generated code.`
+  String get qrCodeTooLarge {
+    return Intl.message(
+      'The QR code data is too large to display as a generated code.',
+      name: 'qrCodeTooLarge',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a file`
+  String get pleaseSelectFile {
+    return Intl.message(
+      'Please select a file',
+      name: 'pleaseSelectFile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No patients found`
+  String get noPatientsFound {
+    return Intl.message(
+      'No patients found',
+      name: 'noPatientsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Example: Dr. Smith`
+  String get doctorReportExample {
+    return Intl.message(
+      'Example: Dr. Smith',
+      name: 'doctorReportExample',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Doctor Name`
+  String get doctorName {
+    return Intl.message('Doctor Name', name: 'doctorName', desc: '', args: []);
   }
 }
 

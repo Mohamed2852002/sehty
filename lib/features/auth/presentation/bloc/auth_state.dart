@@ -13,7 +13,9 @@ class AuthLoading extends AuthState {}
 
 class AuthUnauthenticated extends AuthState {}
 
-class AuthOtpSentSuccessfully extends AuthState {}
+class AuthOtpLoginSentSuccessfully extends AuthState {}
+
+class AuthOtpRegisterSentSuccessfully extends AuthState {}
 
 class AuthSuccess extends AuthState {
   final UserEntity user;

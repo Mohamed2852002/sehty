@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:sehty/core/utils/app_styles.dart';
+import 'package:sehty/core/utils/widgets/custom_container.dart';
+import 'package:sehty/core/utils/widgets/icon_container.dart';
+
+class ProfileInfoWidget extends StatelessWidget {
+  final String title;
+  final String icon;
+  final Widget child;
+
+  const ProfileInfoWidget({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomContainer(
+      child: Column(
+        children: [
+          Row(
+            spacing: 8,
+            children: [
+              IconContainer(child: SvgPicture.asset(icon)),
+              Text(title, style: AppStyles.styleBold16(context)),
+            ],
+          ),
+          const SizedBox(height: 16),
+          child,
+        ],
+      ),
+    );
+  }
+}

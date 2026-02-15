@@ -8,6 +8,11 @@ abstract class ProfileRepo {
   Future<Either<Failure, ProfileEntity>> getProfile();
 
   Future<Either<Failure, ProfileEntity>> updateProfile({
+    required String name,
+    required String phone,
+    required int age,
+    required String gender,
+    required String governorate,
     required double weight,
     required String district,
     required List<int> chronicDiseases,

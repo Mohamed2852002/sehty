@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:sehty/core/utils/app_assets.dart';
 import 'package:sehty/core/utils/extensions.dart';
@@ -6,8 +7,8 @@ import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/header_container.dart';
 
 class PatientCodeCard extends StatelessWidget {
-  const PatientCodeCard({super.key});
-
+  const PatientCodeCard({super.key, required this.patientCode});
+  final String patientCode;
   @override
   Widget build(BuildContext context) {
     return HeaderContainer(
@@ -40,16 +41,21 @@ class PatientCodeCard extends StatelessWidget {
               color: Colors.white.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Text(
-              'PTJK3DJ9FSD', // Hardcoded as per image
-              textAlign: TextAlign.center,
-              style: AppStyles.styleBold24(
-                context,
-              ).copyWith(color: Colors.white, letterSpacing: 2),
+            child: GestureDetector(
+              onTap: () {
+                Clipboard.setData(ClipboardData(text: patientCode));
+              },
+              child: Text(
+                patientCode,
+                textAlign: TextAlign.center,
+                style: AppStyles.styleBold24(
+                  context,
+                ).copyWith(color: Colors.white, letterSpacing: 2),
+              ),
             ),
           ),
           Text(
-            context.l10n.useCodeNote, // "Use this code when visiting doctor..."
+            context.l10n.useCodeNote,
             textAlign: TextAlign.center,
             style: AppStyles.styleRegular12(
               context,

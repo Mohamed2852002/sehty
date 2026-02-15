@@ -1,36 +1,9 @@
 import 'package:equatable/equatable.dart';
-
-class ScheduleEntity extends Equatable {
-  final int? id;
-  final String? time;
-  final List<int>? daysOfWeek;
-
-  const ScheduleEntity({this.id, this.time, this.daysOfWeek});
-
-  @override
-  List<Object?> get props => [id, time, daysOfWeek];
-}
-
-class LogEntity extends Equatable {
-  final int? id;
-  final DateTime? scheduledAt;
-  final DateTime? takenAt;
-  final String? status;
-  final DateTime? confirmedAt;
-
-  const LogEntity({
-    this.id,
-    this.scheduledAt,
-    this.takenAt,
-    this.status,
-    this.confirmedAt,
-  });
-
-  @override
-  List<Object?> get props => [id, scheduledAt, takenAt, status, confirmedAt];
-}
+import 'package:sehty/features/medication/domain/entities/log_entity.dart';
+import 'package:sehty/features/medication/domain/entities/schedule_entity.dart';
 
 class MedicationEntity extends Equatable {
+  // Entity corresponding to MedicationModel
   final int? id;
   final String? name;
   final String? dosage;
@@ -41,8 +14,8 @@ class MedicationEntity extends Equatable {
   final dynamic endDate;
   final bool? isActive;
   final dynamic notes;
-  final List<ScheduleEntity>? schedules;
-  final List<LogEntity>? logs;
+  final List<MedicationScheduleEntity>? schedules;
+  final List<MedicationLogEntity>? logs;
   final DateTime? createdAt;
 
   const MedicationEntity({

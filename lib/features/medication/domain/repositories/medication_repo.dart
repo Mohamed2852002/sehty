@@ -12,7 +12,8 @@ abstract class MedicationRepo {
     required String dosage,
     required int totalQuantity,
     required String startDate,
-    required List<Map<String, dynamic>> schedules,
+    required List<String>
+    schedules, // List of time strings e.g., ["08:00", "20:00"]
   });
 
   Future<Either<Failure, Unit>> confirmMedicationTaken({

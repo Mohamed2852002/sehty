@@ -16,7 +16,7 @@ class AddMedicationEvent extends MedicationEvent {
   final String dosage;
   final int totalQuantity;
   final String startDate;
-  final List<Map<String, dynamic>> schedules;
+  final List<String> schedules;
 
   const AddMedicationEvent({
     required this.name,

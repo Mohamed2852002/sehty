@@ -5,30 +5,26 @@ import 'package:sehty/core/utils/extensions.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/widgets/custom_container.dart';
 import 'package:sehty/core/utils/widgets/icon_container.dart';
+import 'package:sehty/features/medication/domain/entities/medication_entity.dart';
 import 'package:sehty/features/medication/presentation/widgets/medication_info_row.dart';
 import 'package:sehty/features/medication/presentation/widgets/medication_progress_indicator.dart';
 import 'package:sehty/features/medication/presentation/widgets/schedule_chip.dart';
 
 class MedicationInfoCard extends StatelessWidget {
-  final String medicineName;
-  final String dose;
-  final List<String> schedules;
-  final String duration;
-  final String startDate;
-  final double complianceProgress;
+  final MedicationEntity medication;
 
-  const MedicationInfoCard({
-    super.key,
-    required this.medicineName,
-    required this.dose,
-    required this.schedules,
-    required this.duration,
-    required this.startDate,
-    required this.complianceProgress,
-  });
+  const MedicationInfoCard({super.key, required this.medication});
 
   @override
   Widget build(BuildContext context) {
+    final String medicineName = medication.name ?? '';
+    final String dose = medication.dosage ?? '';
+    final List<String> schedules =
+        medication.schedules?.map((e) => e.time ?? '').toList() ?? [];
+    final String duration =
+        '${medication.totalQuantity ?? 0} ${context.l10n.day}'; // Simplified for now
+    final String startDate = medication.startDate ?? '';
+    final double complianceProgress = medication.percentage ?? 0.0;
     return CustomContainer(
       child: Column(
         spacing: 16,

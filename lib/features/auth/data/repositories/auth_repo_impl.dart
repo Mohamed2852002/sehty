@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sehty/core/errors/failure.dart';
 import 'package:sehty/core/utils/app_constants.dart';
+import 'package:sehty/core/utils/hive_helper.dart';
 import 'package:sehty/features/auth/data/models/user_model.dart';
 import 'package:sehty/features/auth/domain/entities/user_entity.dart';
 import 'package:sehty/features/auth/data/datasources/auth_remote_data_source.dart';
@@ -43,7 +44,9 @@ class AuthRepoImpl implements AuthRepo {
       final response = await authRemoteDataSource.login(phone: phone, otp: otp);
       log('Response in login: $response');
       await saveToken(response['data']['token']);
-      return Right(UserModel.fromJson(response['data']['user']));
+      final user = UserModel.fromJson(response['data']['user']);
+      await HiveHelper.instance.saveUser(user);
+      return Right(user);
     } on DioException catch (e) {
       log('Error in AuthRepoImpl : login: ${e.toString()}');
       return Left(ServerFailure.fromDioException(e));
@@ -97,7 +100,9 @@ class AuthRepoImpl implements AuthRepo {
       );
       log('Response in register: $response');
       await saveToken(response['data']['token']);
-      return Right(UserModel.fromJson(response['data']['user']));
+      final user = UserModel.fromJson(response['data']['user']);
+      await HiveHelper.instance.saveUser(user);
+      return Right(user);
     } on DioException catch (e) {
       log('Error in AuthRepoImpl : register: ${e.toString()}');
       return Left(ServerFailure.fromDioException(e));
@@ -122,6 +127,7 @@ class AuthRepoImpl implements AuthRepo {
     try {
       await authRemoteDataSource.logout();
       await flutterSecureStorage.delete(key: AppConstants.kToken);
+      await HiveHelper.instance.deleteUser();
       return const Right(unit);
     } on DioException catch (e) {
       log('Error in AuthRepoImpl : logout: ${e.toString()}');

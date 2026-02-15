@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:sehty/features/record/domain/entities/medical_record_entity.dart';
+import 'package:sehty/features/record/domain/entities/shared_medical_record_entity.dart';
+import 'package:sehty/features/record/domain/entities/shared_record_info_entity.dart';
 import 'package:sehty/features/record/domain/repositories/record_repo.dart';
 
 part 'record_event.dart';
@@ -13,6 +15,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     on<GetMedicalRecordsEvent>(_onGetMedicalRecords);
     on<UploadMedicalRecordEvent>(_onUploadMedicalRecord);
     on<ShareMedicalRecordEvent>(_onShareMedicalRecord);
+    on<GetSharedMedicalRecordEvent>(_onGetSharedMedicalRecord);
   }
 
   Future<void> _onGetMedicalRecords(
@@ -31,7 +34,7 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     UploadMedicalRecordEvent event,
     Emitter<RecordState> emit,
   ) async {
-    emit(RecordLoading());
+    emit(UploadMedicalRecordLoading());
     final result = await recordRepo.uploadMedicalRecord(
       filePath: event.filePath,
       fileType: event.fileType,
@@ -41,7 +44,8 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
       name: event.name,
     );
     result.fold(
-      (failure) => emit(RecordError(message: failure.errorMessage)),
+      (failure) =>
+          emit(UploadMedicalRecordError(message: failure.errorMessage)),
       (record) => emit(MedicalRecordUploaded(record: record)),
     );
   }
@@ -50,13 +54,29 @@ class RecordBloc extends Bloc<RecordEvent, RecordState> {
     ShareMedicalRecordEvent event,
     Emitter<RecordState> emit,
   ) async {
-    emit(RecordLoading());
+    emit(ShareMedicalRecordLoading());
     final result = await recordRepo.shareMedicalRecord(
       recordId: event.recordId,
     );
     result.fold(
-      (failure) => emit(RecordError(message: failure.errorMessage)),
-      (_) => emit(MedicalRecordShared()),
+      (failure) => emit(ShareMedicalRecordError(message: failure.errorMessage)),
+      (sharedRecordInfo) => emit(MedicalRecordShared(sharedRecordInfo: sharedRecordInfo)),
+    );
+  }
+
+  Future<void> _onGetSharedMedicalRecord(
+    GetSharedMedicalRecordEvent event,
+    Emitter<RecordState> emit,
+  ) async {
+    emit(GetSharedMedicalRecordLoading());
+    final result = await recordRepo.getSharedMedicalRecord(
+      shareToken: event.shareToken,
+    );
+    result.fold(
+      (failure) =>
+          emit(GetSharedMedicalRecordError(message: failure.errorMessage)),
+      (sharedRecord) =>
+          emit(SharedMedicalRecordLoaded(sharedRecord: sharedRecord)),
     );
   }
 }

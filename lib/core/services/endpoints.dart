@@ -1,42 +1,45 @@
 class Endpoints {
-  static const String baseUrl = "http://192.168.1.61:8000/";
+  static const String baseUrl = "https://se7aty.com/api/";
 
   // auth endpoints
-  static const String login = "${baseUrl}api/login";
-  static const String register = "${baseUrl}api/register";
-  static const String logout = "${baseUrl}api/logout";
+  static const String login = "login";
+  static const String register = "register";
+  static const String logout = "logout";
+
+  // home endpoints
+  static const String homeDashboard = 'home';
 
   // profile endpoints
-  static const String getProfile = "${baseUrl}api/profile";
-  static const String updateProfile = "${baseUrl}api/profile";
-  static const String addSurgery = "${baseUrl}api/profile/surgeries";
-  static const String getListOfChronicDiseases =
-      "${baseUrl}api/chronic-diseases";
+  static const String getProfile = "profile";
+  static const String updateProfile = "profile";
+  static const String addSurgery = "profile/surgeries";
+  static const String getListOfChronicDiseases = "chronic-diseases";
 
   // medications endpoints
-  static const String getListOfMedications = "${baseUrl}api/medications";
-  static const String getTodayMedications = "${baseUrl}api/medications/today";
-  static const String addMedication = "${baseUrl}api/medications";
+  static const String getListOfMedications = "medications";
+  static const String getTodayMedications = "medications/today";
+  static const String addMedication = "medications";
   static String confirmMedicationTaken(int medicineId) =>
-      "${baseUrl}api/medications/$medicineId/confirm";
+      "medications/$medicineId/confirm";
 
   // monitor endpoints
-  static const String getListOfFamilyConnections = "${baseUrl}api/family";
+  static const String getListOfFamilyConnections = "family";
   static String showOneFamilyMedication(int memberId) =>
-      "${baseUrl}api/family/members/$memberId";
-  static const inviteFamilyMember = "${baseUrl}api/family/invite";
-  static const addNewMember = "${baseUrl}api/family/add-member";
+      "family/members/$memberId";
+  static const inviteFamilyMember = "family/invite";
+  static const addNewMember = "family/add-member";
   static String approveFamilyInvitation(int invitationId) =>
-      "${baseUrl}api/family/$invitationId/approve";
+      "family/$invitationId/approve";
 
   // records endpoints
-  static const String getListOfMedicalRecords = "${baseUrl}api/medical-records";
-  static const String uploadMedicalRecord = "${baseUrl}api/medical-records";
+  static const String getListOfMedicalRecords = "medical-records";
+  static const String uploadMedicalRecord = "medical-records";
   static String shareMedicalRecord(int recordId) =>
-      "${baseUrl}api/medical-records/$recordId/share";
+      "medical-records/$recordId/share";
+  static String getSharedMedicalRecord(String shareToken) =>
+      "shared/records/$shareToken";
 
   // notifications endpoints
-  static const String getListOfNotifications = "${baseUrl}api/notifications";
-  static const String registerDeviceToken =
-      "${baseUrl}api/notifications/device-token";
+  static const String getListOfNotifications = "notifications";
+  static const String registerDeviceToken = "notifications/device-token";
 }

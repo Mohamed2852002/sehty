@@ -19,7 +19,11 @@ class LanguageChangedState extends ProfileState {
 
 // Profile API states
 class ProfileLoading extends ProfileState {
-  const ProfileLoading({super.locale});
+  final ProfileEntity? profile;
+  const ProfileLoading({super.locale, this.profile});
+
+  @override
+  List<Object?> get props => [locale, profile];
 }
 
 class ProfileLoaded extends ProfileState {
@@ -40,24 +44,31 @@ class ProfileUpdated extends ProfileState {
 
 class SurgeryAdded extends ProfileState {
   final SurgeryEntity surgery;
-  const SurgeryAdded({required this.surgery, super.locale});
+  final ProfileEntity? profile;
+  const SurgeryAdded({required this.surgery, this.profile, super.locale});
 
   @override
-  List<Object?> get props => [surgery, locale];
+  List<Object?> get props => [surgery, profile, locale];
 }
 
 class ChronicDiseasesLoaded extends ProfileState {
   final List<ChronicDiseaseEntity> chronicDiseases;
-  const ChronicDiseasesLoaded({required this.chronicDiseases, super.locale});
+  final ProfileEntity? profile;
+  const ChronicDiseasesLoaded({
+    required this.chronicDiseases,
+    this.profile,
+    super.locale,
+  });
 
   @override
-  List<Object?> get props => [chronicDiseases, locale];
+  List<Object?> get props => [chronicDiseases, profile, locale];
 }
 
 class ProfileError extends ProfileState {
   final String message;
-  const ProfileError({required this.message, super.locale});
+  final ProfileEntity? profile;
+  const ProfileError({required this.message, this.profile, super.locale});
 
   @override
-  List<Object?> get props => [message, locale];
+  List<Object?> get props => [message, profile, locale];
 }

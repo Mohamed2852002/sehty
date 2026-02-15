@@ -4,9 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SimpleBlocObserver implements BlocObserver {
   @override
-  void onChange(BlocBase bloc, Change change) {
-    log(change.toString());
-  }
+  void onChange(BlocBase bloc, Change change) {}
 
   @override
   void onClose(BlocBase bloc) {
@@ -35,7 +33,5 @@ class SimpleBlocObserver implements BlocObserver {
     Object? event, [
     Object? error,
     StackTrace? stackTrace,
-  ]) {
-    log('Done : ${bloc.toString()}');
-  }
+  ]) {}
 }

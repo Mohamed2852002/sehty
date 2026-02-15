@@ -24,7 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await authRepo.sendLoginOtp(phone: event.phone);
     result.fold(
       (failure) => emit(AuthFailure(message: failure.errorMessage)),
-      (_) => emit(AuthOtpSentSuccessfully()),
+      (_) => emit(AuthOtpLoginSentSuccessfully()),
     );
   }
 
@@ -45,7 +45,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final result = await authRepo.sendRegisterOtp(phone: event.phone);
     result.fold(
       (failure) => emit(AuthFailure(message: failure.errorMessage)),
-      (_) => emit(AuthOtpSentSuccessfully()),
+      (_) => emit(AuthOtpRegisterSentSuccessfully()),
     );
   }
 

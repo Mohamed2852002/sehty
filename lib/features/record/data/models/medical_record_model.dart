@@ -1,3 +1,5 @@
+import 'package:sehty/features/record/domain/entities/medical_record_entity.dart';
+
 class MedicalRecordModel {
   int? id;
   String? name;
@@ -7,7 +9,7 @@ class MedicalRecordModel {
   String? recordDate;
   String? qrCode;
   bool? hasActiveShare;
-  dynamic shareExpiresAt;
+  DateTime? shareExpiresAt;
   DateTime? createdAt;
 
   MedicalRecordModel({
@@ -33,7 +35,9 @@ class MedicalRecordModel {
       recordDate: json['record_date'] as String?,
       qrCode: json['qr_code'] as String?,
       hasActiveShare: json['has_active_share'] as bool?,
-      shareExpiresAt: json['share_expires_at'] as dynamic,
+      shareExpiresAt: json['share_expires_at'] == null
+          ? null
+          : DateTime.parse(json['share_expires_at'] as String),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -49,7 +53,22 @@ class MedicalRecordModel {
     'record_date': recordDate,
     'qr_code': qrCode,
     'has_active_share': hasActiveShare,
-    'share_expires_at': shareExpiresAt,
+    'share_expires_at': shareExpiresAt?.toIso8601String(),
     'created_at': createdAt?.toIso8601String(),
   };
+
+  MedicalRecordEntity toEntity() {
+    return MedicalRecordEntity(
+      id: id,
+      name: name,
+      fileType: fileType,
+      doctorName: doctorName,
+      labName: labName,
+      recordDate: recordDate,
+      qrCode: qrCode,
+      hasActiveShare: hasActiveShare,
+      shareExpiresAt: shareExpiresAt,
+      createdAt: createdAt,
+    );
+  }
 }

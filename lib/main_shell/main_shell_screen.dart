@@ -15,18 +15,27 @@ class MainShellScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
-          child: IndexedStack(
-            index: context.watch<MainShellCubit>().currentIndex,
-            children: const [
-              HomeScreen(),
-              MedicationsScreen(),
-              MedicalRecordsScreen(),
-              MonitorScreen(),
-              ProfileScreen(),
-            ],
+      body: PopScope(
+        canPop: context.watch<MainShellCubit>().currentIndex == 0,
+        onPopInvokedWithResult: (didPop, result) {
+          if (!didPop) {
+            context.read<MainShellCubit>().changeTab(0);
+          }
+          return;
+        },
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+            child: IndexedStack(
+              index: context.watch<MainShellCubit>().currentIndex,
+              children: const [
+                HomeScreen(),
+                MedicationsScreen(),
+                MedicalRecordsScreen(),
+                MonitorScreen(),
+                ProfileScreen(),
+              ],
+            ),
           ),
         ),
       ),

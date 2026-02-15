@@ -32,10 +32,10 @@ class MedicationBloc extends Bloc<MedicationEvent, MedicationState> {
     GetTodayMedicationsEvent event,
     Emitter<MedicationState> emit,
   ) async {
-    emit(MedicationLoading());
+    emit(TodayMedicationLoading());
     final result = await medicationRepo.getTodayMedications();
     result.fold(
-      (failure) => emit(MedicationError(message: failure.errorMessage)),
+      (failure) => emit(TodayMedicationError(message: failure.errorMessage)),
       (medications) => emit(TodayMedicationsLoaded(medications: medications)),
     );
   }
@@ -44,7 +44,7 @@ class MedicationBloc extends Bloc<MedicationEvent, MedicationState> {
     AddMedicationEvent event,
     Emitter<MedicationState> emit,
   ) async {
-    emit(MedicationLoading());
+    emit(AddMedicationLoading());
     final result = await medicationRepo.addMedication(
       name: event.name,
       dosage: event.dosage,
@@ -53,7 +53,7 @@ class MedicationBloc extends Bloc<MedicationEvent, MedicationState> {
       schedules: event.schedules,
     );
     result.fold(
-      (failure) => emit(MedicationError(message: failure.errorMessage)),
+      (failure) => emit(AddMedicationError(message: failure.errorMessage)),
       (medication) => emit(MedicationAdded(medication: medication)),
     );
   }
@@ -62,13 +62,13 @@ class MedicationBloc extends Bloc<MedicationEvent, MedicationState> {
     ConfirmMedicationTakenEvent event,
     Emitter<MedicationState> emit,
   ) async {
-    emit(MedicationLoading());
+    emit(ConfirmMedicationLoading(medicineId: event.medicineId));
     final result = await medicationRepo.confirmMedicationTaken(
       medicineId: event.medicineId,
       scheduledAt: event.scheduledAt,
     );
     result.fold(
-      (failure) => emit(MedicationError(message: failure.errorMessage)),
+      (failure) => emit(ConfirmMedicationError(message: failure.errorMessage)),
       (_) => emit(MedicationConfirmed()),
     );
   }

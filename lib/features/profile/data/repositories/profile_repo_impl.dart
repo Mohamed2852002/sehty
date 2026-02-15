@@ -91,12 +91,22 @@ class ProfileRepoImpl implements ProfileRepo {
 
   @override
   Future<Either<Failure, ProfileEntity>> updateProfile({
+    required String name,
+    required String phone,
+    required int age,
+    required String gender,
+    required String governorate,
     required double weight,
     required String district,
     required List<int> chronicDiseases,
   }) async {
     try {
       final response = await profileRemoteDataSource.updateProfile(
+        name: name,
+        phone: phone,
+        age: age,
+        gender: gender,
+        governorate: governorate,
         weight: weight,
         district: district,
         chronicDiseases: chronicDiseases,

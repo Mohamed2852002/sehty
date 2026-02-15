@@ -11,7 +11,8 @@ Future<void> initMonitorDi() async {
   );
 
   sl.registerLazySingleton<MonitorRepo>(
-    () => MonitorRepoImpl(monitorRemoteDataSource: sl<MonitorRemoteDataSource>()),
+    () =>
+        MonitorRepoImpl(monitorRemoteDataSource: sl<MonitorRemoteDataSource>()),
   );
 
   sl.registerLazySingleton<MonitorBloc>(
