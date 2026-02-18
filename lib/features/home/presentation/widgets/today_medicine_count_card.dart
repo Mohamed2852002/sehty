@@ -67,7 +67,16 @@ class TodayMedicineCount extends StatelessWidget {
                   context,
                 ).copyWith(color: Colors.grey),
               ),
-              Text(taken.toString(), style: AppStyles.styleBold24(context)),
+              TweenAnimationBuilder<int>(
+                tween: IntTween(begin: 0, end: taken),
+                duration: const Duration(seconds: 1),
+                builder: (context, value, child) {
+                  return Text(
+                    value.toString(),
+                    style: AppStyles.styleBold24(context),
+                  );
+                },
+              ),
             ],
           ),
           Text(
