@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "897293968675",
+    "project_id": "se7aty-df1e3",
+    "storage_bucket": "se7aty-df1e3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897293968675:android:e0dfd0c45be3a3eaacd896",
+        "android_client_info": {
+          "package_name": "com.fassladev.se7aty"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCXrEOx1ST4CivKqTuMuYa0T-TPpKmxCxU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

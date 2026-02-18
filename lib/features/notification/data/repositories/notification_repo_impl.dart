@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:sehty/core/errors/failure.dart';
+import 'package:sehty/core/services/firebase_messaging_service.dart';
 import 'package:sehty/features/notification/data/datasources/notification_remote_data_source.dart';
 import 'package:sehty/features/notification/data/models/notification_model.dart';
 import 'package:sehty/features/notification/domain/entities/notification_entity.dart';
@@ -10,8 +11,15 @@ import 'package:sehty/features/notification/domain/repositories/notification_rep
 
 class NotificationRepoImpl implements NotificationRepo {
   final NotificationRemoteDataSource notificationRemoteDataSource;
+  final FirebaseMessagingService firebaseMessagingService;
 
-  NotificationRepoImpl({required this.notificationRemoteDataSource});
+  NotificationRepoImpl({
+    required this.notificationRemoteDataSource,
+    required this.firebaseMessagingService,
+  });
+
+  @override
+  Stream<String> get onTokenRefresh => firebaseMessagingService.onTokenRefresh;
 
   NotificationEntity _mapModelToEntity(NotificationModel model) {
     return NotificationEntity(

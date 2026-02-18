@@ -9,4 +9,6 @@ abstract class NotificationRepo {
     required String token,
     required String platform,
   });
+
+  Stream<String> get onTokenRefresh;
 }
