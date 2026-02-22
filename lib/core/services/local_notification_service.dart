@@ -11,23 +11,20 @@ class LocalNotificationService {
   static Future<void> init() async {
     log('Initializing LocalNotificationService...');
     try {
-      await AwesomeNotifications().initialize(
-        null, // 'resource://drawable/res_app_icon',
-        [
-          NotificationChannel(
-            channelKey: _channelKey,
-            channelName: _channelName,
-            channelDescription: _channelDescription,
-            defaultColor: const Color(0xFF9D50DD),
-            ledColor: const Color(0xFF9D50DD),
-            importance: NotificationImportance.High,
-            channelShowBadge: true,
-            playSound: true,
-            criticalAlerts: true,
-          ),
-        ],
-        debug: true,
-      );
+      await AwesomeNotifications()
+          .initialize('resource://mipmap/launcher_icon', [
+            NotificationChannel(
+              channelKey: _channelKey,
+              channelName: _channelName,
+              channelDescription: _channelDescription,
+              defaultColor: const Color(0xFF9D50DD),
+              ledColor: const Color(0xFF9D50DD),
+              importance: NotificationImportance.High,
+              channelShowBadge: true,
+              playSound: true,
+              criticalAlerts: true,
+            ),
+          ], debug: true);
 
       await _requestPermission();
       _setListeners();

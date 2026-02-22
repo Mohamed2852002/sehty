@@ -23,6 +23,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   }) : super(NotificationInitial()) {
     on<GetNotificationsEvent>(_onGetNotifications);
     on<RegisterDeviceTokenEvent>(_onRegisterDeviceToken);
+    on<MarkNotificationsReadEvent>(_onMarkNotificationsRead);
 
     _listenToTokenRefresh();
   }
@@ -54,8 +55,17 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
     final result = await getNotificationsUseCase();
     result.fold(
       (failure) => emit(NotificationError(message: failure.errorMessage)),
-      (notifications) =>
-          emit(NotificationsLoaded(notifications: notifications)),
+      (notifications) {
+        final unreadCount = notifications
+            .where((n) => n.isRead == false)
+            .length;
+        emit(
+          NotificationsLoaded(
+            notifications: notifications,
+            unreadCount: unreadCount,
+          ),
+        );
+      },
     );
   }
 
@@ -72,5 +82,20 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
       (failure) => emit(NotificationError(message: failure.errorMessage)),
       (_) => emit(DeviceTokenRegistered()),
     );
+  }
+
+  void _onMarkNotificationsRead(
+    MarkNotificationsReadEvent event,
+    Emitter<NotificationState> emit,
+  ) {
+    if (state is NotificationsLoaded) {
+      final loaded = state as NotificationsLoaded;
+      emit(
+        NotificationsLoaded(
+          notifications: loaded.notifications,
+          unreadCount: 0,
+        ),
+      );
+    }
   }
 }

@@ -39,7 +39,14 @@ class NotificationRepoImpl implements NotificationRepo {
       final response = await notificationRemoteDataSource
           .getListOfNotifications();
       log('Response in getListOfNotifications: $response');
-      final List<dynamic> data = response['data'] ?? [];
+      final dynamic rawData = response['data'];
+      List<dynamic> data = [];
+      if (rawData is List) {
+        data = rawData;
+      } else if (rawData is Map) {
+        data = rawData['notifications'] ?? rawData['data'] ?? [];
+      }
+
       final notifications = data
           .map((json) => _mapModelToEntity(NotificationModel.fromJson(json)))
           .toList();

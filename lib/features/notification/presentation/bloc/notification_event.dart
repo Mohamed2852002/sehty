@@ -9,6 +9,8 @@ abstract class NotificationEvent extends Equatable {
 
 class GetNotificationsEvent extends NotificationEvent {}
 
+class MarkNotificationsReadEvent extends NotificationEvent {}
+
 class RegisterDeviceTokenEvent extends NotificationEvent {
   final String token;
   final String platform;

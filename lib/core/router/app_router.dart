@@ -8,6 +8,7 @@ import 'package:sehty/features/auth/presentation/pages/register_screen.dart';
 import 'package:sehty/features/home/presentation/bloc/home_bloc.dart';
 import 'package:sehty/features/medication/presentation/bloc/medication_bloc.dart';
 import 'package:sehty/features/monitor/presentation/bloc/monitor_bloc.dart';
+import 'package:sehty/features/notification/presentation/bloc/notification_bloc.dart';
 import 'package:sehty/features/record/presentation/bloc/record_bloc.dart';
 import 'package:sehty/main_shell/cubit/main_shell_cubit.dart';
 import 'package:sehty/main_shell/main_shell_screen.dart';
@@ -40,6 +41,7 @@ class AppRouter {
               BlocProvider.value(value: sl<MedicationBloc>()),
               BlocProvider.value(value: sl<RecordBloc>()),
               BlocProvider.value(value: sl<MonitorBloc>()),
+              BlocProvider.value(value: sl<NotificationBloc>()),
             ],
             child: const MainShellScreen(),
           ),

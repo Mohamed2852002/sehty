@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sehty/core/themes/app_colors.dart';
 import 'package:sehty/core/utils/app_styles.dart';
 import 'package:sehty/core/utils/extensions.dart';
+import 'package:sehty/features/notification/presentation/bloc/notification_bloc.dart';
 
 class BottomSheetHeader extends StatelessWidget {
   const BottomSheetHeader({super.key});
@@ -20,11 +22,23 @@ class BottomSheetHeader extends StatelessWidget {
                   context.l10n.notifications,
                   style: AppStyles.styleBold24(context),
                 ),
-                Text(
-                  context.l10n.newNotifications,
-                  style: AppStyles.styleRegular14(
-                    context,
-                  ).copyWith(color: Colors.grey),
+                BlocBuilder<NotificationBloc, NotificationState>(
+                  builder: (context, state) {
+                    if (state is NotificationsLoaded && state.unreadCount > 0) {
+                      return Text(
+                        '${state.unreadCount} ${context.l10n.newNotifications}',
+                        style: AppStyles.styleRegular14(
+                          context,
+                        ).copyWith(color: Colors.grey),
+                      );
+                    }
+                    return Text(
+                      context.l10n.newNotifications,
+                      style: AppStyles.styleRegular14(
+                        context,
+                      ).copyWith(color: Colors.grey),
+                    );
+                  },
                 ),
               ],
             ),

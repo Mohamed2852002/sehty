@@ -13,10 +13,14 @@ class NotificationLoading extends NotificationState {}
 
 class NotificationsLoaded extends NotificationState {
   final List<NotificationEntity> notifications;
-  const NotificationsLoaded({required this.notifications});
+  final int unreadCount;
+  const NotificationsLoaded({
+    required this.notifications,
+    required this.unreadCount,
+  });
 
   @override
-  List<Object?> get props => [notifications];
+  List<Object?> get props => [notifications, unreadCount];
 }
 
 class DeviceTokenRegistered extends NotificationState {}

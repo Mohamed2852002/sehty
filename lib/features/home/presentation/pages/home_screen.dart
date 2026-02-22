@@ -6,6 +6,7 @@ import 'package:sehty/features/home/presentation/widgets/family_follow_up_widget
 import 'package:sehty/features/home/presentation/widgets/home_action_buttons.dart';
 import 'package:sehty/features/home/presentation/widgets/home_top_bar.dart';
 import 'package:sehty/features/medication/presentation/bloc/medication_bloc.dart';
+import 'package:sehty/features/notification/presentation/bloc/notification_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     context.read<HomeBloc>().add(GetHomeDashboardEvent());
     context.read<MedicationBloc>().add(GetTodayMedicationsEvent());
+    context.read<NotificationBloc>().add(GetNotificationsEvent());
   }
 
   @override
@@ -36,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
           onRefresh: () async {
             context.read<HomeBloc>().add(GetHomeDashboardEvent());
             context.read<MedicationBloc>().add(GetTodayMedicationsEvent());
+            context.read<NotificationBloc>().add(GetNotificationsEvent());
           },
           child: const CustomScrollView(
             slivers: [
